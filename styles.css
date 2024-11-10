@@ -1,0 +1,805 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    overflow-x: hidden;
+}
+
+/* Full-Screen Animated Gradient */
+.gradient-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff6b6b, #f4d35e, #06d6a0, #1b9aaa);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Navbar */
+/* Navbar */
+header {
+    background: #333;
+    padding: 15px 30px;
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+header .logo a {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between; /* Ensure space between links and "Get Started" */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    justify-content: center; /* Center the navigation links */
+    flex-grow: 1;
+}
+
+nav ul li {
+    padding: 5px 0;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #007BFF;
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Get Started Link */
+.get-started {
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: #007BFF;
+    margin-left: 30px; /* Adds a small gap between the links and button */
+    transition: background-color 0.3s ease;
+}
+
+.get-started:hover {
+    background-color: #0056b3;
+}
+
+/* Hamburger Icon (hidden by default) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+    header {
+        padding: 15px;
+    }
+
+    nav {
+        justify-content: flex-end; /* Keeps everything aligned to the right */
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background-color: #333;
+        padding: 20px 0;
+        gap: 20px;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.4rem;
+    }
+
+    .get-started {
+        display: none; /* Hide Get Started link on mobile */
+    }
+
+    .hamburger {
+        display: flex;
+        position: absolute;
+        right: 30px; /* Position hamburger icon on the right side */
+    }
+
+    nav.active ul {
+        display: flex;
+    }
+}
+
+/* Smooth transition for menu */
+nav ul li a {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Active State for Hamburger */
+nav.active .hamburger .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+nav.active .hamburger .bar:nth-child(2) {
+    opacity: 0;
+}
+
+nav.active .hamburger .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Hide "Get Started" button on small screens */
+@media (max-width: 1200px) {
+    .get-started {
+        display: none; /* Hide Get Started button on screens smaller than 600px */
+    }
+}
+
+
+/* Smooth transition for menu */
+nav ul li a {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Active State for Hamburger */
+nav.active .hamburger .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+nav.active .hamburger .bar:nth-child(2) {
+    opacity: 0;
+}
+
+nav.active .hamburger .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+/* Other Sections */
+section {
+    padding: 60px 20px 20px;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+section .content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Services Section */
+#services .service-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#services .card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Meet Our Team Section */
+#team {
+    background-color: #e3f2fd;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#team .team-members {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#team .member {
+    text-align: center;
+    max-width: 200px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#team .member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+#team .member h3 {
+    margin-top: 15px;
+    font-size: 1.5rem;
+}
+
+#team .member p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Contact Section */
+#contact {
+    background-color: #f8f9fa;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#contact form input,
+#contact form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#contact form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+#contact form button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-cards,
+    .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Hero Section Styles */
+#hero-1785 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+.cs-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+}
+
+.cs-content {
+    max-width: 600px;
+    color: #fff;
+    padding: 20px;
+}
+
+.cs-title {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.cs-text {
+    font-size: 1.25em;
+    margin-bottom: 20px;
+}
+
+.cs-button-group .cs-button-solid {
+    background-color: #0066cc;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.cs-background img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+/* Services Section Styles */
+#services .content {
+    display: grid;
+    gap: 20px;
+    padding: 40px;
+    grid-template-columns: 1fr;
+}
+
+#services .service-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+#services .service-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive Design for 3-Wide Layout */
+@media (min-width: 768px) {
+    #services .content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    #services .content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* What We Offer Section Styles */
+.offer-section {
+    background-color: #f9f9f9;
+    padding: 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.offer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
+}
+
+.offer-image {
+    flex: 1;
+    max-width: 50%;
+}
+
+.offer-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.offer-details {
+    flex: 1;
+    padding-left: 20px;
+    max-width: 50%;
+}
+
+.offer-details h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.offer-details ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two-column layout */
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.offer-details li {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.offer-details li strong {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1.2rem;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.offer-details li p {
+    font-family: "Arial", sans-serif;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.cs-button-group {
+    margin-top: 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .offer-container {
+        flex-direction: column;
+    }
+
+    .offer-image,
+    .offer-details {
+        max-width: 100%;
+    }
+
+    .offer-details {
+        padding-left: 0;
+    }
+
+    .offer-details ul {
+        grid-template-columns: 1fr; /* Switches to one column on smaller screens */
+    }
+}
+
+/* Portfolio Section Styles */
+.portfolio-section {
+    background-color: #f9f9f9;
+    padding: 40px;
+    background-color: #f9f9f9;
+}
+
+.portfolio-intro {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.portfolio-intro h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.portfolio-intro p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Horizontal alignment for portfolio projects */
+.portfolio-projects {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: stretch; /* Ensures equal height alignment */
+}
+
+.portfolio-item {
+    flex: 1; /* Allows each item to take up equal space */
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+}
+
+.portfolio-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.portfolio-item h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.portfolio-item p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.portfolio-item .cs-button-solid {
+    font-size: 0.9rem;
+    margin-top: auto; /* Pushes the button to the bottom of the card */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+    .portfolio-projects {
+        flex-wrap: wrap;
+    }
+    
+    .portfolio-item {
+        width: 45%; /* Adjust to two columns on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-projects {
+        flex-direction: column;
+    }
+    
+    .portfolio-item {
+        width: 100%; /* Stacks each project vertically on smaller screens */
+    }
+}
+
+/* Performance Section Styles */
+.performance-section {
+    background-color: #f9f9f9;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.performance-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.performance-details {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.performance-title {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.performance-subtitle {
+    font-size: 1.8rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.performance-text {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.performance-icon-text p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.performance-stats {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 50%;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item h4 {
+    font-size: 2.2rem;
+    color: #000;
+}
+
+.stat-item p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.stats-image img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .performance-content {
+        flex-direction: column;
+    }
+    
+    .performance-details,
+    .performance-stats {
+        max-width: 100%;
+    }
+
+    .stats-image img {
+        max-width: 100%;
+    }
+}
+
+/* Pricing Section Styles */
+.pricing-section {
+    background-color: #f9f9f9;
+    padding: 40px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pricing-section h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.pricing-section p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.pricing-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pricing-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1 1 300px;
+    max-width: 350px;
+    text-align: left;
+}
+
+.pricing-card h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.pricing-card .price {
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.pricing-card .price span {
+    font-size: 1rem;
+    color: #666;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.pricing-card ul li {
+    font-size: 1rem;
+    color: #555;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.pricing-card ul li:before {
+    content: '✔';
+    color: #4CAF50;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.cs-button-solid {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}
