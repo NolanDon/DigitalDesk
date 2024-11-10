@@ -208,25 +208,26 @@
     <div class="performance-content">
         <!-- Left Side Content 1-6 -->
         <div class="performance-details">
-            <h2 class="performance-title">Performance</h2>
-            <h3 class="performance-subtitle">We Build Better Websites That Perform</h3>
+            <h2 class="performance-text"><span class="highlight">PERFORMANCE</span></h2>
+            <h3 class="performance-subtitle">Building <span class="highlight">Exceptional</span> Websites for Superior Results</h3>
             <p class="performance-text">
-                When it comes to website load times, not very many can get the Google PageSpeed scores that we get with each and every site.
-                Test your website load times with Google PageSpeed Insights and see what your current site is scoring right now.
+                Every site we create is optimized for exceptional speed and seamless functionality, helping you make the best first impression with fast load times and reliable performance. We focus on more than just appearances—our sites are engineered to convert.
             </p>
             <div class="performance-icon-text">
-                <p><strong>Better load times means more traffic and more site conversions over time.</strong></p>
+                <p><strong>Faster load times keep visitors engaged and boost your overall conversion rates.</strong></p>
             </div>
             <div class="performance-icon-text">
-                <p><strong>Faster websites can help improve SEO and your Google ads performance.</strong></p>
+                <p><strong>High-speed websites improve SEO rankings and elevate your Google Ads performance.</strong></p>
             </div>
             <div class="performance-icon-text">
-                <p><strong>Our sites load instantly in under 1 second or less, which leads to a better user experience and conversions.</strong></p>
+                <p><strong>Experience under 1-second load times, optimized for a seamless user journey.</strong></p>
             </div>
             <div class="cs-button-group">
                 <a href="#get-started" class="cs-button-solid">Get Started</a>
             </div>
         </div>
+    
+
 
         <!-- Right Side Stats -->
         <div class="performance-stats">
@@ -333,6 +334,16 @@
     hamburger.addEventListener('click', () => {
       nav.classList.toggle('active');
     });
+
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('header');
+        if (window.scrollY > 0) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
   </script>
+  
 </body>
 </html>

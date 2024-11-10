@@ -38,17 +38,26 @@ header {
     padding: 15px 30px;
     position: fixed;
     top: 20px;
-    left: 0;
-    right: 0;
-    margin-left: 20px;
-    margin-right: 20px;
+    left: 20px;
+    right: 20px;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease-in-out;
     z-index: 1000;
     box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Scrolled State */
+header.scrolled {
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 20px; /* Consistent padding for smooth scaling */
+    border-radius: 0;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow effect */
 }
 
 header .logo a {
@@ -293,10 +302,23 @@ section .content {
     text-align: center;
   }
   
-  #contact .content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
+/* General padding for larger screens */
+#contact .content {
+    padding: 0 20px; /* Adjust as needed for desktop view */
+}
+
+/* Add additional padding on smaller screens */
+@media (max-width: 768px) {
+    #contact .content {
+        padding: 0 15px; /* Add side padding on mobile for better spacing */
+    }
+}
+
+@media (max-width: 480px) {
+    #contact .content {
+        padding: 0 10px; /* Further reduce padding for very small screens if needed */
+    }
+}
   
   #contact h2 {
     font-size: 2.5rem;
@@ -356,7 +378,7 @@ section .content {
 /* Hero Section Styles */
 #hero-1785 {
     background-color: #f9f9f9;
-    padding: 80px 0;
+    padding: 100px 0;
     text-align: center;
   }
   
@@ -660,21 +682,24 @@ section .content {
 }
 
 /* Performance Section Styles */
+/* Performance Section Styles */
 .performance-section {
     background-color: #f9f9f9;
     padding: 40px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Left-align content within the section */
     align-items: flex-start;
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
+    text-align: left; /* Ensures text alignment within the section */
 }
 
 .performance-content {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    text-align: left; /* Ensures text alignment for all nested content */
 }
 
 .performance-details {
@@ -682,24 +707,39 @@ section .content {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    text-align: left; /* Left-aligns text within performance details */
 }
 
 .performance-title {
     font-size: 2.5rem;
     color: #333;
+    text-align: left; /* Explicit left alignment for title */
 }
 
 .performance-subtitle {
     font-size: 1.8rem;
     color: #555;
     margin-bottom: 10px;
+    text-align: left; /* Explicit left alignment for subtitle */
+}
+
+.performance-subtitle .highlight {
+    color: #007BFF; /* Matches the button color */
+    font-weight: bold; /* Optional: Make it bold for added emphasis */
 }
 
 .performance-text {
     font-size: 1rem;
     color: #666;
     margin-bottom: 15px;
+    text-align: left; /* Explicit left alignment for paragraph text */
 }
+
+.performance-text .highlight {
+    color: #007BFF; /* Matches the button color */
+    font-weight: bold; /* Optional: Make it bold for added emphasis */
+}
+
 
 .performance-icon-text p {
     font-size: 1rem;
@@ -756,93 +796,91 @@ section .content {
     }
 }
 
-/* Pricing Section Styles */
-.pricing-section {
-    background-color: #f9f9f9;
-    padding: 40px;
+/* Pricing Section */
+#pricing {
+    padding: 60px 0;
     text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    background-color: #f9f9f9;
 }
 
-.pricing-section h2 {
+#pricing h2 {
     font-size: 2.5rem;
-    color: #333;
     margin-bottom: 10px;
+    font-family: 'Red Hat Display', sans-serif;
 }
 
-.pricing-section p {
+#pricing p {
     font-size: 1.2rem;
+    margin-bottom: 40px;
     color: #555;
-    margin-bottom: 30px;
+    font-family: 'Red Hat Display', sans-serif;
 }
 
 .pricing-cards {
     display: flex;
-    gap: 20px;
     justify-content: center;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .pricing-card {
-    background: #f9f9f9;
+    background-color: white;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    flex: 1 1 300px;
-    max-width: 350px;
+    width: 300px;
+    transition: all 0.3s ease;
     text-align: left;
+    margin-bottom: 20px;
 }
 
 .pricing-card h3 {
     font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .pricing-card .price {
-    font-size: 2rem;
-    color: #000;
-    margin-bottom: 10px;
-}
-
-.pricing-card .price span {
-    font-size: 1rem;
-    color: #666;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .pricing-card ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
-    margin: 15px 0;
+    margin-bottom: 20px;
 }
 
 .pricing-card ul li {
-    font-size: 1rem;
-    color: #555;
-    padding: 5px 0;
-    display: flex;
-    align-items: center;
-}
-
-.pricing-card ul li:before {
-    content: '✔';
-    color: #4CAF50;
-    margin-right: 8px;
-    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .cs-button-solid {
-    display: inline-block;
-    padding: 10px 20px;
     background-color: #007BFF;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-top: 20px;
+    color: white;
+    padding: 10px 20px;
     text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    display: inline-block;
 }
+
+/* Emphasize Monthly Card permanently with glowing border */
+.pricing-card:nth-child(2) {
+    position: relative;
+    border: 2px solid #007BFF; /* Permanent glowing border */
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.7); /* Permanent glowing effect */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {
