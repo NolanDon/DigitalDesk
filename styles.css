@@ -786,94 +786,88 @@ section .content {
 }
 
 /* Portfolio Section Styles */
-.portfolio-section {
-    background-color: #f9f9f9;
-    padding: 40px;
-    background-color: #f9f9f9;
-}
-
-.portfolio-intro {
-    max-width: 800px;
-    margin: 0 auto 40px;
+/* Portfolio Section */
+#portfolio {
+    padding: 0px;
     text-align: center;
+    background-color: #f9f9f9;
 }
 
-.portfolio-intro h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 15px;
+#portfolio h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-family: 'Red Hat Display', sans-serif;
 }
 
-.portfolio-intro p {
-    font-size: 1rem;
+#portfolio p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
     color: #555;
-    margin: 0 auto 100px;
+    font-family: 'Red Hat Display', sans-serif;
 }
 
-/* Horizontal alignment for portfolio projects */
 .portfolio-projects {
     display: flex;
+    justify-content: center;
     gap: 20px;
-    justify-content: space-between;
-    align-items: stretch; /* Ensures equal height alignment */
+    flex-wrap: wrap;
 }
 
 .portfolio-item {
-    flex: 1; /* Allows each item to take up equal space */
-    display: flex;
-    flex-direction: column;
-    background: #fff;
+    background-color: white;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    width: 400px;
+    transition: all 0.3s ease;
     text-align: left;
+    margin-bottom: 20px;
+    overflow: hidden; /* To prevent image overflow */
 }
 
 .portfolio-item img {
     width: 100%;
-    border-radius: 8px;
+    height: auto;
+    border-radius: 10px;
     margin-bottom: 15px;
 }
 
 .portfolio-item h3 {
-    font-size: 1.2rem;
-    color: #333;
+    font-size: 1.6rem;
     margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .portfolio-item p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #555;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-.portfolio-item .cs-button-solid {
-    font-size: 0.9rem;
-    margin-top: auto; /* Pushes the button to the bottom of the card */
+.portfolio-item a.cs-button-solid {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    display: inline-block;
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 1024px) {
-    .portfolio-projects {
-        flex-wrap: wrap;
-    }
-    
-    .portfolio-item {
-        width: 45%; /* Adjust to two columns on medium screens */
-    }
+/* Hover effect for portfolio items */
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
     .portfolio-projects {
         flex-direction: column;
-    }
-    
-    .portfolio-item {
-        width: 100%; /* Stacks each project vertically on smaller screens */
+        align-items: center;
     }
 }
 
-/* Performance Section Styles */
 /* Performance Section Styles */
 .performance-section {
     background-color: #f9f9f9;
