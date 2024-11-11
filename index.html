@@ -8,24 +8,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Gradient Background -->
-  <!-- <div class="gradient-background"></div> -->
 
-  <!-- Navbar -->
-  <header>
+<!-- Navbar -->
+<header>
     <div class="logo">
         <a href="#">Logo</a>
     </div>
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li class="dropdown">
+                <a href="webdesign.html" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="webdesign.html">Web Design</a>
+                    <a href="#seo">SEO</a>
+                    <a href="#googleads">Google Ads</a>
+                </div>
+            </li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
         <!-- Get Started button outside the ul to keep it on the right -->
-        <a href="#" class="get-started">Get Started</a>
+        <a href="contact.html" class="get-started">Get Started</a>
         <div class="hamburger" id="hamburger">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -34,17 +40,18 @@
     </nav>
 </header>
 
+
  <!-- Hero Section -->
-<section id="hero-1785">
+<section id="home">
     <div class="cs-container">
       <div class="cs-content">
         <h1 class="cs-title">Your Partner in Building Beautiful, High-Performing Websites</h1>
         <p class="cs-text">
-          We specialize in custom, hand-coded websites tailored for small businesses. Starting at just $175/month, you get everything you need, from design and development to Google Ads and SEO services that drive results.
+          We specialize in custom, hand-coded websites tailored for small businesses. Starting at just $100/month, you get everything you need, from design and development to Google Ads and SEO services that drive results.
         </p>
         <div class="cs-button-group">
-          <a href="#get-started" class="cs-button-solid">Get Started</a>
-          <a href="#about" class="cs-button-solid">About Us</a>
+          <a href="contact.html" class="cs-button-solid">Get Started</a>
+          <a href="about.html" class="cs-button-solid">About Us</a>
         </div>
       </div>
   
@@ -60,19 +67,21 @@
 <!-- Home Section -->
 <section id="home">
     <div class="content">
-      <h1>Who We Are</h1>
-      <p>Creating Websites That Work Hard for Your Business</p>
-      <p>
-        At Highwood Web Design, we’re dedicated to crafting custom websites
-        tailored for small businesses across the US and Canada. Each website is built
-        from the ground up, optimized for speed and search engines, ensuring your
-        site reaches more customers and drives more growth. We handle updates
-        and maintenance so you can focus on what you do best, confident that
-        your site is always performing at its peak. Our commitment is to build
-        lasting partnerships and support your business for the long haul.
-      </p>
+        <h1>What We Do</h1>
+        <p class="headline-text">Make Websites That</p>
+        <p class="headline-text-2">Work Hard for Your Business</p>
+        <p>
+            At Highwood Web Design, we’re dedicated to crafting custom websites
+            tailored for small businesses across the US and Canada. Each website is built
+            from the ground up, optimized for speed and search engines, ensuring your
+            site reaches more customers and drives more growth. We handle updates
+            and maintenance so you can focus on what you do best, confident that
+            your site is always performing at its peak. Our commitment is to build
+            lasting partnerships and support your business for the long haul.
+        </p>
     </div>
-  </section>
+</section>
+
   
 
 <!-- What We Offer Section -->
@@ -81,7 +90,7 @@
         <!-- Affordable Websites -->
         <div class="service-card">
             <h3>Affordable Websites</h3>
-            <p>Get a 5-page custom site for just $175/month with $0 down. Includes design, hosting, edits, and support.</p>
+            <p>Get a 5-page custom site for just $100/month with $0 down. Includes design, hosting, edits, and support.</p>
         </div>
         
         <!-- Completely Custom Designs -->
@@ -162,7 +171,7 @@
                 </li>
             </ul>
             <div class="cs-button-group">
-                <a href="#get-started" class="cs-button-solid">Schedule a Call</a>
+                <a href="contact.html" class="cs-button-solid">Schedule a Call</a>
             </div>
         </div>
     </div>
@@ -253,73 +262,43 @@
 
 <!-- Pricing Section -->
 <section id="pricing" class="pricing-section">
-    <h2>Our Pricing</h2>
-    <p>Packages Tailored For Every Budget</p>
+    <h2>Flexible Pricing Plans</h2>
+    <p>Affordable Options to Fit Your Needs</p>
     <div class="pricing-cards">
         
-        <!-- Lump Sum Card -->
+        <!-- Fixed Payment Card -->
         <div class="pricing-card">
-            <h3>Lump Sum</h3>
-            <p class="price">$3800 <span>+ $25/mo Hosting</span></p>
+            <h2>Lump Sum</h2>
+            <h3 class="price">$1,500 <span>+ $25/mo Hosting</span></h3>
             <ul>
-                <li>Custom Design and Development</li>
-                <li>$25/mo Hosting</li>
-                <li>$100 per page after 5 pages</li>
-                <li>Optional: $50/mo Unlimited Edits</li>
-                <li>Optional: $250 for Blog Addition</li>
-                <li>24/7 Support</li>
-                <li>Lifetime Updates</li>
+                <li><span class="icon check">✔️</span>Tailored Design & Development</li>
+                <li><span class="icon check">✔️</span>Reliable Hosting at $25/month</li>
+                <li><span class="icon check">✔️</span>Add Extra Pages: $100 each after 5</li>
+                <li><span class="icon optional">✔️</span>+$50/month Unlimited Edits</li>
+                <li><span class="icon optional">❌</span>Round-the-Clock Support</li>
+                <li><span class="icon optional">❌</span>Lifetime Updates Included</li>
             </ul>
             <a href="#get-started" class="cs-button-solid">Get Started</a>
         </div>
         
         <!-- Monthly Card -->
         <div class="pricing-card">
-            <h3>Monthly</h3>
-            <p class="price">$175 <span>Per Month</span></p>
+            <h2>Monthly</h2>
+            <h3 class="price">$100 <span>Per Month</span></h3>
             <ul>
-                <li>Custom Design and Development</li>
-                <li>Includes Hosting</li>
-                <li>$100 per page after 5 pages</li>
-                <li>Optional: $250 for Blog Addition</li>
-                <li>Unlimited Edits</li>
-                <li>24/7 Support</li>
-                <li>Lifetime Updates</li>
-            </ul>
-            <a href="#get-started" class="cs-button-solid">Get Started</a>
-        </div>
-        
-        <!-- Ecommerce Card -->
-        <div class="pricing-card">
-            <h3>Ecommerce</h3>
-            <p class="price">$8,000 <span>Starting</span></p>
-            <ul>
-                <li>Custom Shopify Store</li>
-                <li>App Configuration Support</li>
-                <li>Integrated Shipping Setup</li>
-                <li>Shopify Tutorial and Walkthrough</li>
-                <li>Fully Editable in Shopify CMS</li>
-                <li>Optional: $50/mo Unlimited Edits</li>
-                <li>24/7 Support</li>
+                <li><span class="icon check">✔️</span>Personalized Design & Development</li>
+                <li><span class="icon check">✔️</span>Hosting Included in Package</li>
+                <li><span class="icon check">✔️</span>Add Pages for $100 each after 5</li>
+                <li><span class="icon check">✔️</span>Optional Blog Setup for $250</li>
+                <li><span class="icon check">✔️</span>Unlimited Edits & Updates</li>
+                <li><span class="icon check">✔️</span>24/7 Client Support</li>
+                <li><span class="icon check">✔️</span>Continuous Improvements for Life</li>
             </ul>
             <a href="#get-started" class="cs-button-solid">Get Started</a>
         </div>
     </div>
 </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="content">
-      <h2>Contact Us</h2>
-      <p>Ready to get started? We’d love to hear from you! Let’s discuss how we can bring your vision to life with a custom website tailored to your business.</p>
-      <form action="#" method="POST">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
-  </section>
 
   <!-- Footer -->
   <footer>

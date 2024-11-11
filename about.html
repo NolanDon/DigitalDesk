@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Highwood Web Design</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+    <!-- Navbar -->
+ <!-- Navbar -->
+<header>
+    <div class="logo">
+        <a href="#">Logo</a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="dropdown">
+                <a href="webdesign.html" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="webdesign.html">Web Design</a>
+                    <a href="#seo">SEO</a>
+                    <a href="#googleads">Google Ads</a>
+                </div>
+            </li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <!-- Get Started button outside the ul to keep it on the right -->
+        <a href="contact.html" class="get-started">Get Started</a>
+        <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+</header>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+    <!-- About Heading -->
+    <h2 class="about-heading">ABOUT US</h2>
+    
+    <div class="about-container">
+        <!-- About Text Content -->
+        <div class="about-content">
+            <p>Hi, I'm Nolan Boxill. A few years ago, I found myself frustrated with the corporate grind. The long hours, the lack of flexibility, and the feeling of being just another cog in the machine. I decided to take control of my life and pursue a path that truly excites me—freelance web design.</p>
+            <p>What really drove me to this new journey was the lack of support and affordable options for small businesses when it comes to their websites. I saw so many small businesses struggling to get their online presence right, either unable to afford the high upfront costs or getting stuck with poor-quality websites that didn't help them grow.</p>
+            <p>That's when I decided to make a change. I started offering affordable, custom web design solutions to small businesses that need a professional online presence without breaking the bank.</p>
+            <a href="#contact" class="about-button">Contact Me</a>
+        </div>
+        
+        <!-- About Image -->
+        <div class="about-image">
+            <img src="https://via.placeholder.com/600x400" alt="Nolan Boxill">
+        </div>
+    </div>
+</section>
+
+
+    <!-- Process Section -->
+<section id="process" class="process-section">
+    <h2>Our Streamlined Process</h2>
+    <p>Your journey to a custom, high-performing website is straightforward. From gathering essential details to bringing your vision to life, we handle each step efficiently, aiming for a quick, smooth launch within 2-3 weeks.</p>
+
+    <div class="process-cards">
+        <!-- Step 1 -->
+        <div class="process-card">
+            <h3>Step 1</h3>
+            <h4>Quick Business Insight</h4>
+            <p>We begin by sending you a short questionnaire to capture the essence of your business—what you offer, your unique strengths, and more. We’ll take care of transforming your answers into impactful content.</p>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="process-card">
+            <h3>Step 2</h3>
+            <h4>Design Walkthrough & Feedback</h4>
+            <p>We present a first draft of your website in a screen-share meeting, guiding you through the design and gathering your input to ensure it aligns with your vision.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="process-card">
+            <h3>Step 3</h3>
+            <h4>Build & Launch</h4>
+            <p>With your approval, we proceed with development. Once the site is ready, you’ll receive a demo link to review before we officially launch, ensuring a perfect start.</p>
+        </div>
+    </div>
+</section>
+
+
+    <!-- JavaScript for mobile menu toggle and scroll effect -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('header');
+        if (window.scrollY > 0) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        });
+    </script>
+    
+    </body>
+</html>
