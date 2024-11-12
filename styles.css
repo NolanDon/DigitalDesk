@@ -535,7 +535,7 @@ section .content {
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
-    margin-top: 40px;
+    margin: 0 auto;
     flex-wrap: wrap;
   }
   
