@@ -388,13 +388,13 @@ section .content {
 }
 
 /* Services Section */
-#services .service-cards {
+.services .service-cards {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-#services .card {
+.services .card {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -402,48 +402,10 @@ section .content {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Meet Our Team Section */
-#team {
-    background-color: #e3f2fd;
-    padding: 60px 20px;
-    text-align: center;
-}
-
-#team .team-members {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-#team .member {
-    text-align: center;
-    max-width: 200px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#team .member img {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-}
-
-#team .member h3 {
-    margin-top: 15px;
-    font-size: 1.5rem;
-}
-
-#team .member p {
-    font-size: 1rem;
-    color: #666;
-}
 
 /* Contact Section */
-#contact {
-    padding-top: 70px; /* Space from navbar */
+
+.contact-section {
     background-color: #f9f9f9;
     max-width: 1200px;
     margin: 0 auto;
@@ -451,16 +413,11 @@ section .content {
 }
 
 /* Contact Heading Styling */
-#contact h2 {
-    font-size: 3em;
-    margin-top: 145px; /* Increase space above the heading */
-    margin-bottom: 200px; /* Increase space below the heading */
-    font-family: 'Red Hat Display', sans-serif;
-    text-align: center;
-}
 
 /* Flexbox Container for Horizontal Layout */
 .contact-container {
+    border-top: 2px solid #eee;
+    padding-top: 30px;
     display: flex;
     justify-content: space-between;
     gap: 40px; /* Set a moderate gap */
@@ -473,12 +430,12 @@ section .content {
     padding-right: 40px; /* Additional padding for separation from the form */
 }
 
-.contact-info h3 {
+/* .contact-info h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
     color: #333;
     font-weight: bold;
-}
+} */
 
 .contact-info p {
     font-size: 1.2rem;
@@ -661,6 +618,7 @@ section .content {
 
 /* Services Section Styles */
 #services .content {
+    border-top: 2px solid #eee;
     display: grid;
     gap: 20px;
     padding: 40px;
@@ -785,21 +743,16 @@ section .content {
     }
 }
 
-/* Portfolio Section Styles */
+
 /* Portfolio Section */
-#portfolio {
+.portfolio {
     padding: 0px;
     text-align: center;
     background-color: #f9f9f9;
 }
 
-#portfolio h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-family: 'Red Hat Display', sans-serif;
-}
 
-#portfolio p {
+.portfolio p {
     font-size: 1.2rem;
     margin-bottom: 40px;
     color: #555;
@@ -882,6 +835,7 @@ section .content {
 }
 
 .performance-content {
+    margin-top: 10%;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -1088,23 +1042,40 @@ section .content {
 
 /* Styles for About Section */
 .about-section {
-    padding-top: 120px; /* Space from navbar */
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* All Caps Heading Styling */
+.distinct-heading {
+    text-transform: uppercase;
+    font-family: 'Red Hat Display', sans-serif; /* Change to your preferred font */
+    font-weight: 700; /* Emphasize the heading with boldness */
+    letter-spacing: 0.05em; /* Slightly spaced letters for elegance */
+    font-size: 2.2rem; /* Adjust as needed for visibility */
+    color: #333; /* Neutral color for a refined look */
+    text-align: center;
+    margin-bottom: 250px;
+    margin-top: 200px;
+}
+
+@media (max-width: 768px) {
+    .distinct-heading {
+        font-size: 1.8rem; /* Adjust for mobile screens */
+    }
+}
+
 .about-heading {
     font-family: 'Red Hat Display', sans-serif;
     font-size: 3em;
-    text-transform: uppercase;
-    margin-bottom: 250px;
-    margin-top: 100px;
     color: #333;
     letter-spacing: 2px;
 }
 
 .about-container {
+    border-top: 2px solid #eee;
+    padding-top: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1221,22 +1192,23 @@ footer p {
 
 /* Web Design Section */
 .webdesign-section {
-    padding: 100px 40px;
     background-color: #f9f9f9;
     text-align: center;
 }
 
 /* Heading Styling for Web Design */
-.webdesign-heading {
+/* .webdesign-heading {
     font-size: 2.5rem;
     margin-bottom: 250px;
     margin-top: 100px;
     font-family: 'Red Hat Display', sans-serif;
     color: #333;
-}
+} */
 
 /* Container for Web Design Content */
 .webdesign-container {
+    padding-top: 30px;
+    border-top: 2px solid #eee;
     display: flex;
     justify-content: space-between;
     align-items: center;
