@@ -124,7 +124,7 @@ nav a {
     width: 30px;
     height: 4px;
     background-color: #333;
-    margin: 6px 0;
+    margin: 2px 0;
 }
 
 /* Media Query for mobile */
@@ -535,7 +535,7 @@ section .content {
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
-    margin: 0 auto;
+    margin-top: 40px;
     flex-wrap: wrap;
   }
   
