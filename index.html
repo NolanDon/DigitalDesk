@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="images/favicon.ico" type="image/ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Highwood Web Design</title>
   <link rel="stylesheet" href="styles.css">
@@ -12,25 +13,19 @@
 <!-- Navbar -->
 <header>
     <div class="logo">
-        <a href="#home">Logo</a>
+        <a href="/"><img src="images/logo7.png" alt="Icon" class="navbar-logo"></a>
     </div>
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li class="dropdown">
-                <a href="webdesign.html" class="dropbtn">Services</a>
-                <div class="dropdown-content">
-                    <a href="webdesign.html">Web Design</a>
-                    <a href="#seo">SEO</a>
-                </div>
-            </li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="/webdesign" class="dropbtn">Services</a></li>
+            <!-- <li><a href="/portfolio">Portfolio</a></li> -->
+            <li><a href="/contact">Contact</a></li>
         </ul>
         <!-- Get Started button outside the ul to keep it on the right -->
-        <a href="contact.html" class="get-started">Get Started</a>
+        <a href="/contact" class="get-started">Get Started</a>
         <div class="hamburger" id="hamburger">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -40,100 +35,61 @@
 </header>
 
 
- <!-- Hero Section -->
-<section id="home">
+<!-- Hero Section -->
+<section id="hero">
     <div class="cs-container">
-      <div class="cs-content">
-        <h1 class="cs-title">Your Partner in Building Beautiful, High-Performing Websites</h1>
-        <p class="cs-text">
-          We specialize in custom, hand-coded websites tailored for small businesses. Starting at just $100/month, you get everything you need, from design and development to SEO services that drive results.
-        </p>
-        <div class="cs-button-group">
-          <a href="contact.html" class="cs-button-solid">Get Started</a>
-          <a href="about.html" class="cs-button-solid">About Us</a>
+        <div class="cs-content">
+            <h1 class="cs-title">Your Partner in Building Beautiful, High-Performing Websites</h1>
+            <p class="cs-text">
+                We specialize in custom, hand-coded websites tailored for small businesses. Starting at just $100/month, you get everything you need, from design and development to SEO services that drive results.
+            </p>
+            <div class="cs-button-group">
+                <a href="/contact" class="cs-button-solid">Get Started</a>
+                <a href="/about" class="cs-button-solid">About Us</a>
+            </div>
         </div>
-      </div>
-  
-      <!-- Image placeholders for laptop and mobile -->
-      <div class="cs-images">
-        <img src="images/imacphoto.png" alt="Laptop" class="cs-laptop">
-        <!-- <img src="https://via.placeholder.com/200x350?text=Mobile" alt="Mobile Device" class="cs-mobile"> -->
-      </div>
+
+        <!-- Image placeholders for laptop and mobile -->
+        <div class="cs-images">
+            <img src="images/multiple-devices.jpg" alt="Laptop" class="cs-laptop" style="z-index: 2;">
+        </div>
     </div>
-  </section>
-  
+</section>
+
 
 <!-- Home Section -->
 <section id="home">
-    <div class="content">
-        <h1>What We Do</h1>
-        <p class="headline-text">Make Your Website</p>
-        <p class="headline-text-2">Work Hard for Your Business</p>
-        <p>
-            At Highwood Web Design, we’re dedicated to crafting custom websites
-            tailored for small businesses across the US and Canada. Each website is built
-            from the ground up, optimized for speed and search engines, ensuring your
-            site reaches more customers and drives more growth. We handle updates
-            and maintenance so you can focus on what you do best, confident that
-            your site is always performing at its peak. Our commitment is to build
-            lasting partnerships and support your business for the long haul.
+    <div class="home-content">
+        <div class="headline">
+            <h1 class="headline-text">Make Your Website Work</h1>
+            <h3 class="home-subtitle"><span class="highlight">Better</span> for Your Business</h3>
+        </div>
+        <p class="description">
+            At Highwood Web Design, each website is built from the ground up—no WordPress,
+            Wix, or other no-code software. This ensures your website is optimized for speed
+            and search engines, helping it reach more customers. We handle updates and
+            maintenance so you can focus on what you do best, confident your site is always
+            performing at its peak.
         </p>
+        <a href="/about" class="cs-button-solid">Why Us</a>
     </div>
 </section>
 
+
+<div class="f1-car-container">
+    <img src="images/fastcar2.png" alt="Car" class="f1-car">
+</div>
   
 
 <!-- What We Offer Section -->
-<section id="services">
-    <div class="content">
-        <!-- Affordable Websites -->
-        <div class="service-card">
-            <h3>Affordable Websites</h3>
-            <p>Get a 5-page custom site for just $100/month with $0 down. Includes design, hosting, edits, and support.</p>
-        </div>
-        
-        <!-- Completely Custom Designs -->
-        <div class="service-card">
-            <h3>Custom Designs</h3>
-            <p>We design unique, template-free sites that match your brand. Get exactly what you envision, no compromises.</p>
-        </div>
-        
-        <!-- Built for Speed -->
-        <div class="service-card">
-            <h3>Fast, Optimized Sites</h3>
-            <p>We prioritize speed with streamlined code, achieving 98-100 scores on Google PageSpeed Insights.</p>
-        </div>
-        
-        <!-- Money-Back Guarantee -->
-        <div class="service-card">
-            <h3>Money-Back Guarantee</h3>
-            <p>If you’re not satisfied with your design, we’ll refund you and cancel the contract—no questions asked.</p>
-        </div>
-        
-        <!-- 24/7 Support -->
-        <div class="service-card">
-            <h3>24/7 Personal Support</h3>
-            <p>Direct support from the owner, 24/7. We’re here for you anytime, even after launch.</p>
-        </div>
-        
-        <!-- SEO Expertise -->
-        <div class="service-card">
-            <h3>Proven SEO Services</h3>
-            <p>We use straightforward SEO strategies that drive real results, helping you rank higher and attract traffic.</p>
-        </div>
-    </div>
-    <div class="cs-button-group">
-        <a href="contact.html" class="cs-button-solid">Call us today</a>
-      </div>
-</section>
-
-
-<!-- What We Offer Section -->
+<svg class="decorative-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#f3f4f6" fill-opacity="1" d="M0,224L30,208C60,192,120,160,180,154.7C240,149,300,171,360,181.3C420,192,480,192,540,181.3C600,171,660,149,720,149.3C780,149,840,171,900,181.3C960,192,1020,192,1080,181.3C1140,171,1200,149,1260,149.3C1320,149,1380,171,1410,181.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
+</svg>
 <section id="what-we-offer" class="offer-section">
     <div class="offer-container">
         <!-- Left Side Image -->
         <div class="offer-image">
-            <img src="https://via.placeholder.com/1000" alt="Placeholder Image">
+            <img src="images/offersection.png" alt="Placeholder Image">
         </div>
 
         <!-- Right Side Bullet Points -->
@@ -142,7 +98,7 @@
             <ul>
                 <li>
                     <strong>Flexible Pricing Plans</strong>
-                    <p>Starting at $0 down and $175/month, covering essential design, hosting, and support needs.</p>
+                    <p>Starting at $0 down and $100/month, covering essential design, hosting, and support needs.</p>
                 </li>
                 <li>
                     <strong>Highly Secure Design</strong>
@@ -164,60 +120,14 @@
                     <strong>Personalized Support</strong>
                     <p>Directly connect with the owner for 24/7 support whenever you need us.</p>
                 </li>
-                <li>
-                    <strong>Proven SEO Expertise</strong>
-                    <p>Boosts visibility and traffic with an honest SEO approach.</p>
-                </li>
             </ul>
             <div class="cs-button-group">
-                <a href="contact.html" class="cs-button-solid">Schedule a Call</a>
+                <a href="/contact" class="cs-button-solid">Schedule a Call</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Portfolio Section -->
-<section id="performance" class="performance-section">
-    <div class="performance-content">
-        <!-- Left Side Content 1-6 -->
-        <div class="performance-details">
-            <h2 class="performance-text"><span class="highlight">PORTFOLIO</span></h2>
-            <h3 class="performance-subtitle">
-                See Some of the <span class="highlight">Custom</span> Work We’ve Created
-            </h3>
-        </div>
-    </div>
-</section>
-
-
-<!-- Portfolio Section -->
-<section id="portfolio" class="portfolio-section">
-    <div class="portfolio-projects">
-       <!-- Project 1 -->
-        <div class="portfolio-item">
-            <img src="https://via.placeholder.com/600x400" alt="Preview of Apex Hardware Solutions Website">
-            <h3>Apex Hardware Solutions</h3>
-            <p>Apex Hardware Solutions provides industrial hardware across the Pacific Northwest. We crafted a professional, user-friendly website to showcase their extensive product range and services.</p>
-            <a href="#" class="cs-button-solid">Visit Website</a>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="portfolio-item">
-            <img src="https://via.placeholder.com/600x400" alt="Preview of Harmony Health Center Website">
-            <h3>Harmony Health Center</h3>
-            <p>A wellness clinic focused on integrative health and mental wellness. Our custom site for Harmony Health Center blends serene design with functionality to reflect their patient-focused approach.</p>
-            <a href="#" class="cs-button-solid">Visit Website</a>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="portfolio-item">
-            <img src="https://via.placeholder.com/600x400" alt="Preview of Luna's Bakery Website">
-            <h3>Luna's Bakery</h3>
-            <p>For Luna's Bakery, we developed a visually rich site featuring a dynamic, easy-to-edit menu and multilingual options, making it a flexible tool for both local and international visitors.</p>
-            <a href="#" class="cs-button-solid">Visit Website</a>
-        </div>
-    </div>
-</section>
 
 <!-- Performance Section -->
 <section id="performance" class="performance-section">
@@ -239,7 +149,7 @@
                 <p><strong>Experience under 1-second load times, optimized for a seamless user journey.</strong></p>
             </div>
             <div class="cs-button-group">
-                <a href="contact.html" class="cs-button-solid">Get Started</a>
+                <a href="/contact" class="cs-button-solid">Get Started</a>
             </div>
         </div>
     
@@ -261,13 +171,17 @@
             </div>
             <!-- Placeholder Image -->
             <div class="stats-image">
-                <img src="https://via.placeholder.com/300x200" alt="Performance Image">
+                <img src="images/fastcar.png" alt="Performance Image">
             </div>
         </div>
     </div>
 </section>
 
 <!-- Pricing Section -->
+<svg class="decorative-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#f5f5f5" fill-opacity="1" d="M0,224L30,208C60,192,120,160,180,154.7C240,149,300,171,360,181.3C420,192,480,192,540,181.3C600,171,660,149,720,149.3C780,149,840,171,900,181.3C960,192,1020,192,1080,181.3C1140,171,1200,149,1260,149.3C1320,149,1380,171,1410,181.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z" transform="scale(1, -1) translate(0, -320)"></path>
+</svg>
+
 <section id="pricing" class="pricing-section">
     <h2>Flexible Pricing Plans</h2>
     <p>Affordable Options to Fit Your Needs</p>
@@ -285,7 +199,7 @@
                 <li><span class="icon optional">❌</span>Round-the-Clock Support</li>
                 <li><span class="icon optional">❌</span>Lifetime Updates Included</li>
             </ul>
-            <a href="contact.html" class="cs-button-solid">Get Started</a>
+            <a href="/contact" class="cs-button-solid">Get Started</a>
         </div>
         
         <!-- Monthly Card -->
@@ -296,12 +210,12 @@
                 <li><span class="icon check">✔️</span>Personalized Design & Development</li>
                 <li><span class="icon check">✔️</span>Hosting Included in Package</li>
                 <li><span class="icon check">✔️</span>Add Pages for $100 each after 5</li>
-                <li><span class="icon check">✔️</span>Optional Blog Setup for $250</li>
+                <!-- <li><span class="icon check">✔️</span>Optional Blog Setup for $250</li> -->
                 <li><span class="icon check">✔️</span>Unlimited Edits & Updates</li>
                 <li><span class="icon check">✔️</span>24/7 Client Support</li>
                 <li><span class="icon check">✔️</span>Continuous Improvements for Life</li>
             </ul>
-            <a href="contact.html" class="cs-button-solid">Get Started</a>
+            <a href="/contact" class="cs-button-solid">Get Started</a>
         </div>
     </div>
 </section>
