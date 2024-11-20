@@ -74,9 +74,68 @@ h1, h2 {
     }
 }
 
+/* General logo container styling */
+.logo {
+    display: flex;
+    align-items: center; /* Center vertically */
+    text-decoration: none; /* Remove underline from the link */
+}
+
+/* Logo link styling */
+.logo a {
+    display: flex;
+    align-items: center; /* Align text and image vertically */
+    text-decoration: none; /* Remove link underline */
+    color: whitesmoke; /* Text color */
+}
+
+/* Style for the logo image */
 .navbar-logo {
-    width: 250px;
-    padding-top: 10px;
+    height: 60px; /* Adjust image size as needed */
+    margin-right: 10px; /* Add spacing between logo and text */
+}
+
+/* Style for main logo text */
+.logo-text-container {
+    display: flex;
+    flex-direction: column; /* Stack "Web Design" under "Highwood" */
+    animation: fadeIn 1s ease-out; /* Add fade-in animation */
+}
+
+.logo-text {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1.4rem; /* Larger text for "Highwood" */
+    font-weight: 800; /* Bold weight */
+    white-space: nowrap; /* Prevent wrapping */
+    text-transform: capitalize; /* Ensure "Highwood" has proper casing */
+}
+
+.logo-subtext {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 0.6rem; /* Smaller font for "Web Design" */
+    font-weight: 600; /* Medium weight */
+    text-transform: uppercase; /* All caps for "WEB DESIGN" */
+    letter-spacing: 1px; /* Add subtle spacing for elegance */
+    margin-top: -4px; /* Adjust spacing between lines */
+}
+
+/* Subtle fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Slight upward movement */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hide text on smaller screens */
+@media screen and (max-width: 768px) {
+    .logo-text-container {
+        display: none; /* Hide both texts */
+    }
 }
 
 header {
@@ -152,7 +211,7 @@ nav a {
 
 /* Hero Section */
 #home {
-    animation: fadeIn 5s ease-in-out;
+    animation: fadeIn 6s ease-in-out;
     text-align: center;
     padding: 100px 20px;
     /* background: linear-gradient(to bottom, #fff, #f3f4f6); */
@@ -227,13 +286,6 @@ header.scrolled {
     padding: 10px 20px; /* Consistent padding for smooth scaling */
     border-radius: 0;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25); /* Enhanced shadow effect */
-}
-
-header .logo a {
-    color: white;
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-decoration: none;
 }
 
 nav {
@@ -1033,7 +1085,6 @@ section .content {
 
 /* Pricing Section */
 #pricing {
-    padding: 100px 0;
     text-align: center;
 }
 
