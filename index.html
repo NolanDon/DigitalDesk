@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <link rel="icon" href="images/favicon.ico" type="image/ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Highwood Web Design</title>
+    <title>Small Business Web Designer | Highwood Web Design | 0$ down 100$ monthly</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
 </head>
-
 <body>
 
     <!-- Navbar -->
@@ -29,7 +28,7 @@
             <ul>
                 <li><a href="/" data-path="/">Home</a></li>
                 <li><a href="/about.html" data-path="/about">About</a></li>
-                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#pricing" data-path="/#pricing">Pricing</a></li>
                 <li><a href="/webdesign.html" data-path="/webdesign">Services</a></li>
                 <li><a href="/contact.html" data-path="/contact">Contact</a></li>
             </ul>
@@ -61,7 +60,7 @@
 
             <!-- Image placeholders for laptop and mobile -->
             <div class="cs-images">
-                <img src="images/imacphoto10.jpg" alt="Laptop" class="cs-laptop" style="z-index: 2;">
+                <img src="images/multiple-devices.jpg" alt="Laptop" class="cs-laptop" style="z-index: 2;">
             </div>
         </div>
     </section>
@@ -71,8 +70,8 @@
     <section id="home">
         <div class="home-content">
             <div class="headline">
-                <h1 class="headline-text">Make Your Website Work</h1>
-                <h3 class="home-subtitle"><span class="highlight">Better</span> for Your Business</h3>
+                <h1 class="headline-text">Make Your Website</h1>
+                <h3 class="home-subtitle">Work <span class="highlight">Harder</span> for Your Business</h3>
             </div>
             <p class="description">
                 At Highwood Web Design, each website is built from the ground up—no WordPress,
@@ -207,6 +206,21 @@
         <p>Affordable Options to Fit Your Needs</p>
         <div class="pricing-cards">
 
+            <!-- Monthly Card -->
+            <div class="pricing-card">
+                <h2>Monthly</h2>
+                <h3 class="price">$100 <span>Per Month</span></h3>
+                <ul>
+                    <li><span class="icon check">✔️</span>Personalized Design & Development</li>
+                    <li><span class="icon check">✔️</span>Hosting Included in Package</li>
+                    <li><span class="icon check">✔️</span>Add Pages for $100 each after 5</li>
+                    <li><span class="icon check">✔️</span>Unlimited Edits & Updates</li>
+                    <li><span class="icon check">✔️</span>24/7 Client Support</li>
+                    <li><span class="icon check">✔️</span>Continuous Improvements for Life</li>
+                </ul>
+                <a href="/contact" class="cs-button-solid">Get Started</a>
+            </div>
+
             <!-- Fixed Payment Card -->
             <div class="pricing-card">
                 <h2>Lump Sum</h2>
@@ -221,30 +235,9 @@
                 </ul>
                 <a href="/contact" class="cs-button-solid">Get Started</a>
             </div>
-
-            <!-- Monthly Card -->
-            <div class="pricing-card">
-                <h2>Monthly</h2>
-                <h3 class="price">$100 <span>Per Month</span></h3>
-                <ul>
-                    <li><span class="icon check">✔️</span>Personalized Design & Development</li>
-                    <li><span class="icon check">✔️</span>Hosting Included in Package</li>
-                    <li><span class="icon check">✔️</span>Add Pages for $100 each after 5</li>
-                    <!-- <li><span class="icon check">✔️</span>Optional Blog Setup for $250</li> -->
-                    <li><span class="icon check">✔️</span>Unlimited Edits & Updates</li>
-                    <li><span class="icon check">✔️</span>24/7 Client Support</li>
-                    <li><span class="icon check">✔️</span>Continuous Improvements for Life</li>
-                </ul>
-                <a href="/contact" class="cs-button-solid">Get Started</a>
-            </div>
         </div>
     </section>
 
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Highwood Web Design. All rights reserved.</p>
-    </footer>
 
     <!-- JavaScript for mobile menu toggle -->
     <script>
@@ -267,6 +260,14 @@
         // Add click event listeners for links
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', event => {
+
+                const targetPath = this.getAttribute('href');
+
+                if (targetPath.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(targetPath).scrollIntoView({ behavior: 'smooth' });
+                }
+
                 if (event.target.getAttribute('href').endsWith('.html')) {
                     // Let the browser handle full page navigation for .html links
                     return;
@@ -304,6 +305,10 @@
         window.addEventListener('popstate', setActiveLink);
 
     </script>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Highwood Web Design. All rights reserved.</p>
+    </footer>
 </body>
-
 </html>

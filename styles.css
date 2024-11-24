@@ -99,7 +99,6 @@ h1, h2 {
 .logo-text-container {
     display: flex;
     flex-direction: column; /* Stack "Web Design" under "Highwood" */
-    animation: fadeIn 1s ease-out; /* Add fade-in animation */
 }
 
 .logo-text {
@@ -211,7 +210,7 @@ nav a {
 
 /* Hero Section */
 #home {
-    animation: fadeIn 6s ease-in-out;
+    animation: fadeIn 2.5s ease-in-out;
     text-align: center;
     padding: 100px 20px;
     /* background: linear-gradient(to bottom, #fff, #f3f4f6); */
@@ -446,7 +445,7 @@ nav.active .hamburger .bar:nth-child(3) {
 }
 
 
-/* Other Sections */
+/* All Sections */
 section {
     padding: 140px 20px 20px;
     text-align: center;
@@ -478,15 +477,13 @@ section .content {
 
 
 /* Contact Section */
-
 .contact-section {
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
     max-width: 1200px;
     margin: 0 auto;
     text-align: left; /* Ensure text is left aligned */
+    animation: fadeIn 1s ease-out;
 }
-
-/* Contact Heading Styling */
 
 /* Flexbox Container for Horizontal Layout */
 .contact-container {
@@ -1088,6 +1085,11 @@ section .content {
     text-align: center;
 }
 
+.pricing-section {
+    padding: 0px 20px 20px !important;
+    text-align: center !important;
+}
+
 #pricing h2 {
     font-size: 2.5rem;
     margin-bottom: 10px;
@@ -1169,8 +1171,15 @@ section .content {
     display: inline-block;
 }
 
+/* CAPTCHA */
+.g-recaptcha {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
 /* Emphasize Monthly Card permanently with glowing border */
-.pricing-card:nth-child(2) {
+.pricing-card:nth-child(1) {
     position: relative;
     border: 2px solid #007BFF; /* Permanent glowing border */
     box-shadow: 0 4px 20px rgba(0, 123, 255, 0.7); /* Permanent glowing effect */
@@ -1187,9 +1196,10 @@ section .content {
 
 /* Styles for About Section */
 .about-section {
-    text-align: center;
     max-width: 1200px;
     margin: 0 auto;
+    text-align: left; /* Ensure text is left aligned */
+    animation: fadeIn 1s ease-out;
 }
 
 /* All Caps Heading Styling */
@@ -1200,12 +1210,17 @@ section .content {
     letter-spacing: 0.05em; /* Slightly spaced letters for elegance */
     font-size: 2.2rem; /* Adjust as needed for visibility */
     color: #333; /* Neutral color for a refined look */
-    text-align: center;
-    margin-bottom: 200px;
-    margin-top: 200px;
+    text-align: left;
+    margin-bottom: 100px;
+    margin-top: 100px;
 }
 
 @media (max-width: 768px) {
+
+    .distinct-heading {
+        text-align: center;
+    }
+
     .car-animation {
         position: absolute;
         bottom: 0; /* Position the car at the bottom of the section */
@@ -1228,26 +1243,60 @@ section .content {
 }
 
 .about-container {
-    border-top: 2px solid #eee;
-    padding-top: 10px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px; /* Space between content and image */
-    text-align: left;
+    gap: 20%;
+    /* align-items: center;
+    justify-content: center; */
+    /* margin: 40px 20px; */
 }
 
 .about-content {
-    flex: 1;
     max-width: 600px;
+    text-align: left;
 }
 
-.about-image {
-    flex: 1.5;
-    display: flex;
-    justify-content: center;
+.about-image img {
+    height: auto;
+    border-radius: 10px;
 }
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; /* Stack elements vertically */
+        text-align: center; /* Center-align content for better presentation */
+    }
+
+    .about-content {
+        order: 2; /* Display text content below the image */
+        padding: 20px;
+    }
+
+    .about-image {
+        order: 1; /* Display image above the content */
+    }
+
+    .about-image img {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .about-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .about-button:hover {
+        background-color: #0056b3;
+    }
+}
+
 
 .about-image img {
     max-width: 100%;
@@ -1347,18 +1396,11 @@ footer p {
 
 /* Web Design Section */
 .webdesign-section {
-    background-color: #f9f9f9;
-    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left; /* Ensure text is left aligned */
+    animation: fadeIn 1s ease-out;
 }
-
-/* Heading Styling for Web Design */
-/* .webdesign-heading {
-    font-size: 2.5rem;
-    margin-bottom: 250px;
-    margin-top: 100px;
-    font-family: 'Red Hat Display', sans-serif;
-    color: #333;
-} */
 
 /* Container for Web Design Content */
 .webdesign-container {
@@ -1409,9 +1451,9 @@ footer p {
 
 /* Mobile-Friendly Layout */
 @media (max-width: 768px) {
-    .webdesign-container {
-        flex-direction: column;
-        gap: 20px;
+
+    .webdesign-image {
+        display: none;
     }
 
     .webdesign-content {

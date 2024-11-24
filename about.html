@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+
+<head>
     <meta charset="UTF-8">
+    <link rel="icon" href="images/favicon.ico" type="image/ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Highwood Web Design</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
-    </head>
-    <body>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+<body>
 
 <!-- Navbar -->
-<header>
+   <header>
     <div class="logo">
-        <a href="/"><img src="images/logo7.png" alt="Icon" style="width: 300px;"></a>
+        <a href="/">
+            <img src="images/logo8.png" alt="Icon" class="navbar-logo">
+            <div class="logo-text-container">
+                <span class="logo-text">Highwood</span>
+                <span class="logo-subtext">WEB DESIGN</span>
+            </div>
+        </a>
+    </div>
     </div>
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="/" data-path="/">Home</a></li>
+            <li><a href="/about.html" data-path="/about">About</a></li>
             <li><a href="index.html#pricing">Pricing</a></li>
-            <li><a href="/webdesign" class="dropbtn">Services</a></li>
-            <!-- <li><a href="/portfolio">Portfolio</a></li> -->
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/webdesign.html" data-path="/webdesign">Services</a></li>
+            <li><a href="/contact.html" data-path="/contact">Contact</a></li>
         </ul>
-        <!-- Get Started button outside the ul to keep it on the right -->
         <a href="/contact" class="get-started">Get Started</a>
         <div class="hamburger" id="hamburger">
             <div class="bar"></div>
@@ -32,6 +40,7 @@
         </div>
     </nav>
 </header>
+
 
 <!-- About Section -->
 <section id="about" class="about-section">
@@ -53,7 +62,7 @@
         
         <!-- About Image -->
         <div class="about-image">
-            <img src="images/portfolio.png" alt="Nolan Boxill" height="600" width="400">
+            <img src="images/portfolio.png" alt="Nolan Boxill" height="400" width="250">
         </div>
     </div>
 </section>
@@ -108,5 +117,9 @@
         });
     </script>
     
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Highwood Web Design. All rights reserved.</p>
+    </footer>
     </body>
 </html>
