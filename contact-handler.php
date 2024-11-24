@@ -1,7 +1,20 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Allow requests from your domain
+header("Access-Control-Allow-Origin: https://www.highwoodwebdesign.com");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Credentials: true");
 
-    // Proceed with form processing
+// Handle preflight OPTIONS request
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200); // Send success status for preflight
+    exit; // Stop further execution
+}
+
+// Proceed only for POST requests
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // Extract and sanitize form data
     $name = htmlspecialchars(strip_tags($_POST['name']));
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $phone = htmlspecialchars(strip_tags($_POST['phone']));
@@ -9,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(400); // Bad request
         echo "Invalid email address.";
         exit;
     }
@@ -25,9 +39,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $body .= "Message:\n$message\n";
 
     if (mail($to, $subject, $body, $headers)) {
+        http_response_code(200); // OK
         echo "Message sent successfully!";
     } else {
+        http_response_code(500); // Internal server error
         echo "Failed to send message.";
     }
+} else {
+    // Method not allowed for non-POST requests
+    http_response_code(405); // Method not allowed
+    echo "Method Not Allowed";
+    exit;
 }
 ?>
