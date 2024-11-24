@@ -12,9 +12,7 @@
         rel="stylesheet">
     
     <!-- Include the Google reCAPTCHA script -->
-    <script
-        src="https://www.google.com/recaptcha/enterprise.js?render=6LeqZIgqAAAAACnUoaX5DGYY8Jesi6OOU_PVtD61"
-        async defer></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
 </head>
 
 <body>
@@ -66,7 +64,7 @@
             <!-- Contact Form on the right, inside a card -->
             <div class="contact-card">
                 <h1>Make an Appointment</h1>
-                <form id="contact-form" action="http://localhost:8080/contact-handler.php" method="post">
+                <form id="contact-form" action="/contact-handler.php" method="POST">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
 
@@ -78,7 +76,6 @@
 
                     <label for="message">Message</label>
                     <textarea id="message" name="message" rows="4" required></textarea>
-
                     <button type="submit">Send Message</button>
                 </form>
             </div>
@@ -112,10 +109,6 @@
             const formData = new FormData(form); // Create FormData from the form
 
             try {
-                // Get the reCAPTCHA token
-                const recaptchaToken = await grecaptcha.execute('6LeqZIgqAAAAACnUoaX5DGYY8Jesi6OOU_PVtD61', { action: 'submit' });
-                formData.append('recaptcha-token', recaptchaToken); // Append the token to the form data
-
                 // Send POST request via fetch
                 const response = await fetch(form.action, {
                     method: 'POST',
