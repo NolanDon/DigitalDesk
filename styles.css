@@ -1160,13 +1160,6 @@ section .content {
     display: inline-block;
 }
 
-/* CAPTCHA */
-.g-recaptcha {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-
 /* Emphasize Monthly Card permanently with glowing border */
 .pricing-card:nth-child(1) {
     position: relative;
