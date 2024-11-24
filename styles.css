@@ -173,7 +173,7 @@ nav a {
 }
 
 /* Styling for "Get Started" button */
-.get-started {
+.distinct-button {
     background-color: #007BFF;
     color: white;
     padding: 10px 20px;
@@ -181,6 +181,8 @@ nav a {
     text-decoration: none;
     border-radius: 5px;
     margin-left: auto;
+    border: none !important;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 /* Hamburger menu for mobile */
@@ -539,25 +541,9 @@ section .content {
     font-family: 'Red Hat Display', sans-serif;
 }
 
-/* Send Message Button */
-.contact-card button {
-    background: linear-gradient(135deg, #007BFF, #00C6FF);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 30px;
-    border: none;
-    font-family: 'Red Hat Display', sans-serif;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
 /* Hover Effect for Button */
 .contact-card button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive Layout for Smaller Screens */
