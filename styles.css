@@ -177,7 +177,7 @@ nav a {
     background-color: #007BFF;
     color: white;
     padding: 10px 20px;
-    font-weight: 500;
+    font-weight: 550;
     text-decoration: none;
     border-radius: 5px;
     margin-left: auto;
@@ -212,10 +212,22 @@ nav a {
 
 /* Hero Section */
 #home {
-    animation: fadeIn 2.5s ease-in-out;
+    /* animation: fadeIn 2.5s ease-in-out; */
     text-align: center;
-    padding: 100px 20px;
-    /* background: linear-gradient(to bottom, #fff, #f3f4f6); */
+    /* padding: 200px 20px; */
+    background-color: #f3f4f6;
+}
+
+.home-text {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+    text-align: center; /* Explicit left alignment for paragraph text */
+}
+
+.home-text .highlight {
+    color: #007BFF; /* Matches the button color */
+    font-weight: bold; /* Optional: Make it bold for added emphasis */
 }
 
 .home-subtitle {
@@ -322,7 +334,7 @@ nav ul li a:hover {
     transform: translateY(-2px); /* Slight lift effect on hover */
 }
 
-.get-started:hover {
+.distinct-button:hover {
     background-color: #0056b3;
 }
 
@@ -339,6 +351,13 @@ nav ul li a:hover {
     height: 4px;
     background-color: white;
     border-radius: 5px;
+}
+
+@media (max-width: 1055px) {
+    .distinct-button {
+        display: none; /* Hide Get Started link on mobile */
+    }
+
 }
 
 /* Mobile View Adjustments */
@@ -373,10 +392,6 @@ nav ul li a:hover {
         width: 100%;
         padding: 15px;
         font-size: 1.4rem;
-    }
-
-    .get-started {
-        display: none; /* Hide Get Started link on mobile */
     }
 
     .hamburger {
@@ -666,6 +681,7 @@ section .content {
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
+    border: none !important;
     text-decoration: none;
     font-family: 'Red Hat Display', sans-serif;
     animation: fadeIn 1.5s ease-in-out;
@@ -1408,6 +1424,7 @@ footer p {
 
 /* Image Styling */
 .webdesign-image {
+    margin-bottom: 20%;
     flex: 1;
     max-width: 600px;
     img {
