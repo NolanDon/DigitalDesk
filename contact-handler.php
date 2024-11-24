@@ -1,21 +1,39 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Your secret key
-    $secretKey = "YOUR_SECRET_KEY";
+
+    // // Load the secret key from the environment
+    // $secretKey = getenv('CAPTCHA'); // Replace 'CAPTCHA' with the actual name of your environment variable
+    // if (!$secretKey) {
+    //     echo "Server error: missing secret key.";
+    //     exit;
+    // }
 
     // Get the reCAPTCHA token from the form
-    $recaptchaToken = $_POST['recaptcha-token'];
+    // $recaptchaToken = $_POST['recaptcha-token'];
 
-    // Verify the token with Google's API
-    $url = "https://www.google.com/recaptcha/api/siteverify";
-    $response = file_get_contents("$url?secret=$secretKey&response=$recaptchaToken");
-    $responseData = json_decode($response);
+    // Verify the token with Google's API using POST
+    // $url = "https://www.google.com/recaptcha/api/siteverify";
+    // $postData = [
+    //     'secret' => $secretKey,
+    //     'response' => $recaptchaToken
+    // ];
 
-    if (!$responseData->success || $responseData->score < 0.5) {
-        // Invalid or low-score CAPTCHA
-        echo "CAPTCHA verification failed. Please try again.";
-        exit;
-    }
+    // Initialize cURL
+    // $ch = curl_init($url);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Receive server response
+    // curl_setopt($ch, CURLOPT_POST, true); // Use POST method
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData)); // Pass POST data
+    // // $response = curl_exec($ch);
+    // curl_close($ch);
+
+    // Decode the response
+    // $responseData = json_decode($response);
+
+    // if (!$responseData->success || $responseData->score < 0.5) {
+    //     // CAPTCHA failed or score too low
+    //     echo "CAPTCHA verification failed. Please try again.";
+    //     exit;
+    // }
 
     // Proceed with processing the form (e.g., sending email)
     $name = htmlspecialchars(strip_tags($_POST['name']));
@@ -23,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = htmlspecialchars(strip_tags($_POST['phone']));
     $message = htmlspecialchars(strip_tags($_POST['message']));
 
-    $to = "info@highwoodweb.com";
+    $to = "nolan.donb@gmail.com";
     $subject = "New Contact Form Submission";
     $headers = "From: $email\r\nReply-To: $email\r\n";
 

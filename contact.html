@@ -2,87 +2,92 @@
 <html lang="en">
 
 <head>
+    <input type="hidden" name="recaptcha-token" id="recaptcha-token">
     <meta charset="UTF-8">
     <link rel="icon" href="images/favicon.ico" type="image/ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Highwood Web Design</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeqZIgqAAAAACnUoaX5DGYY8Jesi6OOU_PVtD61"></script>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
 </head>
+
 <body>
 
-   <!-- Navbar -->
-   <header>
-    <div class="logo">
-        <a href="/">
-            <img src="images/logo8.png" alt="Icon" class="navbar-logo">
-            <div class="logo-text-container">
-                <span class="logo-text">Highwood</span>
-                <span class="logo-subtext">WEB DESIGN</span>
+    <!-- Navbar -->
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="images/logo8.png" alt="Icon" class="navbar-logo">
+                <div class="logo-text-container">
+                    <span class="logo-text">Highwood</span>
+                    <span class="logo-subtext">WEB DESIGN</span>
+                </div>
+            </a>
+        </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/" data-path="/">Home</a></li>
+                <li><a href="/about.html" data-path="/about">About</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="/webdesign.html" data-path="/webdesign">Services</a></li>
+                <li><a href="/contact.html" data-path="/contact">Contact</a></li>
+            </ul>
+            <a href="/contact" class="get-started">Get Started</a>
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
-        </a>
-    </div>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="/" data-path="/">Home</a></li>
-            <li><a href="/about.html" data-path="/about">About</a></li>
-            <li><a href="index.html#pricing">Pricing</a></li>
-            <li><a href="/webdesign.html" data-path="/webdesign">Services</a></li>
-            <li><a href="/contact.html" data-path="/contact">Contact</a></li>
-        </ul>
-        <a href="/contact" class="get-started">Get Started</a>
-        <div class="hamburger" id="hamburger">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
-<!-- Contact Section -->
-<section id="contact" class="contact-section">
-    <h2 class="distinct-heading">Contact Us</h2>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="distinct-heading">Contact Us</h2>
 
-    <div class="contact-container">
-        <!-- Contact Information on the left -->
-        <div class="contact-info">
-            <h3>Get in Touch</h3>
-            <p>Send us an email and let us know everything you want out of a new site. We respond within 24 hours. Or call us for an immediate chat, and if unavailable, we’ll return your call the same day.</p>
-            <p><span class="icon">📞 </span>Phone: +1 (403) 796-2105</p>
-            <p><span class="icon">📧 </span>Email: <a href="mailto:info@highwoodweb.com">click to email</a></p>
-            <p><span class="icon">📍 </span>Areas Served: USA & Canada</p>
-        </div>
+        <div class="contact-container">
+            <!-- Contact Information on the left -->
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p>Send us an email and let us know everything you want out of a new site. We respond within 24 hours.
+                    Or call us for an immediate chat, and if unavailable, we’ll return your call the same day.</p>
+                <p><span class="icon">📞 </span>Phone: +1 (403) 796-2105</p>
+                <p><span class="icon">📧 </span>Email: <a href="mailto:info@highwoodweb.com">click to email</a></p>
+                <p><span class="icon">📍 </span>Areas Served: USA & Canada</p>
+            </div>
 
-        <!-- Contact Form on the right, inside a card -->
-        <div class="contact-card">
-            <h1>Make an Appointment</h1>
-            <form action="contact-handler.php" method="POST">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone">
-            
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-            
-                <!-- Google reCAPTCHA widget -->
-                <div class="g-recaptcha" data-sitekey="6LeqZIgqAAAAACnUoaX5DGYY8Jesi6OOU_PVtD61"></div>
-            
-                <button type="submit">Send Message</button>
-            </form>
-            
-            <!-- Include the Google reCAPTCHA script -->
-            <script src="https://www.google.com/recaptcha/api.js" async defer></script>            
+            <!-- Contact Form on the right, inside a card -->
+            <div class="contact-card">
+                <h1>Make an Appointment</h1>
+                <form id="contact-form" action="http://localhost:8080/contact-handler.php" method="post">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <!-- Google reCAPTCHA widget -->
+                    <div class="g-recaptcha" data-sitekey="6LeqZIgqAAAAACnUoaX5DGYY8Jesi6OOU_PVtD61"></div>
+
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <!-- Include the Google reCAPTCHA script -->
+                <script
+                    src="https://www.google.com/recaptcha/enterprise.js?render=6LeqZIgqAAAAACnUoaX5DGYY8Jesi6OOU_PVtD61"
+                    async defer></script>
+
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- JavaScript for mobile menu toggle and scroll effect -->
@@ -94,7 +99,7 @@
             nav.classList.toggle('active');
         });
 
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const navbar = document.querySelector('header');
             if (window.scrollY > 0) {
                 navbar.classList.add('scrolled');
@@ -104,30 +109,40 @@
         });
     </script>
     <script>
-        async function onSendMessageClick(e) {
-            e.preventDefault(); // Prevent the default form submission
-    
-            const form = document.getElementById('contact-form');
-            grecaptcha.enterprise.ready(async () => {
-                try {
-                    // Execute reCAPTCHA and get the token
-                    const token = await grecaptcha.enterprise.execute('6LeqZIgqAAAAACnUoaX5DGYY8Jesi6OOU_PVtD61', { action: 'submit' });
-    
-                    // Add the token to the hidden input field
-                    document.getElementById('recaptcha-token').value = token;
-    
-                    // Submit the form programmatically
-                    form.submit();
-                } catch (error) {
-                    console.error('Error executing reCAPTCHA:', error);
-                    alert('Failed to verify CAPTCHA. Please try again.');
+        document.getElementById('contact-form').addEventListener('submit', async function (e) {
+            e.preventDefault(); // Prevent default form navigation
+
+            const form = e.target; // Get the form element
+            const formData = new FormData(form); // Create FormData from the form
+
+            try {
+                // Get the reCAPTCHA token
+                const recaptchaToken = await grecaptcha.execute('6LeqZIgqAAAAACnUoaX5DGYY8Jesi6OOU_PVtD61', { action: 'submit' });
+                formData.append('recaptcha-token', recaptchaToken); // Append the token to the form data
+
+                // Send POST request via fetch
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
-            });
-        }
+
+                const data = await response.text(); // Parse the response as text
+                alert('Message sent successfully: ' + data); // Show success message
+            } catch (error) {
+                console.error('Error:', error); // Log the error for debugging
+                alert('An error occurred. Please try again.');
+            }
+        });
+
+    </script>
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Highwood Web Design. All rights reserved.</p>
     </footer>
-    </script>
 </body>
+
 </html>
