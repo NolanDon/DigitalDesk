@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     port: 8080, 
-    open: true 
+    open: true   // Automatically open the browser when the server starts
   }
 });
