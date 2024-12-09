@@ -1199,9 +1199,9 @@ section .content {
 .distinct-heading {
     text-transform: uppercase;
     font-family: 'Red Hat Display', sans-serif; /* Change to your preferred font */
-    font-weight: 700; /* Emphasize the heading with boldness */
+    font-weight: 600; /* Emphasize the heading with boldness */
     letter-spacing: 0.05em; /* Slightly spaced letters for elegance */
-    font-size: 1.8rem; /* Adjust as needed for visibility */
+    font-size: 1.9rem; /* Adjust as needed for visibility */
     color: #333; /* Neutral color for a refined look */
     text-align: left;
     margin-bottom: 100px;
