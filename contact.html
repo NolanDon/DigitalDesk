@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <!-- Navbar -->
     <header>
         <div class="logo">
@@ -27,11 +26,11 @@
         </div>
         <nav>
             <ul>
-                <li><a href="/" data-path="/">Home</a></li>
-                <li><a href="/about.html" data-path="/about">About</a></li>
-                <li><a href="index.html#pricing">Pricing</a></li>
-                <li><a href="/webdesign.html" data-path="/webdesign">Services</a></li>
-                <li><a href="/contact.html" data-path="/contact">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/#pricing">Pricing</a></li>
+                <li><a href="/webdesign">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
             <a href="/contact" class="distinct-button">Get Started</a>
             <div class="hamburger" id="hamburger">
@@ -60,7 +59,7 @@
             <!-- Contact Form on the right, inside a card -->
             <div class="contact-card">
                 <h1>Make an Appointment</h1>
-                <form id="contact-form" action="https://highwoodwebsite-1zeq0jgfj-nolan-boxills-projects.vercel.app/contact-handler.php" method="POST">
+                <form id="contact-form" action="localhost:8080/contact-handler.php" method="POST">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
 

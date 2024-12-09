@@ -152,6 +152,15 @@ header {
     z-index: 1000;
     box-sizing: border-box;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    color: #f5f5f5
+}
+
+/* General styling for router-link */
+router-link {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    padding: 10px;
+    text-decoration: none; /* Remove underline */
 }
 
 /* Navbar Styling */
@@ -311,9 +320,10 @@ nav {
 nav ul {
     display: flex;
     list-style: none;
-    gap: 30px;
-    justify-content: center; /* Center the navigation links */
+    gap: clamp(1rem, 4vw, 9rem); /* Gap scales dynamically between 1rem and 3rem */
+    justify-content: center;
     flex-grow: 1;
+    color: white;
 }
 
 nav ul li {
@@ -342,18 +352,17 @@ nav ul li a:hover {
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 5px;
     cursor: pointer;
 }
 
 .hamburger .bar {
     width: 30px;
-    height: 4px;
+    height: 3.5px;
     background-color: white;
     border-radius: 5px;
 }
 
-@media (max-width: 1055px) {
+@media (max-width: 1100px) {
     .distinct-button {
         display: none; /* Hide Get Started link on mobile */
     }
@@ -958,7 +967,7 @@ section .content {
 .performance-section {
     border-radius: 30px;
     background-color: #f3f4f6;
-    padding: 100px;
+    padding: 50px;
     display: flex;
     justify-content: flex-start; /* Left-align content within the section */
     align-items: flex-start;

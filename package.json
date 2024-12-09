@@ -2,5 +2,14 @@
   "dependencies": {
     "googleapis": "^144.0.0",
     "image-minimizer-webpack-plugin": "^4.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.3"
+  },
+  "scripts": {
+    "dev": "vite",  
+    "build": "vite build",  
+    "serve": "vite preview"  
   }
 }
