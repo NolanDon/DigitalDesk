@@ -1,9 +1,10 @@
 <?php
-// Allow requests from your domain
-header("Access-Control-Allow-Origin: https://www.highwoodwebdesign.com");
+// Allow requests from any origin (can be restricted to specific domains)
+header("Access-Control-Allow-Origin: *");
+// Allow certain HTTP methods
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Access-Control-Allow-Credentials: true");
+// Allow certain headers (for content-type and authorization headers, for example)
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 // Handle preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
