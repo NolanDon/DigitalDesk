@@ -461,7 +461,7 @@ nav.active .hamburger .bar:nth-child(3) {
 
 /* All Sections */
 section {
-    padding: 140px 20px 20px;
+    padding: 140px 40px 20px;
     text-align: center;
 }
 
@@ -1188,6 +1188,7 @@ section .content {
 
 /* Styles for About Section */
 .about-section {
+    border-top: 2px solid #eee;
     max-width: 1200px;
     margin: 0 auto;
     text-align: left; /* Ensure text is left aligned */
@@ -1200,7 +1201,7 @@ section .content {
     font-family: 'Red Hat Display', sans-serif; /* Change to your preferred font */
     font-weight: 700; /* Emphasize the heading with boldness */
     letter-spacing: 0.05em; /* Slightly spaced letters for elegance */
-    font-size: 2.2rem; /* Adjust as needed for visibility */
+    font-size: 3vw;
     color: #333; /* Neutral color for a refined look */
     text-align: left;
     margin-bottom: 100px;
@@ -1269,7 +1270,6 @@ section .content {
     }
 
     .about-image img {
-        max-width: 100%;
         margin-bottom: 20px;
     }
 
@@ -1291,7 +1291,6 @@ section .content {
 
 
 .about-image img {
-    max-width: 100%;
     height: auto;
     border-radius: 8px;
 }
@@ -1332,7 +1331,7 @@ footer p {
 /* Process Section Styles */
 .process-section {
     margin-top: 200px;
-    padding: 140px 200px;
+    padding: 140px 50px;
     text-align: center;
     background-color: #f5f5f5;
 }
@@ -1396,7 +1395,7 @@ footer p {
 
 /* Container for Web Design Content */
 .webdesign-container {
-    padding-top: 30px;
+    padding-top: 50px;
     border-top: 2px solid #eee;
     display: flex;
     justify-content: space-between;
