@@ -1,3 +1,11 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
-}
+    "rewrites": [
+      { "source": "/about", "destination": "/about.html" },
+      { "source": "/contact", "destination": "/contact.html" },
+      { "source": "/webdesign", "destination": "/webdesign.html" },
+      { "source": "/pricing", "destination": "/pricing.html" },
+      { "source": "/", "destination": "/index.html" },
+      { "source": "/(.*)", "destination": "/", "statusCode": 301 }
+    ]
+  }
+  
