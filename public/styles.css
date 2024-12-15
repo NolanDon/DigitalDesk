@@ -1557,7 +1557,7 @@ footer p {
     position: absolute;
     top: 600px; /* Adjust to position below hero content */
     width: 100%;
-    margin: 50px;
+    margin: 80px;
     display: flex;
     justify-content: flex-start;
     z-index: 1; /* Keeps car behind the imacphoto image */
