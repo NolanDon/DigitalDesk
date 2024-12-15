@@ -527,7 +527,7 @@ nav.active .hamburger .bar:nth-child(3) {
 
 /* All Sections */
 section {
-    padding: 140px 20px 20px;
+    padding: 190px 20px 20px;
     text-align: center;
 }
 
@@ -572,7 +572,7 @@ section .content {
     border-top: 2px solid #eee;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     gap: 30px;
     /* max-width: 1200px; */
     margin: 0 auto;
@@ -582,7 +582,8 @@ section .content {
 .contact-info {
     flex: 1;
     max-width: 550px; /* Adjust to your preference for left content */
-    padding-right: 40px; /* Additional padding for separation from the form */
+    padding-right: 40px;
+    top: 0; /* Additional padding for separation from the form */
 }
 
 /* .contact-info h3 {
