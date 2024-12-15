@@ -80,10 +80,19 @@ h1, h2 {
     margin-bottom: 1em;
 }
 
+.decorative-wave-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full screen width */
+    z-index: -1;
+}
+
 .decorative-wave {
     display: block;
     width: 100%;
     margin-top: -10px;
+    z-index: -1;
 }
 
 /* Buttons */
@@ -280,7 +289,7 @@ nav a {
 #home {
     /* animation: fadeIn 2.5s ease-in-out; */
     text-align: center;
-    /* padding: 200px 20px; */
+    padding: 0px 20px;
     background-color: #f3f4f6;
 }
 
@@ -549,20 +558,24 @@ section .content {
 
 /* Contact Section */
 .contact-section {
-    /* background-color: #f9f9f9; */
-    max-width: 1200px;
-    margin: 0 auto;
+    /* border-top: 2px solid #eee; */
+    /* max-width: 1200px; */
+    margin-right: 5%;
+    margin-left: 5%;
     text-align: left; /* Ensure text is left aligned */
     animation: fadeIn 1s ease-out;
 }
 
 /* Flexbox Container for Horizontal Layout */
 .contact-container {
+    padding-top: 50px;
     border-top: 2px solid #eee;
-    padding-top: 30px;
     display: flex;
     justify-content: space-between;
-    gap: 40px; /* Set a moderate gap */
+    align-items: center;
+    gap: 30px;
+    /* max-width: 1200px; */
+    margin: 0 auto;
 }
 
 /* Left Side Contact Info - Adjust to be further left */
@@ -696,7 +709,7 @@ section .content {
   
   .cs-container {
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 10px auto;
@@ -858,11 +871,12 @@ section .content {
 }
 
 .offer-container {
+     /* border-top: 2px solid #eee; */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 20px;
-    max-width: 1200px;
+    /* max-width: 1200px; */
 }
 
 .offer-image {
@@ -1245,9 +1259,9 @@ section .content {
 
 /* Styles for About Section */
 .about-section {
-    border-top: 2px solid #eee;
-    max-width: 1200px;
-    margin: 0 auto;
+    /* max-width: 1200px; */
+    margin-right: 5%;
+    margin-left: 5%;
     text-align: left; /* Ensure text is left aligned */
     animation: fadeIn 1s ease-out;
 }
@@ -1293,11 +1307,14 @@ section .content {
 }
 
 .about-container {
+    padding-top: 50px;
+    border-top: 2px solid #eee;
     display: flex;
-    gap: 20%;
-    /* align-items: center;
-    justify-content: center; */
-    /* margin: 40px 20px; */
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    /* max-width: 1200px; */
+    margin: 0 auto;
 }
 
 .about-content {
@@ -1444,8 +1461,10 @@ footer p {
 
 /* Web Design Section */
 .webdesign-section {
-    max-width: 1200px;
-    margin: 0 auto;
+    /* border-top: 2px solid #eee; */
+    /* max-width: 1200px; */
+    margin-right: 5%;
+    margin-left: 5%;
     text-align: left; /* Ensure text is left aligned */
     animation: fadeIn 1s ease-out;
 }
@@ -1458,7 +1477,7 @@ footer p {
     justify-content: space-between;
     align-items: center;
     gap: 30px;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
 }
 
