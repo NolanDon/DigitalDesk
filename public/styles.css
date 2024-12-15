@@ -85,14 +85,12 @@ h1, h2 {
     top: 0;
     left: 0;
     width: 100%; /* Full screen width */
-    z-index: -1;
 }
 
 .decorative-wave {
     display: block;
     width: 100%;
     margin-top: -10px;
-    z-index: -1;
 }
 
 /* Buttons */
@@ -288,8 +286,9 @@ nav a {
 /* Hero Section */
 #home {
     /* animation: fadeIn 2.5s ease-in-out; */
+    position: sticky;
     text-align: center;
-    padding: 0px 20px;
+    padding-bottom: 250px;
     background-color: #f3f4f6;
 }
 
@@ -759,7 +758,7 @@ section .content {
   .cs-button-solid {
     background-color: #007BFF;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 20px;
     border-radius: 5px;
     border: none !important;
     text-decoration: none;
@@ -862,6 +861,7 @@ section .content {
 
 /* What We Offer Section Styles */
 .offer-section {
+    position: sticky;
     background: linear-gradient(to bottom, #f3f4f6, #f3f4f6);
     /* margin-top: 10%; */
     padding: 40px;
@@ -1037,6 +1037,7 @@ section .content {
 
 /* Performance Section Styles */
 .performance-section {
+    position: sticky;
     border-radius: 30px;
     background-color: #f3f4f6;
     padding: 50px;
@@ -1157,6 +1158,7 @@ section .content {
 }
 
 .pricing-section {
+    position: sticky;
     padding: 0px 20px 20px !important;
     text-align: center !important;
 }
@@ -1236,7 +1238,7 @@ section .content {
     background-color: #007BFF;
     color: white;
     padding: 10px 20px;
-    text-decoration: none;
+    /* text-decoration: none; */
     border-radius: 5px;
     font-weight: 600;
     display: inline-block;
@@ -1269,15 +1271,16 @@ section .content {
 
 /* All Caps Heading Styling */
 .distinct-heading {
-    text-transform: uppercase;
-    font-family: 'Red Hat Display', sans-serif; /* Change to your preferred font */
-    font-weight: 600; /* Emphasize the heading with boldness */
-    letter-spacing: 0.05em; /* Slightly spaced letters for elegance */
-    font-size: 1.9rem; /* Adjust as needed for visibility */
-    color: #333; /* Neutral color for a refined look */
-    text-align: left;
-    margin-bottom: 100px;
-    margin-top: 100px;
+    font-family: 'Red Hat Display', sans-serif; /* Elegant and modern font */
+    font-weight: 700; /* Strong boldness for impact */
+    letter-spacing: 0.1em; /* Increased letter spacing for a more contemporary feel */
+    font-size: 3rem; /* Larger font size for emphasis */
+    color: #333; /* A bright, standout color for a fresh look */
+    text-transform: uppercase; /* Still all caps for modern boldness */
+    text-align: center; /* Centered for balanced visual appeal */
+    margin: 60px 0; /* Reduced margin for a cleaner design */
+    line-height: 1.2; /* Optimal line height for readability */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
 @media (max-width: 768px) {
