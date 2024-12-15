@@ -1,0 +1,107 @@
+.factors-section {
+    position: sticky;
+    padding: 150px 50px;
+    background-color: #f9f9f9;
+}
+
+.factors-container {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.factors-details h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+}
+
+.factors-details ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two-column layout for larger screens */
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+}
+
+.factors-details li {
+    background-color: #fff; /* White background for the cards */
+    border: 1px solid #ddd; /* Subtle border to define each card */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for a lifted look */
+    padding: 20px;
+    color: #333;
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effects */
+}
+
+.factors-details li:hover {
+    transform: translateY(-5px); /* Slight upward movement on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+.factors-details li strong {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.factors-details li p {
+    font-family: "Arial", sans-serif;
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+.factors-image img {
+    flex: 1;
+    max-width: 80%;
+    border-radius: 10px; /* Rounded corners for the image */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow around the image */
+}
+
+.factors-details {
+    flex: 1;
+    padding-left: 20px;
+    max-width: 50%;
+}
+
+.cs-button-group {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cs-button-solid {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.cs-button-solid:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .factors-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .factors-image {
+        margin-bottom: 20px;
+    }
+
+    .factors-details ul {
+        grid-template-columns: 1fr; /* Single column layout for smaller screens */
+    }
+}

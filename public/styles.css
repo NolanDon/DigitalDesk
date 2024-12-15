@@ -81,7 +81,7 @@ h1, h2 {
 }
 
 .decorative-wave-header {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%; /* Full screen width */
@@ -288,8 +288,20 @@ nav a {
     /* animation: fadeIn 2.5s ease-in-out; */
     position: sticky;
     text-align: center;
-    padding-bottom: 250px;
     background-color: #f3f4f6;
+    padding-bottom: 10px;
+}
+
+#why-us {
+    padding: 50px 20px 20px;
+    animation: fadeIn 2.5s ease-in-out;
+    position: sticky;
+    text-align: center;
+}
+
+#why-us h3 {
+    padding: 20px;
+    color: #666;
 }
 
 .home-text {
@@ -676,7 +688,7 @@ section .content {
 
 /* Hero section styles */
 #hero {
-    position: relative;
+    /* position: relative; */
     overflow: hidden; /* Ensures the car stays hidden when off-screen */
 }
 
@@ -919,9 +931,9 @@ section .content {
 }
 
 .offer-details li strong {
-    font-family: "Helvetica Neue", sans-serif;
+    font-family: 'Red Hat Display', sans-serif;
     font-size: 1.2rem;
-    color: #000;
+    color: #333;
     margin-bottom: 5px;
 }
 
@@ -1160,7 +1172,7 @@ section .content {
 
 .pricing-section {
     position: sticky;
-    padding: 0px 20px 20px !important;
+    padding: 50px 20px 20px !important;
     text-align: center !important;
 }
 
@@ -1275,7 +1287,7 @@ section .content {
     position: sticky;
     font-family: 'Red Hat Display', sans-serif; /* Elegant and modern font */
     font-weight: 700; /* Strong boldness for impact */
-    letter-spacing: 0.1em; /* Increased letter spacing for a more contemporary feel */
+    letter-spacing: 0.01em; /* Increased letter spacing for a more contemporary feel */
     font-size: 3rem; /* Larger font size for emphasis */
     color: #333; /* A bright, standout color for a fresh look */
     text-transform: uppercase; /* Still all caps for modern boldness */
@@ -1545,6 +1557,7 @@ footer p {
     position: absolute;
     top: 600px; /* Adjust to position below hero content */
     width: 100%;
+    margin: 50px;
     display: flex;
     justify-content: flex-start;
     z-index: 1; /* Keeps car behind the imacphoto image */
