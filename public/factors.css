@@ -119,8 +119,13 @@
 
 @media (max-width: 768px) {
     .factors-container {
+        padding: 50px 10px;
         flex-direction: column;
         text-align: center;
+    }
+
+    .factors-subcontainer { 
+        padding-top: 140px;
     }
 
     .factors-image img {
