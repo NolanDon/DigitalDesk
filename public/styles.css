@@ -333,10 +333,10 @@ nav a {
 }
 
 .headline-text {
-    font-size: 2.5rem; /* Increased size for a cohesive title */
-    font-weight: 700;
-    color: #333;
-    margin: 0;
+    font-size: 2.2rem; /* Font size adjusts with viewport width */
+    font-family: 'Red Hat Display', sans-serif;
+    margin-bottom: 20px;
+    line-height: 1.2;
 }
 
 .headline-text-2 {
@@ -347,7 +347,10 @@ nav a {
 }
 
 .description {
+    font-size: 1.2rem;
+    padding: 15px;
     max-width: 800px;
+    font-family: 'Red Hat Display', sans-serif;
     margin: 20px auto;
     color: #666;
     line-height: 1.8;
@@ -542,6 +545,14 @@ section {
     text-align: center;
 }
 
+/* Responsive Layout for Smaller Screens */
+@media (max-width: 768px) {
+    section {
+        padding: 120px 20px 20px;
+        text-align: center;
+    }
+    
+}
 section h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
@@ -732,7 +743,7 @@ section .content {
   .cs-content {
     flex: 1;
     padding: 20px;
-    max-width: 50%;
+    /* max-width: 50%; */
   }
   
   .cs-title {
@@ -755,7 +766,7 @@ section .content {
 }
 
   .cs-text {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #333;
     margin-bottom: 30px;
     font-family: 'Red Hat Display', sans-serif;
@@ -792,7 +803,7 @@ section .content {
   }
   
   .cs-laptop {
-    max-width: 700px; /* Allows it to grow relative to its container */
+    /* max-width: 900px; Allows it to grow relative to its container */
     height: auto; /* Maintains aspect ratio */
     display: block;
     margin: 20px auto; /* Centers the photo */
@@ -803,13 +814,13 @@ section .content {
 @media (max-width: 768px) {
     .cs-laptop {
         display: none;
-        max-width: 90%; /* Scales down for smaller screens */
+        /* max-width: 90%; Scales down for smaller screens */
     }
 }
 
 @media (min-width: 769px) {
     .cs-laptop {
-        max-width: 700px; /* Larger size for bigger screens */
+        /* max-width: 700px; Larger size for bigger screens */
     }
 }
 
@@ -1555,9 +1566,8 @@ footer p {
 .f1-car-container {
     overflow: hidden;
     position: absolute;
-    top: 600px; /* Adjust to position below hero content */
+    top: 650px; /* Adjust to position below hero content */
     width: 100%;
-    margin: 80px;
     display: flex;
     justify-content: flex-start;
     z-index: 1; /* Keeps car behind the imacphoto image */
