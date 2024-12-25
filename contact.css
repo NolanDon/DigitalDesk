@@ -1,0 +1,6 @@
+button[disabled] {
+    background-color: #ccc; /* Light grey background */
+    color: #666; /* Grey text */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+    opacity: 0.6; /* Make it slightly transparent */
+}

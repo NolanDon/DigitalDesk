@@ -8,6 +8,7 @@
     <title>Contact | Highwood Web Design</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="contact.css">
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
         <svg class="decorative-wave-header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320">
@@ -116,18 +117,32 @@
         document.querySelector('form').addEventListener('submit', function (e) {
             e.preventDefault(); // Prevent the form from submitting directly
 
-            fetch(this.action, {
+            const form = this;
+            const button = form.querySelector('button[type="submit"]');
+            
+            // Disable the button
+            button.disabled = true;
+            button.textContent = "Sending...";
+
+            fetch(form.action, {
                 method: 'POST',
-                body: new FormData(this),
-            }).then(response => {
+                body: new FormData(form),
+            })
+            .then(response => {
                 if (response.ok) {
                     showPopup('success-popup');
                 } else {
                     alert('There was a problem sending the message.');
                 }
-            }).catch(error => {
+            })
+            .catch(error => {
                 console.error('Error:', error);
                 alert('An error occurred, please try again.');
+            })
+            .finally(() => {
+                // Re-enable the button and reset the text
+                button.disabled = false;
+                button.textContent = "Send Message";
             });
         });
 
@@ -142,7 +157,6 @@
                 popup.classList.add('hidden');
             });
         }
-
     </script>
     <!-- Footer -->
     <footer>
