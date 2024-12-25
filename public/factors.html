@@ -41,13 +41,12 @@
             </div>
         </nav>
     </header>
-
     
     <div class="factors-subcontainer">
         <div class="factors-content">
             <h1 class="cs-title">We are Coders.</h1>
             <p class="cs-text">
-                Website builders rely on pre-built templates and drag-and-drop elements, which often include unnecessary JavaScript and heavy media files that slow down page loading times. At Highwood Web Design, we build websites by hand with clean, efficient code, without bloated web-builder code containing features and plugins you probably will never need.
+                Most website builders rely on pre-built templates and drag-and-drop elements, which often include unnecessary JavaScript and heavy media files that slow down page loading times. At Highwood Web Design, we build websites by hand with clean, efficient code, without bloated web-builder code containing features and plugins you probably will never need.
             </p>                   
         </div>
     </div>
@@ -106,7 +105,23 @@
             </div>
         </div>
     </div>
-    
+    <script>
+         const hamburger = document.getElementById('hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('header');
+            if (window.scrollY > 0) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 
     <!-- Footer -->
     <footer>
