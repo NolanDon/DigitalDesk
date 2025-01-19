@@ -1,0 +1,88 @@
+/* Portfolio Slider Styling */
+.portfolio-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 2rem 0;
+    padding: 12rem;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slider-container {
+    display: flex;
+    animation: slide 15s linear infinite;
+}
+
+.slider-item {
+    flex: 0 0 33.33%;
+    box-sizing: border-box;
+    padding: 1rem;
+    text-align: center;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    margin: 0 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slider-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.slider-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Red Hat Display', sans-serif;
+    color: #333;
+}
+
+.slider-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.slider-item .view-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #0073e6;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.slider-item .view-link:hover {
+    background-color: #005bb5;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .slider-container {
+        flex-direction: column; /* Stack items vertically */
+        animation: none; /* Disable animation on small screens */
+    }
+
+    .slider-item {
+        flex: 0 0 auto; /* Adjust flex properties for stacked layout */
+        margin: 1rem 0; /* Add vertical spacing between items */
+        width: 100%; /* Ensure full width for each item */
+    }
+
+    .portfolio-slider {
+        padding: 2rem; /* Reduce padding for smaller screens */
+    }
+}

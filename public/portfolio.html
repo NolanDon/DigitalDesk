@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Business Web Designer | Highwood Web Design | 0$ down 100$ monthly</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="images/logo8.png" alt="Icon" class="navbar-logo">
+                <div class="logo-text-container">
+                    <span class="logo-text">Highwood</span>
+                    <span class="logo-subtext">WEB DESIGN</span>
+                </div>
+            </a>
+        </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <!-- <li><a href="/portfolio.html">Portfolio</a></li> -->
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+              </ul>
+            <a href="/contact.html" class="distinct-button">Get Started</a>
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="portfolio-slider">
+        <div class="slider-container">
+            <div class="slider-item">
+                <h3>Project 1</h3>
+                <p>A modern, responsive e-commerce website.</p>
+                <a href="https://example.com/project1" target="_blank" class="view-link">View Website</a>
+            </div>
+            <div class="slider-item">
+                <h3>Project 2</h3>
+                <p>A sleek portfolio website for creatives.</p>
+                <a href="https://example.com/project2" target="_blank" class="view-link">View Website</a>
+            </div>
+            <div class="slider-item">
+                <h3>Project 3</h3>
+                <p>A business landing page with modern design.</p>
+                <a href="https://example.com/project3" target="_blank" class="view-link">View Website</a>
+            </div>
+            <div class="slider-item">
+                <h3>Project 4</h3>
+                <p>A business landing page with modern design.</p>
+                <a href="https://example.com/project3" target="_blank" class="view-link">View Website</a>
+            </div>
+            <div class="slider-item">
+                <h3>Project 5</h3>
+                <p>A business landing page with modern design.</p>
+                <a href="https://example.com/project3" target="_blank" class="view-link">View Website</a>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- JavaScript for mobile menu toggle -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('header');
+            if (window.scrollY > 0) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Clone the first few slides to create a seamless loop
+        document.addEventListener("DOMContentLoaded", () => {
+            const sliderContainer = document.querySelector(".slider-container");
+            const sliderItems = document.querySelectorAll(".slider-item");
+
+            // Clone items for infinite scroll effect
+            sliderItems.forEach((item) => {
+                const clone = item.cloneNode(true);
+                sliderContainer.appendChild(clone);
+            });
+        });
+
+    </script>
+</body>
+</html>
