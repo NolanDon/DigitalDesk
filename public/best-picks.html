@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Picks - Digital Desk</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="best-picks.css">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="images/logo.png" alt="Icon" class="navbar-logo">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="new-picks.html">New Tech</a></li>
+                <li><a href="guides.html">Guides</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <a href="/contact.html" class="distinct-button">Login</a>
+        </nav>
+    </header>
+
+    <!-- Best Picks Section -->
+    <main id="best-picks">
+        <h1 id="category-title"></h1>
+        <div class="products-container" id="products-container">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    </main>
+
+    <script>
+        // Sample product data
+        const products = {
+            laptops: [
+                { name: "Laptop 1", img: "images/laptop1.jpg", review: "Best performance for gaming." },
+                { name: "Laptop 2", img: "images/laptop2.jpg", review: "Great for professionals." },
+                // Add 8 more items...
+            ],
+            desks: [
+                { name: "Desk 1", img: "images/desk1.jpg", review: "Spacious and ergonomic." },
+                { name: "Desk 2", img: "images/desk2.jpg", review: "Perfect for small spaces." },
+                // Add 8 more items...
+            ],
+            // Add more categories...
+        };
+
+        // Get category from URL
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get('category');
+
+        // Populate the page
+        const categoryTitle = document.getElementById('category-title');
+        const productsContainer = document.getElementById('products-container');
+
+        if (category && products[category]) {
+            categoryTitle.textContent = `Best Picks for ${category.charAt(0).toUpperCase() + category.slice(1)}`;
+            products[category].slice(0, 10).forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>${product.review}</p>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+        } else {
+            categoryTitle.textContent = "Category Not Found";
+            productsContainer.innerHTML = "<p>Sorry, we couldn't find any products for this category.</p>";
+        }
+    </script>
+</body>
+</html>

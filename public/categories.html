@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Digital Desk</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="category.css">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="images/logo.png" alt="Icon" class="navbar-logo">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="new-picks.html">New Tech</a></li>
+                <li><a href="guides.html">Guides</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <a href="/contact.html" class="distinct-button">Login</a>
+        </nav>
+    </header>
+
+    <!-- Categories Section -->
+    <main id="categories">
+        <div class="categories-header">
+            <h1>Explore Categories</h1>
+            <p>Search and discover the best tech items across various categories.</p>
+            <input 
+                type="text" 
+                id="category-search" 
+                class="search-bar" 
+                placeholder="Search categories..."
+                oninput="filterCategories()"
+            />
+        </div>
+
+        <div class="categories-container" id="categories-container">
+            <!-- Category Cards -->
+            <div class="category-card" data-category="laptops">
+                <h3>Laptops</h3>
+                <img src="images/laptops.jpg" alt="Laptops">
+            </div>
+            <div class="category-card" data-category="desks">
+                <h3>Desks</h3>
+                <img src="images/desks.jpg" alt="Desks">
+            </div>
+            <div class="category-card" data-category="mice">
+                <h3>Mice</h3>
+                <img src="images/mice.jpg" alt="Mice">
+            </div>
+            <div class="category-card" data-category="keyboards">
+                <h3>Keyboards</h3>
+                <img src="images/keyboards.jpg" alt="Keyboards">
+            </div>
+            <div class="category-card" data-category="chairs">
+                <h3>Chairs</h3>
+                <img src="images/chairs.jpg" alt="Chairs">
+            </div>
+            <div class="category-card" data-category="peripherals">
+                <h3>Peripherals</h3>
+                <img src="images/peripherals.jpg" alt="Peripherals">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Add to <script> in categories.html
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.getAttribute('data-category');
+                window.location.href = `best-picks.html?category=${category}`;
+            });
+        });
+
+        // JavaScript to filter category cards based on search input
+        function filterCategories() {
+            const searchInput = document.getElementById('category-search').value.toLowerCase();
+            const categoryCards = document.querySelectorAll('.category-card');
+            
+            categoryCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (category.includes(searchInput)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -54,7 +54,7 @@
             <div class="cs-button-group">
                 <a href="/contact.html" class="cs-button-solid">Start Your Journey</a>
                 <!-- <a href="/about.html" class="cs-button-solid">Learn More About Us</a> -->
-                <a href="/categories.html" class="cs-button-solid">Read Reviews</a>
+                <a href="/reviews.html" class="cs-button-solid">Read Reviews</a>
             </div>
         </div>
 
@@ -85,33 +85,32 @@
         <!-- Horizontal Scrolling Categories -->
         <div class="scrolling-categories">
             <ul class="category-list">
-                <li class="category-item" data-category="laptops"><a>Gaming Laptops</a></li>
-                <li class="category-item" data-category="desks"><a>Desks</a></li>
-                <li class="category-item" data-category="mice"><a>Mice</a></li>
-                <li class="category-item" data-category="keyboards"><a>Keyboards</a></li>
-                <li class="category-item" data-category="work-laptops"><a>Work Laptops</a></li>
-                <li class="category-item" data-category="chairs"><a>Chairs</a></li>
-                <li class="category-item" data-category="peripher"><a>Peripherals</a></li>
+                <li class="category-item"><a href="/search?category=laptops">Laptops</a></li>
+                <li class="category-item"><a href="/search?category=desks">Desks</a></li>
+                <li class="category-item"><a href="/search?category=mice">Mice</a></li>
+                <li class="category-item"><a href="/search?category=keyboards">Keyboards</a></li>
+                <li class="category-item"><a href="/search?category=chairs">Chairs</a></li>
+                <li class="category-item"><a href="/search?category=peripherals">Peripherals</a></li>
             </ul>
         </div>
     </div>
 </div>
 
+
     <div class="f1-car-container">
         <img src="images/fastcar2.png" alt="Car" class="f1-car">
     </div>
+ 
+
+    <!-- Pricing Section -->
+    <svg class="decorative-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#f3f4f6" fill-opacity="1"
+            d="M0,224L30,208C60,192,120,160,180,154.7C240,149,300,171,360,181.3C420,192,480,192,540,181.3C600,171,660,149,720,149.3C780,149,840,171,900,181.3C960,192,1020,192,1080,181.3C1140,171,1200,149,1260,149.3C1320,149,1380,171,1410,181.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
+            transform="scale(1, -1) translate(0, -320)"></path>
+    </svg>
 
     <!-- JavaScript for mobile menu toggle -->
     <script>
-
-        // Add to <script> in categories.html
-        document.querySelectorAll('.category-item').forEach(card => {
-        card.addEventListener('click', () => {
-            const category = card.getAttribute('data-category');
-            window.location.href = `best-picks.html?category=${category}`;
-        });
-        });
-
         const hamburger = document.getElementById('hamburger');
         const nav = document.querySelector('nav');
 
@@ -151,5 +150,4 @@
 
     </script>
 </body>
-    
 </html>
