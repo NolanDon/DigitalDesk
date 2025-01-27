@@ -7,15 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Desk</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="category.css">
+    <link rel="stylesheet" href="guides.css">
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
-        <svg class="decorative-wave-header" xmlns="http://www.w3.org/2000/svg" viewBox="220 0 800 320">
-            <path fill="#f3f4f6" fill-opacity="1"
-                d="M0,224L30,208C60,192,120,160,180,154.7C240,149,300,171,360,181.3C420,192,480,192,540,181.3C600,171,660,149,720,149.3C780,149,840,171,900,181.3C960,192,1020,192,1080,181.3C1140,171,1200,149,1260,149.3C1320,149,1380,171,1410,181.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
-                transform="scale(1, -1) translate(0, -320)"></path>
-        </svg>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <svg class="decorative-wave-header" xmlns="http://www.w3.org/2000/svg" viewBox="220 0 800 320">
+        <path fill="#f3f4f6" fill-opacity="1"
+            d="M0,224L30,208C60,192,120,160,180,154.7C240,149,300,171,360,181.3C420,192,480,192,540,181.3C600,171,660,149,720,149.3C780,149,840,171,900,181.3C960,192,1020,192,1080,181.3C1140,171,1200,149,1260,149.3C1320,149,1380,171,1410,181.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
+            transform="scale(1, -1) translate(0, -320)"></path>
+    </svg>
 </head>
+
 <body>
     <!-- Navbar -->
     <header>
@@ -27,13 +29,13 @@
         </div>
         <nav>
             <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="reviews.html">Reviews</a></li>
                 <li><a href="categories.html">Categories</a></li>
-                <li><a href="new-picks.html">New Tech</a></li>
+                <li><a href="new-tech.html">New Tech</a></li>
                 <li><a href="guides.html">Guides</a></li>
-                <li><a href="about.html">About</a></li>
             </ul>
-            <a href="/contact.html" class="distinct-button">Login</a>
+            <a href="/contact.html" class="distinct-button">Learn More</a>
             <div class="hamburger" id="hamburger">
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -42,75 +44,196 @@
         </nav>
     </header>
 
-<!-- Hero Section -->
-<section id="hero">
-    <div class="cs-container">
-        <div class="cs-content">
-            <h1 class="cs-title">Discover the Best Tech Without the Bias</h1>
-            <p class="cs-text">
-                Your go-to resource for finding top technology solutions that suit your needs. 
-                We provide honest, unbiased reviews and comparisons to help you make informed decisions.
-            </p>
-            <div class="cs-button-group">
-                <a href="/contact.html" class="cs-button-solid">Start Your Journey</a>
-                <!-- <a href="/about.html" class="cs-button-solid">Learn More About Us</a> -->
-                <a href="/reviews.html" class="cs-button-solid">Read Reviews</a>
+    <!-- Tech Guides Section -->
+    <main>
+        <!-- Guide Section: Wearables and Fitness Trackers -->
+        <div class="guide-section" data-aos="fade-right">
+            <div class="guide-card">
+                <div class="lottie-wrapper">
+                    <div id="fitness-animation"></div>
+                </div>
+                <div class="guide-content">
+                    <h2>Wearables and Fitness Trackers</h2>
+                    <p>
+                        Fitness enthusiasts and casual users alike can benefit from wearables. Here's what to look for:
+                    </p>
+                    <ul>
+                        <li><strong>Features:</strong> Trackers like Fitbit or Garmin focus on fitness metrics. For
+                            versatility,
+                            try smartwatches like the Apple Watch or Galaxy Watch.</li>
+                        <li><strong>Battery Life:</strong> Most fitness trackers last up to a week, while full-featured
+                            smartwatches need daily charging.</li>
+                        <li><strong>Compatibility:</strong> Ensure the wearable syncs well with your smartphone's OS.
+                        </li>
+                    </ul>
+                    <a data-category="fitness">View Options</a>
+                </div>
             </div>
         </div>
 
-        <!-- Image placeholders for laptop and mobile -->
-        <div class="cs-images">
-            <img src="images/imacphoto.png" alt="Laptop displaying a tech comparison site" class="cs-laptop" style="z-index: 2;">
+        <!-- Guide Section: Choosing the Right Laptop -->
+        <div class="guide-section" data-aos="fade-left">
+            <div class="guide-card">
+                <div class="lottie-wrapper">
+                    <div id="laptop-animation"></div>
+                </div>
+                <div class="guide-content">
+                    <h2>Choosing the Right Laptop</h2>
+                    <p>
+                        Selecting the ideal laptop depends on your needs and budget. Consider these factors to make the
+                        right
+                        choice:
+                    </p>
+                    <ul>
+                        <li><strong>Purpose:</strong> If you're into gaming, look for laptops with dedicated GPUs. For
+                            work or
+                            study, mid-range laptops with efficient processors work best.</li>
+                        <li><strong>Durability:</strong> All-metal builds like aluminum ensure longevity, while
+                            spill-resistant
+                            keyboards are great for everyday users.</li>
+                        <li><strong>Budget:</strong> For under $500, check entry-level Chromebooks or refurbished
+                            laptops. If
+                            your budget is over $1,000, invest in premium ultrabooks like the MacBook Air or Dell XPS.
+                        </li>
+                    </ul>
+                    <a data-category="laptops">Search Laptops</a>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
 
-  <!-- Home Section -->
-<svg class="decorative-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-    <path fill="#f3f4f6" fill-opacity="1"
-        d="M0,224L30,208C60,192,120,160,180,154.7C240,149,300,171,360,181.3C420,192,480,192,540,181.3C600,171,660,149,720,149.3C780,149,840,171,900,181.3C960,192,1020,192,1080,181.3C1140,171,1200,149,1260,149.3C1320,149,1380,171,1410,181.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
-    </path>
-</svg>
-
-<div id="home">
-    <div class="home-content">
-        <div class="headline">
-            <h2 class="home-text"><span class="highlight">EXPLORE OUR CATEGORIES</span></h2>
-            <h1 class="headline-text">Find the Best Tech for Your Needs</h1>
+        <!-- Guide Section: Smartphone Recommendations -->
+        <div class="guide-section" data-aos="fade-right">
+            <div class="guide-card">
+                <div class="lottie-wrapper">
+                    <div id="phones-animation"></div>
+                </div>
+                <div class="guide-content">
+                    <h2>Smartphone Recommendations</h2>
+                    <p>
+                        From budget options to premium devices, here's what to consider when buying a smartphone:
+                    </p>
+                    <ul>
+                        <li><strong>Battery Life:</strong> Look for phones with at least 4,000mAh batteries to ensure
+                            all-day
+                            usage.</li>
+                        <li><strong>Camera Quality:</strong> Flagships like the iPhone 15 or Google Pixel deliver
+                            stunning
+                            photos. For budget buyers, Samsung’s A-series offers great performance.</li>
+                        <li><strong>Software Updates:</strong> Choose brands with strong software support, like Apple or
+                            Google,
+                            to keep your phone secure and up-to-date.</li>
+                    </ul>
+                    <a data-category="phone">Explore Phones</a>
+                </div>
+            </div>
         </div>
-        <p class="description">
-            Explore a wide range of categories to find unbiased reviews and comparisons for laptops, desks, mice, keyboards, chairs, and other peripherals. We’re here to help you make informed decisions with ease.
-        </p>
-        
-        <!-- Horizontal Scrolling Categories -->
-        <div class="scrolling-categories">
-            <ul class="category-list">
-                <li class="category-item"><a href="/search?category=laptops">Laptops</a></li>
-                <li class="category-item"><a href="/search?category=desks">Desks</a></li>
-                <li class="category-item"><a href="/search?category=mice">Mice</a></li>
-                <li class="category-item"><a href="/search?category=keyboards">Keyboards</a></li>
-                <li class="category-item"><a href="/search?category=chairs">Chairs</a></li>
-                <li class="category-item"><a href="/search?category=peripherals">Peripherals</a></li>
-            </ul>
+
+        <!-- Guide Section: Home Office Setup -->
+        <div class="guide-section" data-aos="fade-left">
+            <div class="guide-card">
+                <div class="lottie-wrapper">
+                    <div id="office-animation"></div>
+                </div>
+                <div class="guide-content">
+                    <h2>Home Office Setup</h2>
+                    <p>
+                        Creating a comfortable and productive home office doesn't have to break the bank. Consider:
+                    </p>
+                    <ul>
+                        <li><strong>Desk Space:</strong> Opt for an ergonomic desk with adjustable height to support
+                            good posture.</li>
+                        <li><strong>Lighting:</strong> Use natural light or invest in soft LED desk lamps to reduce eye
+                            strain.</li>
+                        <li><strong>Chair:</strong> Ergonomic chairs with lumbar support are a must for long hours.</li>
+                    </ul>
+                    <a data-category="chairs">Get Inspired</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
+        <!-- Guide Section: Budget-Friendly Tech -->
+        <div class="guide-section" data-aos="fade-left">
+            <div class="guide-card">
+                <div class="lottie-wrapper">
+                    <div id="budget-animation"></div>
+                </div>
+                <div class="guide-content">
+                    <h2>Budget-Friendly Tech</h2>
+                    <p>
+                        Tech doesn’t have to be expensive. Here are some affordable yet reliable options:
+                    </p>
+                    <ul>
+                        <li><strong>Laptops:</strong> Refurbished models or Chromebooks under $300 are great for light
+                            users.</li>
+                        <li><strong>Headphones:</strong> Brands like Anker and Soundcore offer great audio on a budget.
+                        </li>
+                        <li><strong>Smart Devices:</strong> Smart plugs and bulbs like Wyze are affordable and enhance
+                            convenience.</li>
+                    </ul>
+                    <a data-category="budget">Find Budget Picks</a>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <div class="f1-car-container">
-        <img src="images/fastcar2.png" alt="Car" class="f1-car">
-    </div>
- 
-
-    <!-- Pricing Section -->
-    <svg class="decorative-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#f3f4f6" fill-opacity="1"
-            d="M0,224L30,208C60,192,120,160,180,154.7C240,149,300,171,360,181.3C420,192,480,192,540,181.3C600,171,660,149,720,149.3C780,149,840,171,900,181.3C960,192,1020,192,1080,181.3C1140,171,1200,149,1260,149.3C1320,149,1380,171,1410,181.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
-            transform="scale(1, -1) translate(0, -320)"></path>
-    </svg>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
 
     <!-- JavaScript for mobile menu toggle -->
     <script>
+
+        AOS.init({
+            duration: 2000, // Animation duration in milliseconds
+            once: false, // Animation occurs only once when scrolled into view
+        });
+
+        lottie.loadAnimation({
+            container: document.getElementById('budget-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/lotties/budget.json'
+        });
+
+        lottie.loadAnimation({
+            container: document.getElementById('fitness-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/lotties/fitness.json'
+        });
+
+        lottie.loadAnimation({
+            container: document.getElementById('laptop-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/lotties/laptop.json'
+        });
+
+        lottie.loadAnimation({
+            container: document.getElementById('office-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/lotties/office.json'
+        });
+
+        lottie.loadAnimation({
+            container: document.getElementById('phones-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/lotties/phone.json'
+        });
+
+        document.querySelectorAll('a').forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.getAttribute('data-category');
+                window.location.href = `best-picks.html?category=${category}`;
+            });
+        });
+
         const hamburger = document.getElementById('hamburger');
         const nav = document.querySelector('nav');
 
@@ -127,27 +250,7 @@
             }
         });
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const target = document.querySelector("#why-us");
-
-            const observer = new IntersectionObserver(
-                (entries, observer) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("fade-in");
-                            observer.unobserve(entry.target); // Stop observing once the animation is triggered
-                        }
-                    });
-                },
-                { threshold: 1 } // Trigger when 10% of the element is visible
-            );
-
-            if (target) {
-                target.classList.add("hidden"); // Ensure it's hidden initially
-                observer.observe(target);
-            }
-        });
-
     </script>
 </body>
+
 </html>

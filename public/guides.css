@@ -1,0 +1,151 @@
+/* Guide Section Styles */
+.guide-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rem 1.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  margin-bottom: 10rem;
+  transition: transform 0.5s ease;
+}
+
+header {
+  position: absolute;
+}
+
+.guide-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1000px;
+  margin: 1rem 0;
+}
+
+.lottie-placeholder {
+  width: 150px;
+  height: 150px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  margin-right: 2rem;
+}
+
+.guide-content {
+  z-index: 5;
+  flex: 1;
+}
+
+.guide-section h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+.guide-section p {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.guide-section ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  list-style: disc;
+  text-align: left;
+}
+
+.guide-section ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+.guide-section a {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.guide-section a:hover {
+  background-color: #0056b3;
+}
+
+/* Alternating Alignments */
+[data-aos="fade-left"] .guide-card {
+  flex-direction: row-reverse; /* Right aligned */
+}
+
+[data-aos="fade-right"] .guide-card {
+  flex-direction: row; /* Left aligned */
+}
+
+.lottie-wrapper {
+  width: 300px; /* Increased size for mobile */
+  height: 300px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .guide-section {
+    margin-bottom: 0rem;
+    padding: 3rem 1.5rem;
+  }
+
+  .lottie-wrapper {
+    width: 200px; /* Increased size for mobile */
+    height: 200px;
+    margin: 0 auto 20px; /* Center and add space below */
+  }
+
+  .lottie-wrapper div {
+    width: 100%;
+    height: 100%;
+  }
+
+  .guide-section h2 {
+    font-size: 2rem;
+  }
+
+  .guide-section p {
+    font-size: 1.2rem;
+  }
+
+  .guide-card {
+    padding-top: 100px;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align elements */
+    text-align: center; /* Center-align text content */
+  }
+
+  .lottie-wrapper {
+    order: -1; /* Move the Lottie wrapper to the top */
+    margin-bottom: 20px; /* Add spacing below the animation */
+    width: 200px; /* Adjust size for smaller screens */
+    height: 200px;
+  }
+
+  .guide-content {
+    margin-top: 25px; /* Add spacing above the text */
+  }
+
+  /* Alternating Alignments */
+  [data-aos="fade-left"] .guide-card {
+    flex-direction: column; /* Right aligned */
+  }
+
+  [data-aos="fade-right"] .guide-card {
+    flex-direction: column; /* Left aligned */
+  }
+}

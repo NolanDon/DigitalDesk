@@ -17,15 +17,22 @@
                 <img src="images/logo.png" alt="Icon" class="navbar-logo">
             </a>
         </div>
+        </div>
         <nav>
             <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="reviews.html">Reviews</a></li>
                 <li><a href="categories.html">Categories</a></li>
-                <li><a href="new-picks.html">New Tech</a></li>
+                <li><a href="new-tech.html">New Tech</a></li>
                 <li><a href="guides.html">Guides</a></li>
-                <li><a href="about.html">About</a></li>
+                <!-- <li><a href="about.html">About</a></li> -->
             </ul>
-            <a href="/contact.html" class="distinct-button">Login</a>
+            <a href="/guides.html" class="distinct-button">Learn More</a>
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </nav>
     </header>
 
@@ -38,19 +45,24 @@
     </main>
 
     <script>
+        
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
         // Sample product data
         const products = {
             laptops: [
                 { name: "Laptop 1", img: "images/laptop1.jpg", review: "Best performance for gaming." },
                 { name: "Laptop 2", img: "images/laptop2.jpg", review: "Great for professionals." },
-                // Add 8 more items...
             ],
             desks: [
                 { name: "Desk 1", img: "images/desk1.jpg", review: "Spacious and ergonomic." },
                 { name: "Desk 2", img: "images/desk2.jpg", review: "Perfect for small spaces." },
-                // Add 8 more items...
             ],
-            // Add more categories...
         };
 
         // Get category from URL
