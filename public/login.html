@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Firebase Authentication - Email sign-in</title>
+    <link rel="icon"
+        href="https://cdn.glitch.com/5a7ec5a8-6f9e-45f0-9e6d-19f98045f4b9%2Ffirebase-logo-402F407EE0-seeklogo.com.png?v=1579717847407"
+        type="image/png">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="./styles/auth.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <script type="module" src="./app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="images/logo.png" alt="Icon" class="navbar-logo">
+            </a>
+        </div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="popular.html">Popular</a></li>
+                <li><a href="guides.html">Guides</a></li>
+            </ul>
+            <a id="add-item-link"></a>
+            <a id="sign-in" class="distinct-button" href="#">Login</a>
+            <div id="sign-in-status"></div>
+
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+    <main style="margin-top: 75px; padding-left: 15px; padding-right: 15px;">
+        <form style="max-width: 350px;" class="signin" autocomplete="on">
+            <fieldset style="padding: none;">
+                <legend>Login</legend>
+                <label>Enter Email</label>
+                <input id="email" type="email" placeholder="Type your email..." autocomplete="on" required="" />
+                <label>Enter Password</label>
+                <input id="password" type="password" minlength="8" placeholder="Type your password..."
+                    title="Enter correct password!" required="" />
+                <div id="password-info" style="font-size: 12px; color: red; margin-top: 5px;">
+                    <p>Password must contain:</p>
+                    <ul>
+                        <li id="upper" style="color: gray;">Uppercase letter</li>
+                        <li id="lower" style="color: gray;">Lowercase letter</li>
+                        <li id="number" style="color: gray;">Number</li>
+                        <li id="special" style="color: gray;">Special character</li>
+                    </ul>
+                </div>
+                <br />
+                <button class="distinct-button" type="submit"
+                    id="submit-btn" disabled>
+                    Sign Up
+                </button>
+            </fieldset>
+            <div class="info"></div>
+            <div class="desc">
+                <p>
+                    By continuing, you are indicating that you accept our
+                    <a href="./" target="_blank">Terms of Service</a> and
+                    <a href="./" target="_blank">Privacy Policy</a>.
+                </p>
+            </div>
+        </form>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+    <script src="./Auth.js"></script>
+    <script src="./_config/firebase.js"></script>
+
+    <script>
+        // Password validation
+        const passwordInput = document.getElementById('password');
+        const submitButton = document.getElementById('submit-btn');
+        const upper = document.getElementById('upper');
+        const lower = document.getElementById('lower');
+        const number = document.getElementById('number');
+        const special = document.getElementById('special');
+
+        const passwordRegex = {
+            uppercase: /[A-Z]/,
+            lowercase: /[a-z]/,
+            number: /\d/,
+            special: /[!@#$%^&*(),.?":{}|<>]/
+        };
+
+        // Function to check password requirements
+        function checkPassword() {
+            const password = passwordInput.value;
+
+            // Check for uppercase, lowercase, number, and special character
+            upper.style.color = passwordRegex.uppercase.test(password) ? 'green' : 'gray';
+            lower.style.color = passwordRegex.lowercase.test(password) ? 'green' : 'gray';
+            number.style.color = passwordRegex.number.test(password) ? 'green' : 'gray';
+            special.style.color = passwordRegex.special.test(password) ? 'green' : 'gray';
+
+            // Enable the submit button if all conditions are met
+            if (
+                passwordRegex.uppercase.test(password) &&
+                passwordRegex.lowercase.test(password) &&
+                passwordRegex.number.test(password) &&
+                passwordRegex.special.test(password)
+            ) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        }
+
+        // Add event listener to check password on input
+        passwordInput.addEventListener('input', checkPassword);
+    </script>
+</body>
+
+</html>

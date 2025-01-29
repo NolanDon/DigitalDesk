@@ -127,7 +127,7 @@ header {
   }
 
   .guide-card {
-    padding-top: 100px;
+    /* padding-top: 50px; */
     flex-direction: column; /* Stack elements vertically */
     align-items: center; /* Center align elements */
     text-align: center; /* Center-align text content */

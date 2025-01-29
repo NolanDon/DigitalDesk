@@ -1,0 +1,102 @@
+#submit-item {
+    max-width: 600px;
+    margin: 120px auto;
+    padding: 40px;
+    background: white;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#submit-item h2 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+#item-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+#item-form label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+}
+
+#item-form input,
+#item-form textarea,
+#item-form select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#item-form input:focus,
+#item-form textarea:focus,
+#item-form select:focus {
+    border-color: #007bff;
+}
+
+.file-upload {
+    border: 2px dashed #aaa;
+    padding: 20px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.file-upload:hover {
+    border-color: #007bff;
+}
+
+.rating-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.rating-container input {
+    display: none;
+}
+
+.rating-container label {
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.rating-container input:checked ~ label,
+.rating-container label:hover,
+.rating-container label:hover ~ label {
+    color: #ffcc00;
+}
+
+#item-form button {
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#item-form button:hover {
+    background-color: #0056b3;
+}

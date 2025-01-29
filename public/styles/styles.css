@@ -257,7 +257,7 @@ router-link {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 5px;
 }
 
 nav ul li {
@@ -299,11 +299,10 @@ nav a {
 
 /* Media Query for mobile */
 @media (max-width: 768px) {
-
   header {
     position: absolute;
   }
-  
+
   nav ul {
     flex-direction: column;
     gap: 10px;
@@ -450,11 +449,11 @@ nav ul li a {
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* transition: background-color 0.3s ease, transform 0.3s ease; */
 }
 
 nav ul li a:hover {
-  background-color: #007bff;
+  /* background-color: #007bff; */
   transform: translateY(-2px); /* Slight lift effect on hover */
 }
 
@@ -476,9 +475,18 @@ nav ul li a:hover {
   border-radius: 5px;
 }
 
+.hidden-login {
+  padding: 0px;
+  display: none;
+}
+
 @media (max-width: 1200px) {
   .distinct-button {
     display: none; /* Hide Get Started link on mobile */
+  }
+
+  .hidden-login {
+    display: block;
   }
 }
 
@@ -514,10 +522,6 @@ nav ul li a:hover {
     width: 100%;
     padding: 15px;
     font-size: 1rem;
-  }
-
-  nav ul li:hover {
-    background-color: #fff;
   }
 
   .hamburger {
@@ -785,7 +789,7 @@ section .content {
 }
 
 .cs-content {
-  z-index:10;
+  z-index: 10;
   flex: 1;
   padding: 20px;
   /* max-width: 50%; */
@@ -1641,4 +1645,17 @@ footer p {
     justify-content: flex-start;
     z-index: 1; /* Keeps car behind the imacphoto image */
   }
+}
+
+/* Adjust the login and account details display */
+#sign-in-status {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+#account-details {
+  margin-top: 20px;
+  white-space: pre-wrap;
+  font-size: 1rem;
+  color: #555;
 }

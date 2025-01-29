@@ -12,7 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
+    <!-- import the webpage's javascript file -->
+    <script type="module" src="/app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
     <svg class="decorative-wave-header" xmlns="http://www.w3.org/2000/svg" viewBox="220 0 800 320">
         <path fill="#f3f4f6" fill-opacity="1"
             d="M0,224L30,208C60,192,120,160,180,154.7C240,149,300,171,360,181.3C420,192,480,192,540,181.3C600,171,660,149,720,149.3C780,149,840,171,900,181.3C960,192,1020,192,1080,181.3C1140,171,1200,149,1260,149.3C1320,149,1380,171,1410,181.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
@@ -36,8 +39,12 @@
                 <li><a href="categories.html">Categories</a></li>
                 <li><a href="popular.html">Popular</a></li>
                 <li><a href="guides.html">Guides</a></li>
+                <li><a class="hidden-login" href="login.html">Login</a></li>
             </ul>
-            <a href="/contact.html" class="distinct-button">Learn More</a>
+            <a id="add-item-link"></a>
+            <a id="sign-in" class="distinct-button" href="#">Login</a>
+            <div id="sign-in-status"></div>
+
             <div class="hamburger" id="hamburger">
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -45,7 +52,6 @@
             </div>
         </nav>
     </header>
-
 
     <!-- Hero Section -->
     <section id="hero">
@@ -58,7 +64,6 @@
                 </p>
                 <div class="cs-button-group">
                     <a href="/categories.html" class="cs-button-solid">See Popular</a>
-                    <!-- <a href="/about.html" class="cs-button-solid">Learn More About Us</a> -->
                     <a href="/reviews.html" class="cs-button-solid">Read Reviews</a>
                 </div>
             </div>
@@ -156,6 +161,57 @@
         });
 
     </script>
+    <script type="text/javascript">
+
+        initApp = function () {
+            firebase.auth().onAuthStateChanged(function (user) {
+                const signInButton = document.getElementById('sign-in');
+                // const signInStatus = document.getElementById('sign-in-status');
+                // const accountDetails = document.getElementById('account-details');
+                const addItemLink = document.getElementById('add-item-link');
+
+
+                if (user) {
+                    // If the user is Nolan, add the "Add Item" link
+                    if (user.email === "nolan796@live.ca") {
+                        console.log("user email matched, adding <a> tag")
+                        addItemLink.innerHTML = '<a href="/add-item.html" class="distinct-button">Add Item</a>';
+                    } else {
+                        addItemLink.innerHTML = '';
+                    }
+
+                    // User is signed in
+                    signInButton.textContent = 'Sign out';
+                    signInButton.onclick = () => {
+                        firebase.auth().signOut().then(function () {
+                            signInButton.textContent = 'Login'; // Reset the button text
+                            signInStatus.textContent = ''; // Clear the status
+                            // accountDetails.textContent = ''; // Clear the account details
+                        }).catch((error) => {
+                            console.error('Sign out error:', error);
+                        });
+                    };
+
+                    // accountDetails.textContent = JSON.stringify(user, null, 2); // Format user data nicely
+                } else {
+                    // User is not signed in
+                    signInButton.textContent = 'Login';
+                    signInButton.onclick = () => {
+                        window.location.href = '/login.html'; // Redirect to the login page
+                    };
+
+                    // accountDetails.textContent = '';
+                    addItemLink.innerHTML = ''; // Ensure the "Add Item" link is removed if logged out
+                }
+            }, function (error) {
+                console.log(error);
+            });
+        };
+
+        window.addEventListener('load', function () {
+            initApp()
+        });
+    </script>
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
@@ -171,7 +227,7 @@
                     <li><a href="categories.html">Categories</a></li>
                     <li><a href="popular.html">Popular</a></li>
                     <li><a href="guides.html">Guides</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
 
@@ -196,7 +252,17 @@
             <p>&copy; 2025 Digital Desk. All rights reserved.</p>
         </div>
     </footer>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
 
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+    <!-- <script src="./Auth.js"></script> -->
+    <script src="./_config/firebase.js"></script>
 </body>
 
 </html>

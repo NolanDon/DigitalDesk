@@ -1,7 +1,6 @@
 .new-tech-section {
   z-index: 5;
   padding: 160px 20px; /* Reduced padding */
-  background-color: #f9fafe;
   text-align: center;
 }
 
@@ -26,12 +25,12 @@
 }
 
 .tech-item {
-  padding: 4px; /* Reduced padding */
+  padding: 20px; /* Reduced padding */
   background: #fff;
   box-shadow: 0 3.2px 6.4px rgba(0, 0, 0, 0.1); /* Reduced shadow */
   border-radius: 9.6px; /* Reduced border-radius */
   overflow: hidden;
-  text-align: left;
+  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -41,7 +40,7 @@
 }
 
 .tech-image {
-  width: 100%;
+  width: 50%;
   height: auto;
   object-fit: cover;
 }
@@ -131,7 +130,7 @@
   color: white;
 }
 
-.button-laptop {
+.button-laptops {
   background-color: #4caf50;
   color: white;
 }
@@ -186,7 +185,7 @@
   width: 64%; /* Reduced width */
   max-width: 320px; /* Reduced max-width */
   padding: 8px; /* Reduced padding */
-  font-size: 12.8px; /* Reduced font-size */
+  font-size: 13.8px; /* Reduced font-size */
   border: 1px solid #ccc;
   border-radius: 5px;
   margin: 16px auto; /* Reduced margin */

@@ -1,6 +1,6 @@
 #best-picks {
     text-align: center;
-    padding: 200px;
+    padding-top: 200px;
 }
 
 .products-container {
@@ -33,4 +33,14 @@
 .product-card p {
     font-size: 14px;
     color: #666;
+}
+
+@media (max-width: 768px) {
+    #best-picks {
+        padding-top: 120px;
+    }
+
+    .product-card {
+       margin-bottom: 30px;
+    }
 }
