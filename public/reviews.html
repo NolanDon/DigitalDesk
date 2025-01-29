@@ -6,20 +6,37 @@
     <link rel="icon" href="favicon.ico" type="image/ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Item Search - Digital Desk</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="category.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/category.css">
+    <link rel="stylesheet" href="styles/reviews.css">
+    <link rel="stylesheet" href="styles/new-tech.css">
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
         rel="stylesheet">
+    <!-- Font Awesome for Star Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
+    <!-- Popover Container -->
+    <div id="popover-overlay" class="hidden">
+        <div class="popover-content">
+            <div class="popover-left">
+                <img src="" alt="Item Image" id="popover-image">
+            </div>
+            <div class="popover-right">
+                <h2 id="popover-title"></h2>
+                <p id="popover-description"></p>
+                <div id="popover-rating"></div>
+            </div>
+            <button class="close-btn" onclick="closePopover()">×</button>
+        </div>
+    </div>
     <!-- Navbar -->
     <header>
         <div class="logo">
             <a href="/">
                 <img src="images/logo.png" alt="Icon" class="navbar-logo">
             </a>
-        </div>
         </div>
         <nav>
             <ul class="nav-links">
@@ -42,45 +59,51 @@
     <main id="categories">
         <div class="categories-header">
             <h1>Search Tech Items</h1>
-            <p>We'll try our best to find you reviews and opinions, to help you make the best informed decision</p>
+            <p>We'll try our best to find you reviews and opinions, to help you make the best informed decision.</p>
             <input type="text" id="category-search" class="search-bar" placeholder="Search items..."
                 oninput="searchItems()" />
         </div>
-        <div id="search-results"></div> <!-- This will hold the results -->
+        <!-- Search Results -->
+        <div id="search-results"></div>
     </main>
 
+    <!-- Rating System Explanation
+            <div class="rating-system">
+                <h2>How We Rate Items</h2>
+                <p>Our rating system is based on a 0-10 scale:</p>
+                <ul>
+                    <li><strong>0-4 Stars:</strong> Subpar item. Not recommended.</li>
+                    <li><strong>5-7 Stars:</strong> Good item. Solid choice for most users.</li>
+                    <strong>8-10 Stars:</strong> Excellent item. Highly recommended.</li>
+                </ul>
+                <div class="rating">
+                    <i class="fas fa-star" data-value="1"></i>
+                    <i class="fas fa-star" data-value="2"></i>
+                    <i class="fas fa-star" data-value="3"></i>
+                    <i class="fas fa-star" data-value="4"></i>
+                    <i class="fas fa-star" data-value="5"></i>
+                    <i class="fas fa-star" data-value="6"></i>
+                    <i class="fas fa-star" data-value="7"></i>
+                    <i class="fas fa-star" data-value="8"></i>
+                    <i class="fas fa-star" data-value="9"></i>
+                    <i class="fas fa-star" data-value="10"></i>
+                    <span id="rating-value">(10/10)</span>
+                </div>
+            </div> -->
+
     <script>
+        function generateCategoryButtons(categories) {
+            return categories.map(category => {
+                // Convert category to lowercase to match the class format
+                const categoryClass = `button-${category.toLowerCase()}`;
 
-
-        const hamburger = document.getElementById('hamburger');
-        const nav = document.querySelector('nav');
-
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-
-        // Fetch and display tech item search results
-        async function searchItems() {
-            const query = document.getElementById('category-search').value;
-
-            if (query === '') {
-                document.getElementById('search-results').innerHTML = ''; // Clear results if no input
-                return;
-            }
-
-            const apiUrl = `https://api.example.com/search?query=${query}&api_key=YOUR_API_KEY`; // Replace with your API URL
-
-            try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-
-                displayResults(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+                // Return the button with the dynamic class
+                return `
+            <button data-category="${category}" class="category-button ${categoryClass}">${category}</button>
+        `;
+            }).join('');
         }
 
-        // Function to display search results
         function displayResults(data) {
             const resultsContainer = document.getElementById('search-results');
             resultsContainer.innerHTML = ''; // Clear previous results
@@ -95,18 +118,253 @@
                 itemCard.classList.add('item-card');
 
                 const itemHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="item-image" />
-                    <h3 class="item-name">${item.name}</h3>
-                    <p class="item-price">$${item.price}</p>
-                    <p class="item-rating">Rating: ${item.rating} stars</p>
-                    <p class="item-description">${item.description}</p>
-                `;
+            <img src="${item.image}" alt="${item.name}" class="item-image" />
+            <h3 class="item-name">${item.name}</h3>
+            <p class="item-price">$${item.price}</p>
+            <div class="rating">
+                <span class="stars">${generateStars(item.rating)}</span> (${item.rating}/10)
+            </div>
+            <p class="item-description">${item.description}</p>
+        `;
 
                 itemCard.innerHTML = itemHTML;
+                itemCard.addEventListener('click', () => showPopover(item)); // Open popover when clicked
                 resultsContainer.appendChild(itemCard);
             });
         }
+
+        function showPopover(item) {
+            // Show the popover overlay
+            document.getElementById('popover-overlay').classList.remove('hidden');
+
+            // Set the popover content
+            document.getElementById('popover-image').src = item.image;
+            document.getElementById('popover-title').innerText = item.name;
+            document.getElementById('popover-description').innerText = item.description;
+            document.getElementById('popover-rating').innerHTML = generateStars(item.rating) + ` (${item.rating}/10)`;
+        }
+
+        function closePopover() {
+            // Hide the popover overlay
+            document.getElementById('popover-overlay').classList.add('hidden');
+        }
+
+        function generateStars(rating) {
+            const fullStars = '★'.repeat(Math.floor(rating));
+            const emptyStars = '☆'.repeat(10 - Math.floor(rating));
+            return fullStars + emptyStars;
+        }
+
+        async function searchItems() {
+            const query = document.getElementById('category-search').value.toLowerCase();
+
+            if (query === '') {
+                document.getElementById('search-results').innerHTML = '';
+                return;
+            }
+
+            // Log the query to check if it's being captured correctly
+            console.log('Searching for:', query);
+
+            // Filter the sample data based on the search query
+            const filteredItems = sampleData.filter(item =>
+                item.name.toLowerCase().includes(query) ||
+                item.brand.toLowerCase().includes(query)
+            );
+
+            console.log('Filtered items:', filteredItems); // Log the filtered items to see what is being returned
+
+            // Check if we have results and display them
+            if (filteredItems.length === 0) {
+                document.getElementById('search-results').innerHTML = '<p class="no-results">No results found.</p>';
+            } else {
+                displayResults(filteredItems);  // Pass array directly without wrapping in an object
+            }
+        }
+
+        // This is the correct displayResults function to show results
+        function displayResults(data) {
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            if (data.length === 0) {
+                resultsContainer.innerHTML = '<p class="no-results">No results found.</p>';
+                return;
+            }
+
+            data.forEach(item => {
+                const itemCard = document.createElement('div');
+                itemCard.classList.add('item-card');
+
+                const itemHTML = `
+            <img src="${item.image}" alt="${item.name}" class="item-image" />
+            <h3 class="item-name">${item.name}</h3>
+            <p class="item-price">$${item.price}</p>
+        `;
+
+                itemCard.innerHTML = itemHTML;
+                itemCard.addEventListener('click', () => showPopover(item)); // Open popover when clicked
+                resultsContainer.appendChild(itemCard);
+            });
+        }
+
+
+
+        const searchInput = document.getElementById('category-search');
+        const resultsContainer = document.getElementById('search-results');
+        let debounceTimer;
+
+        // Example dataset (replace this with API results)
+        const sampleData = [
+            {
+                name: "Legion 5 Pro",
+                brand: "Lenovo",
+                image: "https://example.com/legion5pro.jpg",
+                price: 1399,
+                rating: 8.5,
+                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
+                categories: ["laptops", "gaming"]
+            },
+            {
+                name: "Legion 6 Pro",
+                brand: "Lenovo",
+                image: "https://example.com/legion5pro.jpg",
+                price: 1399,
+                rating: 8.5,
+                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
+                categories: ["laptops", "gaming"]
+            },
+            {
+                name: "Legion 7 Pro",
+                brand: "Lenovo",
+                image: "https://example.com/legion5pro.jpg",
+                price: 1399,
+                rating: 8.5,
+                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
+                categories: ["laptops", "gaming"]
+            },
+            {
+                name: "Legion 8 Pro",
+                brand: "Lenovo",
+                image: "https://example.com/legion5pro.jpg",
+                price: 1399,
+                rating: 5.5,
+                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
+                categories: ["laptops", "gaming"]
+            },
+            {
+                name: "Legion 9 Pro",
+                brand: "Lenovo",
+                image: "https://example.com/legion5pro.jpg",
+                price: 1399,
+                rating: 2.5,
+                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
+                categories: ["laptops", "gaming"]
+            },
+            {
+                name: "Legion 10 Pro",
+                brand: "Lenovo",
+                image: "https://example.com/legion5pro.jpg",
+                price: 1399,
+                rating: 3.5,
+                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
+                categories: ["laptops", "gaming"]
+            },
+            {
+                name: "Legion 11 Pro",
+                brand: "Lenovo",
+                image: "https://example.com/legion5pro.jpg",
+                price: 1399,
+                rating: 8.5,
+                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
+                categories: ["laptops", "gaming"]
+            },
+        ];
+
+        // Debounced Search Function
+        searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                const query = searchInput.value.trim().toLowerCase();
+                if (query === '') {
+                    resultsContainer.innerHTML = ''; // Clear results if empty
+                    return;
+                }
+
+                // Filter example dataset
+                const filteredItems = sampleData.filter(item =>
+                    item.name.toLowerCase().includes(query) ||
+                    item.brand.toLowerCase().includes(query)
+                );
+
+                displayResults(filteredItems);
+            }, 300); // Debounce delay (300ms)
+        });
+
+        // Function to display results in a dropdown-style list
+        function displayResults(data) {
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            if (data.length === 0) {
+                resultsContainer.innerHTML = '<p class="no-results">No results found.</p>';
+                return;
+            }
+
+            const list = document.createElement('ul');
+            list.classList.add('search-dropdown');
+
+            data.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('dropdown-item');
+                listItem.innerHTML = `
+            <div class="dropdown-info">
+                <h3 class="dropdown-title">${item.name}</h3>
+                <p class="dropdown-rating">⭐ ${item.rating}/10</p>
+            </div>
+        `;
+                listItem.addEventListener('click', () => showItemDetails(item)); // Handle item selection
+                list.appendChild(listItem);
+            });
+
+            resultsContainer.appendChild(list);
+        }
+
+        // Function to show full details
+        function showItemDetails(item) {
+            resultsContainer.innerHTML = `
+        <div class="item-card">
+            <img src="${item.image}" alt="${item.name}" class="item-image" />
+            <h3 class="item-name">${item.name}</h3>
+            <p class="item-brand">By ${item.brand}</p>
+            <p class="item-price">$${item.price}</p>
+            <div class="rating">
+                <span class="stars">${generateStars(item.rating)}</span> (${item.rating}/10)
+            </div>
+            <p class="item-description">${item.description}</p>
+            <div class="category-buttons">
+                ${generateCategoryButtons(item.categories)}
+            </div>
+        </div>
+    `;
+        }
+
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+
+        // Helper function to generate star icons
+        function generateStars(rating) {
+            const fullStars = '★'.repeat(Math.floor(rating));
+            const emptyStars = '☆'.repeat(10 - Math.floor(rating));
+            return fullStars + emptyStars;
+        }
+
     </script>
+    
 </body>
 
 </html>

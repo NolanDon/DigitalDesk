@@ -1,0 +1,264 @@
+.rating-system {
+    text-align: center;
+    max-width: 500px;
+    margin: 40px auto;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+.rating-system h2 {
+    font-size: 1.28em; /* Reduced by 20% */
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+.rating-system p {
+    font-size: 0.8em; /* Reduced by 20% */
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.rating-criteria {
+    list-style: none;
+    padding: 0;
+    font-size: 0.8em; /* Reduced by 20% */
+    margin-bottom: 15px;
+}
+
+.rating-criteria li {
+    margin: 6px 0;
+    font-weight: 500;
+}
+
+.low {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.mid {
+    color: #f0ad4e;
+    font-weight: bold;
+}
+
+.high {
+    color: #5cb85c;
+    font-weight: bold;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    color: #ffd700;
+}
+
+.rating i {
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.rating i:hover,
+.rating i.active {
+    color: #ffcc00;
+    transform: scale(1.2);
+}
+
+#rating-value {
+    font-size: 0.8em; /* Reduced by 20% */
+    font-weight: 600;
+    margin-left: 10px;
+    color: #222;
+}
+
+.search-dropdown {
+    position: absolute;
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 100;
+}
+
+/* Dropdown Item Styling */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    justify-content: space-between; /* Space between the name and rating */
+    padding: 8px 12px; /* Add some padding for better spacing */
+    border-radius: 5px; /* Slight rounding for smoothness */
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f5f5f5; /* Subtle hover effect */
+    transform: scale(1.02); /* Slight zoom effect for hover */
+  }
+  
+  /* Info Section of Dropdown Item */
+  .dropdown-info {
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Ensure no overflow of content */
+  }
+  
+  /* Title Styling */
+  .dropdown-title {
+    font-size: 0.72em; /* Reduced by 20% */
+    font-weight: 600;
+    color: #333; /* Darker color for better readability */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    flex: 1;
+  }
+  
+  /* Rating Styling */
+  .dropdown-rating {
+    font-size: 0.64em; /* Reduced by 20% */
+    color: #777;
+    margin-left: 10px;
+  }
+  
+  /* Highlight Search Term */
+  .highlight {
+    background-color: #ffdd57; /* Soft yellow for highlighting */
+    color: #333; /* Dark text for better contrast */
+    padding: 0 3px; /* Small padding to separate from surrounding text */
+    border-radius: 3px; /* Rounded corners for highlight */
+  }
+  
+  /* Example of applying highlight dynamically */
+  .dropdown-item .dropdown-title span.highlight {
+    font-weight: bold; /* Emphasize the highlighted term */
+  }
+  
+
+/* Container to align item cards properly */
+#search-results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items */
+    gap: 15px; /* Space between cards */
+}
+
+/* Adjusted item card size */
+.item-card {
+    width: 220px; /* Smaller width */
+    text-align: center;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.item-card:hover {
+    transform: scale(1.05); /* Subtle hover effect */
+}
+
+/* Adjusted image size */
+.item-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Name styling */
+.item-card h3 {
+    margin-top: 8px;
+    font-size: 0.96em; /* Reduced by 20% */
+    font-weight: bold;
+}
+
+/* Price styling */
+.item-card .item-price {
+    font-size: 0.88em; /* Reduced by 20% */
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Adjust star size based on the card */
+.item-card .stars {
+    font-size: 0.8em; /* Reduced by 20% */
+    color: #ffd700;
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    gap: 3px; /* Add spacing between stars */
+}
+
+/* Ensure individual stars scale properly */
+.item-card .stars span {
+    font-size: 0.72em; /* Reduced by 20% */
+}
+
+
+#popover-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+}
+
+.popover-content {
+    background: white;
+    padding: 20px;
+    display: flex;
+    max-width: 800px;
+    width: 90%;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.popover-left img {
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.popover-right {
+    margin-left: 20px;
+    text-align: left;
+}
+
+.popover-right h2 {
+    margin-bottom: 10px;
+    font-size: 19.2px; /* Reduced by 20% */
+}
+
+.popover-right p {
+    margin-bottom: 10px;
+    font-size: 0.8em; /* Reduced by 20% */
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 19.2px; /* Reduced by 20% */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+/* Show popover */
+#popover-overlay:not(.hidden) {
+    display: flex;
+}

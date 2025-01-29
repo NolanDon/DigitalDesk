@@ -3,12 +3,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12rem 0rem 0rem 1.5rem;
+  /* padding: 12rem 0rem 0rem 1.5rem; */
   background-color: #ffffff;
   border-radius: 12px;
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-  margin-bottom: 10rem;
+  margin-bottom: 12rem;
   transition: transform 0.5s ease;
+}
+
+main {
+  padding-top: 160px;
 }
 
 header {

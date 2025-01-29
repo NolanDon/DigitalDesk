@@ -1,0 +1,216 @@
+.new-tech-section {
+  z-index: 5;
+  padding: 160px 20px; /* Reduced padding */
+  background-color: #f9fafe;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem; /* Reduced font-size */
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.6rem; /* Reduced margin */
+  font-family: "Red Hat Display", sans-serif;
+}
+
+.section-description {
+  font-size: 0.96rem; /* Reduced font-size */
+  color: #666;
+  margin-bottom: 4rem; /* Reduced margin */
+}
+
+.tech-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(224px, 1fr)); /* Reduced min-width */
+  gap: 1.6rem; /* Reduced gap */
+}
+
+.tech-item {
+  padding: 4px; /* Reduced padding */
+  background: #fff;
+  box-shadow: 0 3.2px 6.4px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+  border-radius: 9.6px; /* Reduced border-radius */
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-item:hover {
+  transform: translateY(-8px); /* Reduced translateY */
+  box-shadow: 0 4.8px 9.6px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+.tech-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.tech-title {
+  font-size: 1.2rem; /* Reduced font-size */
+  font-weight: 600;
+  color: #222;
+  padding: 0.8rem; /* Reduced padding */
+}
+
+.tech-summary {
+  font-size: 0.8rem; /* Reduced font-size */
+  color: #555;
+  padding: 0 0.8rem 1.2rem; /* Reduced padding */
+}
+
+.learn-more-link {
+  display: inline-block;
+  margin: 0 0.8rem 0.8rem; /* Reduced margin */
+  font-size: 0.8rem; /* Reduced font-size */
+  color: #0077ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.learn-more-link:hover {
+  color: #0056cc;
+}
+
+/* Scrolling Categories */
+.scrolling-categories {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 16px 0; /* Reduced padding */
+}
+
+/* Flexible Layout for Category List */
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px; /* Reduced gap */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* General Button Styles */
+.category-button {
+  margin: 1.6px; /* Reduced margin */
+  padding: 4px 16px; /* Reduced padding */
+  border-radius: 50px;
+  font-size: 12.8px; /* Reduced font-size */
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: transparent;
+  color: inherit;
+}
+
+.category-button:hover {
+  transform: scale(1.04); /* Reduced scale */
+  box-shadow: 0 3.2px 8px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+/* General Category Button Styling */
+.category-button {
+  padding: 4px 16px; /* Reduced padding */
+  font-size: 0.8em; /* Reduced font-size */
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Define color schemes for each category */
+.button-audio {
+  background-color: #64025c;
+  color: white;
+}
+
+.button-wearables {
+  background-color: #56ffcc;
+  color: white;
+}
+
+.button-laptop {
+  background-color: #4caf50;
+  color: white;
+}
+
+.button-gaming {
+  background-color: #ff5722;
+  color: white;
+}
+
+.button-ai {
+  background-color: #2196f3;
+  color: white;
+}
+
+.button-fitness {
+  background-color: #ff9800;
+  color: white;
+}
+
+.button-beauty {
+  background-color: #9c27b0;
+  color: white;
+}
+
+.button-smart-home {
+  background-color: #ffc107;
+  color: white;
+}
+
+.button-health {
+  background-color: #00bcd4;
+  color: white;
+}
+
+.button-photo-video {
+  background-color: #673ab7;
+  color: white;
+}
+
+.button-sustainability {
+  background-color: #8bc34a;
+  color: white;
+}
+
+/* Hover effect */
+.category-button:hover {
+  opacity: 0.8;
+}
+
+/* Search Bar */
+.search-bar {
+  width: 64%; /* Reduced width */
+  max-width: 320px; /* Reduced max-width */
+  padding: 8px; /* Reduced padding */
+  font-size: 12.8px; /* Reduced font-size */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 16px auto; /* Reduced margin */
+  display: block;
+}
+
+/* Header Spacing */
+.categories-header {
+  text-align: center;
+  margin-bottom: 24px; /* Reduced margin */
+}
+
+/* Animation */
+@keyframes lightUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px); /* Reduced translateY */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.light-up {
+  animation: lightUp 0.5s ease-in-out forwards;
+}

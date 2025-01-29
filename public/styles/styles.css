@@ -299,6 +299,11 @@ nav a {
 
 /* Media Query for mobile */
 @media (max-width: 768px) {
+
+  header {
+    position: absolute;
+  }
+  
   nav ul {
     flex-direction: column;
     gap: 10px;
