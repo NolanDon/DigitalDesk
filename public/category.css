@@ -62,7 +62,7 @@
 
 .categories-header {
     padding-top: 200px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 .search-bar {
@@ -103,9 +103,9 @@
 }
 
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .categories-header {
         padding-top: 160px;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
     }
 }
