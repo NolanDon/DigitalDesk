@@ -282,6 +282,7 @@ nav a {
   margin-left: auto;
   border: none !important;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
+  animation: spin 0.8s linear infinite;
 }
 
 /* Hamburger menu for mobile */

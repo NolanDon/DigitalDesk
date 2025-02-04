@@ -11,8 +11,7 @@ form.addEventListener("submit", event => {
     let password = user_password.value;
 
     firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(user => {
-            console.log(`Successfully signed in!`);            
+        .then(user => {       
         // redirecting to app homepage
         window.location.href = "index.html/";
 

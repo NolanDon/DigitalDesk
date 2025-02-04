@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="favicon.ico" type="image/ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Desk - Submit Item</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/submit.css" />
+    <script type="module" src="/app.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+  </head>
+
+  <body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <!-- Navbar -->
+    <header>
+      <div class="logo">
+        <a href="/">
+          <img src="images/logo.png" alt="Icon" class="navbar-logo" />
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="popular.html">Popular</a></li>
+          <li><a href="guides.html">Guides</a></li>
+        </ul>
+        <a id="add-item-link"></a>
+        <a id="sign-in" href="#">
+          <svg width="24" height="24" viewBox="0 0 50 50">
+            <circle
+              cx="25"
+              cy="25"
+              r="20"
+              stroke="white"
+              stroke-width="4"
+              fill="none"
+              stroke-linecap="round"
+              stroke-dasharray="100, 50"
+              transform="rotate(-90 25 25)"
+            >
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                from="0 25 25"
+                to="360 25 25"
+                dur="1s"
+                repeatCount="indefinite"
+              />
+            </circle>
+          </svg>
+        </a>
+        <div id="sign-in-status"></div>
+
+        <div class="hamburger" id="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="w-full max-w-md p-8">
+      <div class="mb-4">
+        <section id="submit-item">
+          <h2 class="text-2xl font-bold text-center text-gray-700">Submit Item</h2>
+          <h3 class="text-small text-center text-black-400">All items will be reviewed by our team</h3>
+          <form id="item-form">
+            <label for="item-name">Item Name:</label>
+            <input type="text" id="item-name" required />
+
+            <label for="item-description">Item Description:</label>
+            <textarea id="item-description" required></textarea>
+
+            <label for="item-image">Upload Image:</label>
+            <input type="file" id="item-image" accept="image/*" />
+            <img
+              id="image-preview"
+              src="#"
+              alt="Image Preview"
+              style="display: none; max-width: 100%; margin-top: 10px"
+            />
+            <button type="submit">Submit Item</button>
+          </form>
+        </section>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      initApp = function () {
+        firebase.auth().onAuthStateChanged(
+          function (user) {
+            const signInButton = document.getElementById("sign-in");
+            signInButton.className = "distinct-button";
+            // const signInStatus = document.getElementById('sign-in-status');
+            // const accountDetails = document.getElementById('account-details');
+            const addItemLink = document.getElementById("add-item-link");
+
+            if (user) {
+              // If the user is Nolan, add the "Add Item" link
+              if (user.email === "nolan796@live.ca") {
+                addItemLink.innerHTML =
+                  '<a href="/submit.html" class="distinct-button">Add Item</a>';
+              } else {
+                addItemLink.innerHTML = "";
+              }
+
+              // User is signed in
+              signInButton.textContent = "Sign out";
+              signInButton.className = "distinct-button";
+              signInButton.onclick = () => {
+                firebase
+                  .auth()
+                  .signOut()
+                  .then(function () {
+                    signInButton.textContent = "Login";
+                    signInButton.className = "distinct-button";
+                    signInButton.textContent = "Login"; // Reset the button text
+                    // Clear the status
+                    // accountDetails.textContent = ''; // Clear the account details
+                  })
+                  .catch((error) => {
+                    console.error("Sign out error:", error);
+                  });
+              };
+
+              // accountDetails.textContent = JSON.stringify(user, null, 2); // Format user data nicely
+            } else {
+              // User is not signed in
+              signInButton.textContent = "Login";
+              signInButton.onclick = () => {
+                window.location.href = "/login.html"; // Redirect to the login page
+              };
+
+              // accountDetails.textContent = '';
+              addItemLink.innerHTML = ""; // Ensure the "Add Item" link is removed if logged out
+            }
+          },
+          function (error) {
+            console.log(error);
+          }
+        );
+      };
+
+      window.addEventListener("load", function () {
+        initApp();
+      });
+    </script>
+    <script>
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+      document
+        .getElementById("item-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const itemName = document.getElementById("item-name").value;
+          const itemDescription =
+            document.getElementById("item-description").value;
+
+          const itemData = {
+            name: itemName,
+            description: itemDescription,
+            submittedBy: auth.currentUser.email,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          };
+
+          db.collection("items")
+            .add(itemData)
+            .then(() => {
+              alert("Item submitted successfully!");
+              document.getElementById("item-form").reset();
+            })
+            .catch((error) => {
+              console.error("Error submitting item: ", error);
+              alert("Error submitting item.");
+            });
+        });
+
+      window.addEventListener("load", function () {
+        if (!auth.currentUser) {
+          document.getElementById("sign-in").textContent = "Login";
+          document.getElementById("sign-in").onclick = function () {
+            window.location.href = "/login.html";
+          };
+        }
+      });
+    </script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+    <!-- <script src="./Auth.js"></script> -->
+    <script src="./_config/firebase.js"></script>
+  </body>
+</html>

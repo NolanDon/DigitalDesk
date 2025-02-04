@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalDesk | Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+
+    <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-center text-gray-700">Sign Up</h2>
+
+        <form id="signup-form" action="#" method="POST" class="mt-6">
+            <!-- Email -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-600">Email</label>
+                <input 
+                    type="email" 
+                    id="email"
+                    placeholder="Enter your email" 
+                    class="w-full border border-gray-300 p-2 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200"
+                    required
+                />
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-600">Password</label>
+                <input 
+                    type="password" 
+                    id="password"
+                    placeholder="Enter your password" 
+                    class="w-full border border-gray-300 p-2 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200"
+                    required
+                />
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-600">Confirm Password</label>
+                <input 
+                    type="password" 
+                    id="confirm-password"
+                    placeholder="Re-enter your password" 
+                    class="w-full border border-gray-300 p-2 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200"
+                    required
+                />
+                <p id="password-error" class="text-red-500 text-sm mt-1 hidden">Passwords do not match.</p>
+            </div>
+
+            <!-- Simple Bot Deterrent -->
+            <div class="mb-4 flex items-center">
+                <input type="checkbox" id="not-a-robot" class="mr-2">
+                <label for="not-a-robot" class="text-sm text-gray-600">I am not a robot</label>
+            </div>
+
+            <button 
+                type="submit" 
+                class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+                Sign Up
+            </button>
+
+            <p class="mt-4 text-center text-sm text-gray-500">
+                Already have an account? 
+                <a href="/login.html" class="text-blue-600 hover:underline">Log In</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+            const passwordError = document.getElementById("password-error");
+            const notARobot = document.getElementById("not-a-robot").checked;
+
+            if (password !== confirmPassword) {
+                event.preventDefault();
+                passwordError.classList.remove("hidden");
+            } else {
+                passwordError.classList.add("hidden");
+            }
+
+            if (!notARobot) {
+                event.preventDefault();
+                alert("Please confirm you are not a robot.");
+            }
+        });
+    </script>
+
+</body>
+</html>

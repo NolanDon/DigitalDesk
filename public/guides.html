@@ -36,7 +36,14 @@
                 <li><a href="guides.html">Guides</a></li>
             </ul>
             <a id="add-item-link"></a>
-            <a id="sign-in" class="distinct-button" href="#">Login</a>
+            <a id="sign-in" href="#">
+                <svg width="24" height="24" viewBox="0 0 50 50">
+                  <circle cx="25" cy="25" r="20" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" 
+                          stroke-dasharray="100, 50" transform="rotate(-90 25 25)">
+                    <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite" />
+                  </circle>
+                </svg>
+              </a>
             <div id="sign-in-status"></div>
 
             <div class="hamburger" id="hamburger">
@@ -256,9 +263,10 @@
     </script>
     <script type="text/javascript">
 
-        initApp = function () {
+initApp = function () {
             firebase.auth().onAuthStateChanged(function (user) {
                 const signInButton = document.getElementById('sign-in');
+                signInButton.className = 'distinct-button';
                 // const signInStatus = document.getElementById('sign-in-status');
                 // const accountDetails = document.getElementById('account-details');
                 const addItemLink = document.getElementById('add-item-link');
@@ -267,18 +275,20 @@
                 if (user) {
                     // If the user is Nolan, add the "Add Item" link
                     if (user.email === "nolan796@live.ca") {
-                        console.log("user email matched, adding <a> tag")
-                        addItemLink.innerHTML = '<a href="/add-item.html" class="distinct-button">Add Item</a>';
+                        addItemLink.innerHTML = '<a href="/submit.html" class="distinct-button">Add Item</a>';
                     } else {
                         addItemLink.innerHTML = '';
                     }
 
                     // User is signed in
                     signInButton.textContent = 'Sign out';
+                    signInButton.className = 'distinct-button';
                     signInButton.onclick = () => {
                         firebase.auth().signOut().then(function () {
+                            signInButton.textContent = 'Login';
+                            signInButton.className = 'distinct-button';
                             signInButton.textContent = 'Login'; // Reset the button text
-                            signInStatus.textContent = ''; // Clear the status
+                            // Clear the status
                             // accountDetails.textContent = ''; // Clear the account details
                         }).catch((error) => {
                             console.error('Sign out error:', error);
