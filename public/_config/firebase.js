@@ -1,4 +1,5 @@
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+// import { initializeApp } from 'firebase/app';
+// import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
 const config = {
   apiKey: "AIzaSyDl0CZgnXZoVW9cVnxcjIXpsw_OJ13pJ-8",
@@ -10,6 +11,11 @@ const config = {
   measurementId: "G-ND8L5H8YCB"
 };
 
-firebase.initializeApp(config);
+// Initialize Firebase
+const app = firebase.initializeApp(config);
+// const db = getFirestore(app);
 
-// export { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword };
+// //create your custom method
+// const getItems = () => {
+//   return getDocs(collection(db, "items"));
+// };

@@ -13,9 +13,6 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script type="module" src="/app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
 </head>
 
 <body>
@@ -60,7 +57,7 @@
         <div class="guide-section" data-aos="fade-right">
             <div class="guide-card">
                 <div class="lottie-wrapper">
-                    <div id="fitness-animation"></div>
+                    <div id="laptop-animation"></div>
                 </div>
                 <div class="guide-content">
                     <h2>Wearables and Fitness Trackers</h2>
@@ -85,7 +82,7 @@
         <div class="guide-section" data-aos="fade-left">
             <div class="guide-card">
                 <div class="lottie-wrapper">
-                    <div id="laptop-animation"></div>
+                    <div id="laptop-animation-2"></div>
                 </div>
                 <div class="guide-content">
                     <h2>Choosing the Right Laptop</h2>
@@ -211,6 +208,14 @@
             loop: true,
             autoplay: true,
             path: '/lotties/fitness.json'
+        });
+
+        lottie.loadAnimation({
+            container: document.getElementById('laptop-animation-2'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/lotties/laptop.json'
         });
 
         lottie.loadAnimation({

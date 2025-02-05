@@ -86,7 +86,7 @@
     color: #ffcc00;
 }
 
-#item-form button {
+.submit-button {
     padding: 14px;
     font-size: 1rem;
     font-weight: bold;
@@ -98,6 +98,39 @@
     transition: background-color 0.3s;
 }
 
-#item-form button:hover {
+.submit-button:hover {
     background-color: #0056b3;
 }
+
+/* Style for selected category tags */
+.category-tag {
+    display: inline-flex;
+    align-items: center;
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #3498db; /* Blue background */
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for category tags */
+  .category-tag:hover {
+    background-color: #2980b9; /* Darker blue */
+  }
+  
+  /* Remove button style ("X") */
+  .remove-category {
+    display: none; /* Initially hidden */
+    margin-left: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* Hover effect for remove button */
+  .remove-category:hover {
+    color: #e74c3c; /* Red color for "X" */
+  }
+  

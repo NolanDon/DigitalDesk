@@ -1,361 +1,358 @@
 <!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="favicon.ico" type="image/ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Search - Digital Desk</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/category.css">
-    <link rel="stylesheet" href="styles/reviews.css">
-    <link rel="stylesheet" href="styles/new-tech.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
-        rel="stylesheet">
-    <script type="module" src="/app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
-    <!-- Font Awesome for Star Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <link rel="icon" href="favicon.ico" type="image/ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Item Search - Digital Desk</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/category.css" />
+  <link rel="stylesheet" href="styles/reviews.css" />
+  <link rel="stylesheet" href="styles/new-tech.css" />
+  <link rel="stylesheet" href="styles/footer.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <script type="module" src="./app.js"></script>
+  <!-- <script type="module" src="./firebaseService.js"></script> -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
 </head>
 
 <body>
-    <!-- Popover Container -->
-    <div id="popover-overlay" class="hidden">
-        <div class="popover-content">
-            <div class="popover-left">
-                <img src="" alt="Item Image" id="popover-image">
-            </div>
-            <div class="popover-right">
-                <h2 id="popover-title"></h2>
-                <p id="popover-description"></p>
-                <div id="popover-rating"></div>
-            </div>
-            <button class="close-btn" onclick="closePopover()">×</button>
-        </div>
+  <div id="pagination-section">
+    <span id="total-items"></span>
+    <div id="pagination-controls"></div>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      getDocs,
+    } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDl0CZgnXZoVW9cVnxcjIXpsw_OJ13pJ-8",
+      authDomain: "digitaldesk-18348.firebaseapp.com",
+      projectId: "digitaldesk-18348",
+      storageBucket: "digitaldesk-18348.firebasestorage.app",
+      messagingSenderId: "514653264950",
+      appId: "1:514653264950:web:81f40df58727a55c060c97",
+      measurementId: "G-ND8L5H8YCB",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.itemsArray = []; // Attach to window to make it globally accessible
+
+    async function getDocuments() {
+      if (window.itemsArray.length > 0) {
+        console.log("Items already fetched. Skipping Firestore call.");
+        return;
+      }
+      try {
+        const querySnapshot = await getDocs(collection(db, "items"));
+        window.itemsArray = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        console.log("Fetched items:", window.itemsArray);
+      } catch (error) {
+        console.error("Error getting documents: ", error);
+      }
+    }
+
+    getDocuments();
+  </script>
+
+  <!-- Popover Container -->
+  <div id="popover-overlay" class="hidden">
+    <div class="popover-content">
+      <div class="popover-left">
+        <img src="" alt="Item Image" id="popover-image" />
+      </div>
+      <div class="popover-right">
+        <h2 id="popover-title"></h2>
+        <p id="popover-description"></p>
+        <div id="popover-rating"></div>
+      </div>
+      <button class="close-btn" onclick="closePopover()">×</button>
     </div>
-    <!-- Navbar -->
-    <header>
-        <div class="logo">
-            <a href="/">
-                <img src="images/logo.png" alt="Icon" class="navbar-logo">
-            </a>
-        </div>
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="reviews.html">Reviews</a></li>
-                <li><a href="categories.html">Categories</a></li>
-                <li><a href="popular.html">Popular</a></li>
-                <li><a href="guides.html">Guides</a></li>
-            </ul>
-            <a id="add-item-link"></a>
-            <a id="sign-in" href="#">
-                <svg width="24" height="24" viewBox="0 0 50 50">
-                  <circle cx="25" cy="25" r="20" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" 
-                          stroke-dasharray="100, 50" transform="rotate(-90 25 25)">
-                    <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite" />
-                  </circle>
-                </svg>
-              </a>
-            <div id="sign-in-status"></div>
+  </div>
+  <!-- Navbar -->
+  <header>
+    <div class="logo">
+      <a href="/">
+        <img src="images/logo.png" alt="Icon" class="navbar-logo" />
+      </a>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="popular.html">Popular</a></li>
+        <li><a href="guides.html">Guides</a></li>
+      </ul>
+      <a id="add-item-link"></a>
+      <a id="sign-in" href="#">
+        <svg width="24" height="24" viewBox="0 0 50 50">
+          <circle
+            cx="25"
+            cy="25"
+            r="20"
+            stroke="white"
+            stroke-width="4"
+            fill="none"
+            stroke-linecap="round"
+            stroke-dasharray="100, 50"
+            transform="rotate(-90 25 25)"
+          >
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0 25 25"
+              to="360 25 25"
+              dur="1s"
+              repeatCount="indefinite"
+            />
+          </circle>
+        </svg>
+      </a>
+      <div id="sign-in-status"></div>
 
-            <div class="hamburger" id="hamburger">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </nav>
-    </header>
+      <div class="hamburger" id="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </nav>
+  </header>
 
-    <!-- Item Search Section -->
-    <main id="categories">
-        <div class="categories-header">
-            <h1>Search Tech Items</h1>
-            <p>We'll try our best to find you reviews and opinions, to help you make the best informed decision.</p>
-            <input type="text" id="category-search" class="search-bar" placeholder="Search items..."
-                oninput="searchItems()" />
-        </div>
-        <!-- Search Results -->
-        <div id="search-results"></div>
-    </main>
-    <section></section>
+  <!-- Item Search Section -->
+  <main id="categories">
+    <div class="categories-header">
+      <h1>Search Tech Items</h1>
+      <p>
+        We'll try our best to find you reviews and opinions, to help you make
+        the best informed decision.
+      </p>
+      <input
+        type="text"
+        id="category-search"
+        class="search-bar"
+        placeholder="Search items..."
+        oninput="searchItems()"
+      />
+    </div>
+    <!-- Search Results -->
+    <div id="search-results"></div>
+  </main>
 
-    <!-- Rating System Explanation
-            <div class="rating-system">
-                <h2>How We Rate Items</h2>
-                <p>Our rating system is based on a 0-10 scale:</p>
-                <ul>
-                    <li><strong>0-4 Stars:</strong> Subpar item. Not recommended.</li>
-                    <li><strong>5-7 Stars:</strong> Good item. Solid choice for most users.</li>
-                    <strong>8-10 Stars:</strong> Excellent item. Highly recommended.</li>
-                </ul>
-                <div class="rating">
-                    <i class="fas fa-star" data-value="1"></i>
-                    <i class="fas fa-star" data-value="2"></i>
-                    <i class="fas fa-star" data-value="3"></i>
-                    <i class="fas fa-star" data-value="4"></i>
-                    <i class="fas fa-star" data-value="5"></i>
-                    <i class="fas fa-star" data-value="6"></i>
-                    <i class="fas fa-star" data-value="7"></i>
-                    <i class="fas fa-star" data-value="8"></i>
-                    <i class="fas fa-star" data-value="9"></i>
-                    <i class="fas fa-star" data-value="10"></i>
-                    <span id="rating-value">(10/10)</span>
-                </div>
-            </div> -->
+  <script>
+    function generateCategoryButtons(categories) {
+      return categories
+        .map((category) => {
+          // Convert category to lowercase to match the class format
+          const categoryClass = `button-${category.toLowerCase()}`;
 
-    <script>
-        function generateCategoryButtons(categories) {
-            return categories.map(category => {
-                // Convert category to lowercase to match the class format
-                const categoryClass = `button-${category.toLowerCase()}`;
-
-                // Return the button with the dynamic class
-                return `
+          // Return the button with the dynamic class
+          return `
             <button data-category="${category}" class="category-button ${categoryClass}">${category}</button>
         `;
-            }).join('');
-        }
+        })
+        .join("");
+    }
 
-        function displayResults(data) {
-            const resultsContainer = document.getElementById('search-results');
-            resultsContainer.innerHTML = ''; // Clear previous results
+    function displayResults(data) {
+      const resultsContainer = document.getElementById("search-results");
+      resultsContainer.innerHTML = ""; // Clear previous results
 
-            if (!data || !data.items || data.items.length === 0) {
-                resultsContainer.innerHTML = '<p>No results found.</p>';
-                return;
-            }
+      if (data.length === 0) {
+        resultsContainer.innerHTML =
+          '<p class="no-results">No results found.</p>';
+        return;
+      }
 
-            data.items.forEach(item => {
-                const itemCard = document.createElement('div');
-                itemCard.classList.add('item-card');
+      data.forEach((item) => {
+        const itemCard = document.createElement("div");
+        itemCard.classList.add("item-card");
+        itemCard.innerHTML = `
+      <h3 class="item-name">${item.name}</h3>
+      <p class="item-price">$${(item.price / 100).toFixed(
+        2
+      )}</p> <!-- Convert cents to dollars -->
+      <div class="rating">
+          <span class="stars">${generateStars(item.rating)}</span> (${
+          item.rating
+        }/10)
+      </div>
+      <p class="item-description">${item.description}</p>
+      <div class="item-categories">
+  ${
+    item.categories && Array.isArray(item.categories)
+      ? item.categories
+          .map((category) => {
+            const categoryClass = category.toLowerCase().replace(/\s+/g, "-"); // Format category for button class
+            return `<button type="button" data-category="${category}" class="category-button button-${categoryClass}">${category}</button>`;
+          })
+          .join("")
+      : ""
+  }
+</div>
+    `;
+        itemCard.addEventListener("click", () => showPopover(item));
+        resultsContainer.appendChild(itemCard);
+      });
+    }
 
-                const itemHTML = `
-            <img src="${item.image}" alt="${item.name}" class="item-image" />
-            <h3 class="item-name">${item.name}</h3>
-            <p class="item-price">$${item.price}</p>
-            <div class="rating">
-                <span class="stars">${generateStars(item.rating)}</span> (${item.rating}/10)
-            </div>
-            <p class="item-description">${item.description}</p>
-        `;
+    let currentPage = 1;
+    const itemsPerPage = 10; // Number of items per page
 
-                itemCard.innerHTML = itemHTML;
-                itemCard.addEventListener('click', () => showPopover(item)); // Open popover when clicked
-                resultsContainer.appendChild(itemCard);
-            });
-        }
+    function paginateItems(items) {
+      const totalItems = items.length;
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-        function showPopover(item) {
-            // Show the popover overlay
-            document.getElementById('popover-overlay').classList.remove('hidden');
+      // Update total items text
+      document.getElementById(
+        "total-items"
+      ).innerText = `Total items: ${totalItems}`;
 
-            // Set the popover content
-            document.getElementById('popover-image').src = item.image;
-            document.getElementById('popover-title').innerText = item.name;
-            document.getElementById('popover-description').innerText = item.description;
-            document.getElementById('popover-rating').innerHTML = generateStars(item.rating) + ` (${item.rating}/10)`;
-        }
+      // Slice items for current page
+      const start = (currentPage - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      const currentPageItems = items.slice(start, end);
 
-        function closePopover() {
-            // Hide the popover overlay
-            document.getElementById('popover-overlay').classList.add('hidden');
-        }
+      // Display current page items
+      displayResults(currentPageItems);
 
-        function generateStars(rating) {
-            const fullStars = '★'.repeat(Math.floor(rating));
-            const emptyStars = '☆'.repeat(10 - Math.floor(rating));
-            return fullStars + emptyStars;
-        }
+      // Update pagination controls
+      updatePaginationControls(totalPages);
+    }
 
-        async function searchItems() {
-            const query = document.getElementById('category-search').value.toLowerCase();
+    function updatePaginationControls(totalPages) {
+      const paginationControls = document.getElementById("pagination-controls");
+      paginationControls.innerHTML = ""; // Clear previous controls
 
-            if (query === '') {
-                document.getElementById('search-results').innerHTML = '';
-                return;
-            }
+      // Prev button
+      const prevButton = document.createElement("button");
+      prevButton.innerText = "Prev";
+      prevButton.disabled = currentPage === 1;
+      prevButton.addEventListener("click", () => changePage(currentPage - 1));
+      paginationControls.appendChild(prevButton);
 
-            // Log the query to check if it's being captured correctly
-            console.log('Searching for:', query);
+      // Page numbers
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement("button");
+        pageButton.innerText = i;
+        pageButton.disabled = i === currentPage;
+        pageButton.addEventListener("click", () => changePage(i));
+        paginationControls.appendChild(pageButton);
+      }
 
-            // Filter the sample data based on the search query
-            const filteredItems = sampleData.filter(item =>
-                item.name.toLowerCase().includes(query) ||
-                item.brand.toLowerCase().includes(query)
-            );
+      // Next button
+      const nextButton = document.createElement("button");
+      nextButton.innerText = "Next";
+      nextButton.disabled = currentPage === totalPages;
+      nextButton.addEventListener("click", () => changePage(currentPage + 1));
+      paginationControls.appendChild(nextButton);
+    }
 
-            console.log('Filtered items:', filteredItems); // Log the filtered items to see what is being returned
+    function changePage(page) {
+      currentPage = page;
+      paginateItems(window.itemsArray);
+    }
 
-            // Check if we have results and display them
-            if (filteredItems.length === 0) {
-                document.getElementById('search-results').innerHTML = '<p class="no-results">No results found.</p>';
-            } else {
-                displayResults(filteredItems);  // Pass array directly without wrapping in an object
-            }
-        }
+    // Call paginateItems when items are fetched or filtered
+    async function searchItems() {
+      const query = document
+        .getElementById("category-search")
+        .value.toLowerCase();
+      if (query === "") {
+        document.getElementById("search-results").innerHTML = "";
+        return;
+      }
 
-        // This is the correct displayResults function to show results
-        function displayResults(data) {
-            const resultsContainer = document.getElementById('search-results');
-            resultsContainer.innerHTML = ''; // Clear previous results
+      const filteredItems = window.itemsArray.filter(
+        (item) =>
+          item.name.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query)
+      );
 
-            if (data.length === 0) {
-                resultsContainer.innerHTML = '<p class="no-results">No results found.</p>';
-                return;
-            }
+      paginateItems(filteredItems);
+    }
 
-            data.forEach(item => {
-                const itemCard = document.createElement('div');
-                itemCard.classList.add('item-card');
+    function showPopover(item) {
+      document.getElementById("popover-overlay").classList.remove("hidden");
+      document.getElementById("popover-image").src = item.image;
+      document.getElementById("popover-title").innerText = item.name;
+      document.getElementById("popover-description").innerText =
+        item.description;
+      document.getElementById("popover-rating").innerHTML =
+        generateStars(item.rating) + ` (${item.rating}/10)`;
+    }
 
-                const itemHTML = `
-            <img src="${item.image}" alt="${item.name}" class="item-image" />
-            <h3 class="item-name">${item.name}</h3>
-            <p class="item-price">$${item.price}</p>
-        `;
+    function closePopover() {
+      // Hide the popover overlay
+      document.getElementById("popover-overlay").classList.add("hidden");
+    }
 
-                itemCard.innerHTML = itemHTML;
-                itemCard.addEventListener('click', () => showPopover(item)); // Open popover when clicked
-                resultsContainer.appendChild(itemCard);
-            });
-        }
+    function generateStars(rating) {
+      const fullStars = "★".repeat(Math.floor(rating));
+      const emptyStars = "☆".repeat(10 - Math.floor(rating));
+      return fullStars + emptyStars;
+    }
 
+    async function searchItems() {
+      console.log("Search triggered.");
+      const query = document
+        .getElementById("category-search")
+        .value.toLowerCase();
+      if (query === "") {
+        document.getElementById("search-results").innerHTML = "";
+        return;
+      }
 
+      const filteredItems = window.itemsArray.filter(
+        (item) =>
+          item.name.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query)
+      );
 
-        const searchInput = document.getElementById('category-search');
-        const resultsContainer = document.getElementById('search-results');
-        let debounceTimer;
+      console.log("Filtered items:", filteredItems);
+      displayResults(filteredItems);
+    }
 
-        // Example dataset (replace this with API results)
-        const sampleData = [
-            {
-                name: "Legion 5 Pro",
-                brand: "Lenovo",
-                image: "./images/legion5pro.jpg",
-                price: 1399,
-                rating: 8.5,
-                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
-                categories: ["laptops", "gaming"]
-            },
-            {
-                name: "Legion 6 Pro",
-                brand: "Lenovo",
-                image: "./images/legion5pro.jpg",
-                price: 1399,
-                rating: 8.5,
-                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
-                categories: ["laptops", "gaming"]
-            },
-            {
-                name: "Legion 7 Pro",
-                brand: "Lenovo",
-                image: "./images/legion5pro.jpg",
-                price: 1399,
-                rating: 8.5,
-                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
-                categories: ["laptops", "gaming"]
-            },
-            {
-                name: "Legion 8 Pro",
-                brand: "Lenovo",
-                image: "./images/legion5pro.jpg",
-                price: 1399,
-                rating: 5.5,
-                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
-                categories: ["laptops", "gaming"]
-            },
-            {
-                name: "Legion 9 Pro",
-                brand: "Lenovo",
-                image: "./images/legion5pro.jpg",
-                price: 1399,
-                rating: 2.5,
-                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
-                categories: ["laptops", "gaming"]
-            },
-            {
-                name: "Legion 10 Pro",
-                brand: "Lenovo",
-                image: "./images/legion5pro.jpg",
-                price: 1399,
-                rating: 3.5,
-                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
-                categories: ["laptops", "gaming"]
-            },
-            {
-                name: "Legion 11 Pro",
-                brand: "Lenovo",
-                image: "./images/legion5pro.jpg",
-                price: 1399,
-                rating: 8.5,
-                description: "A powerful gaming laptop with Ryzen 7 and RTX 3070.",
-                categories: ["laptops", "gaming"]
-            },
-        ];
+    const searchInput = document.getElementById("category-search");
+    const resultsContainer = document.getElementById("search-results");
+    let debounceTimer;
 
-        // Debounced Search Function
-        searchInput.addEventListener('input', () => {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(() => {
-                const query = searchInput.value.trim().toLowerCase();
-                if (query === '') {
-                    resultsContainer.innerHTML = ''; // Clear results if empty
-                    return;
-                }
+    // Debounced Search Function
+    searchInput.addEventListener("input", () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        searchItems();
+      }, 300); // Debounce delay (300ms)
+    });
 
-                // Filter example dataset
-                const filteredItems = sampleData.filter(item =>
-                    item.name.toLowerCase().includes(query) ||
-                    item.brand.toLowerCase().includes(query)
-                );
+    // Function to show full details
+    function showItemDetails(item) {
+      const formattedPrice = (item.price / 100).toFixed(2);
 
-                displayResults(filteredItems);
-            }, 300); // Debounce delay (300ms)
-        });
-
-        // Function to display results in a dropdown-style list
-        function displayResults(data) {
-            resultsContainer.innerHTML = ''; // Clear previous results
-
-            if (data.length === 0) {
-                resultsContainer.innerHTML = '<p class="no-results">No results found.</p>';
-                return;
-            }
-
-            const list = document.createElement('ul');
-            list.classList.add('search-dropdown');
-
-            data.forEach(item => {
-                const listItem = document.createElement('li');
-                listItem.classList.add('dropdown-item');
-                listItem.innerHTML = `
-            <div class="dropdown-info">
-                <h3 class="dropdown-title">${item.name}</h3>
-                <p class="dropdown-rating">⭐ ${item.rating}/10</p>
-            </div>
-        `;
-                listItem.addEventListener('click', () => showItemDetails(item)); // Handle item selection
-                list.appendChild(listItem);
-            });
-
-            resultsContainer.appendChild(list);
-        }
-
-        // Function to show full details
-        function showItemDetails(item) {
-            resultsContainer.innerHTML = `
+      resultsContainer.innerHTML = `
         <div class="item-card">
             <img src="${item.image}" alt="${item.name}" class="item-image" />
             <h3 class="item-name">${item.name}</h3>
             <p class="item-brand">By ${item.brand}</p>
-            <p class="item-price">$${item.price}</p>
+            <p class="item-price">$${formattedPrice}</p>
             <div class="rating">
-                <span class="stars">${generateStars(item.rating)}</span> (${item.rating}/10)
+                <span class="stars">${generateStars(item.rating)}</span> (${
+        item.rating
+      }/10)
             </div>
             <p class="item-description">${item.description}</p>
             <div class="category-buttons">
@@ -363,127 +360,165 @@
             </div>
         </div>
     `;
+    }
+
+    const hamburger = document.getElementById("hamburger");
+    const nav = document.querySelector("nav");
+
+    hamburger.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+
+    // Helper function to generate star icons
+    function generateStars(rating) {
+      const fullStars = "★".repeat(Math.floor(rating));
+      const emptyStars = "☆".repeat(10 - Math.floor(rating));
+      return fullStars + emptyStars;
+    }
+  </script>
+  <script type="text/javascript">
+    initApp = function () {
+      firebase.auth().onAuthStateChanged(
+        function (user) {
+          const signInButton = document.getElementById("sign-in");
+          signInButton.className = "distinct-button";
+          // const signInStatus = document.getElementById('sign-in-status');
+          // const accountDetails = document.getElementById('account-details');
+          const addItemLink = document.getElementById("add-item-link");
+
+          if (user) {
+            // If the user is Nolan, add the "Add Item" link
+            if (user.email === "nolan796@live.ca") {
+              addItemLink.innerHTML =
+                '<a href="/submit.html" class="distinct-button">Add Item</a>';
+            } else {
+              addItemLink.innerHTML = "";
+            }
+
+            // User is signed in
+            signInButton.textContent = "Sign out";
+            signInButton.className = "distinct-button";
+            signInButton.onclick = () => {
+              firebase
+                .auth()
+                .signOut()
+                .then(function () {
+                  signInButton.textContent = "Login";
+                  signInButton.className = "distinct-button";
+                  signInButton.textContent = "Login"; // Reset the button text
+                  // Clear the status
+                  // accountDetails.textContent = ''; // Clear the account details
+                })
+                .catch((error) => {
+                  console.error("Sign out error:", error);
+                });
+            };
+
+            // accountDetails.textContent = JSON.stringify(user, null, 2); // Format user data nicely
+          } else {
+            // User is not signed in
+            signInButton.textContent = "Login";
+            signInButton.onclick = () => {
+              window.location.href = "/login.html"; // Redirect to the login page
+            };
+
+            // accountDetails.textContent = '';
+            addItemLink.innerHTML = ""; // Ensure the "Add Item" link is removed if logged out
+          }
+        },
+        function (error) {
+          console.log(error);
         }
+      );
+    };
 
-        const hamburger = document.getElementById('hamburger');
-        const nav = document.querySelector('nav');
+    window.addEventListener("load", function () {
+      initApp();
+    });
+  </script>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
 
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
 
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+  <!-- <script src="./Auth.js"></script> -->
+  <script src="./_config/firebase.js"></script>
+  <!-- <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <a href="/" class="footer-logo-link">
+          <img src="images/logo.png" alt="Logo" class="footer-logo-img" />
+        </a>
+      </div>
 
-        // Helper function to generate star icons
-        function generateStars(rating) {
-            const fullStars = '★'.repeat(Math.floor(rating));
-            const emptyStars = '☆'.repeat(10 - Math.floor(rating));
-            return fullStars + emptyStars;
-        }
+      <div class="footer-nav">
+        <ul class="footer-nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="popular.html">Popular</a></li>
+          <li><a href="guides.html">Guides</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
 
-    </script>
-    <script type="text/javascript">
-  initApp = function () {
-            firebase.auth().onAuthStateChanged(function (user) {
-                const signInButton = document.getElementById('sign-in');
-                signInButton.className = 'distinct-button';
-                // const signInStatus = document.getElementById('sign-in-status');
-                // const accountDetails = document.getElementById('account-details');
-                const addItemLink = document.getElementById('add-item-link');
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p>
+          Email: <a href="mailto:info@digitaldesk.com">info@digitaldesk.com</a>
+        </p>
+        <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+      </div>
 
-
-                if (user) {
-                    // If the user is Nolan, add the "Add Item" link
-                    if (user.email === "nolan796@live.ca") {
-                        addItemLink.innerHTML = '<a href="/submit.html" class="distinct-button">Add Item</a>';
-                    } else {
-                        addItemLink.innerHTML = '';
-                    }
-
-                    // User is signed in
-                    signInButton.textContent = 'Sign out';
-                    signInButton.className = 'distinct-button';
-                    signInButton.onclick = () => {
-                        firebase.auth().signOut().then(function () {
-                            signInButton.textContent = 'Login';
-                            signInButton.className = 'distinct-button';
-                            signInButton.textContent = 'Login'; // Reset the button text
-                            // Clear the status
-                            // accountDetails.textContent = ''; // Clear the account details
-                        }).catch((error) => {
-                            console.error('Sign out error:', error);
-                        });
-                    };
-
-                    // accountDetails.textContent = JSON.stringify(user, null, 2); // Format user data nicely
-                } else {
-                    // User is not signed in
-                    signInButton.textContent = 'Login';
-                    signInButton.onclick = () => {
-                        window.location.href = '/login.html'; // Redirect to the login page
-                    };
-
-                    // accountDetails.textContent = '';
-                    addItemLink.innerHTML = ''; // Ensure the "Add Item" link is removed if logged out
-                }
-            }, function (error) {
-                console.log(error);
-            });
-        };
-
-        window.addEventListener('load', function () {
-            initApp()
-        });
-    </script>
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
-
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
-
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
-    <!-- <script src="./Auth.js"></script> -->
-    <script src="./_config/firebase.js"></script>
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <a href="/" class="footer-logo-link">
-                    <img src="images/logo.png" alt="Logo" class="footer-logo-img">
-                </a>
-            </div>
-
-            <div class="footer-nav">
-                <ul class="footer-nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="reviews.html">Reviews</a></li>
-                    <li><a href="categories.html">Categories</a></li>
-                    <li><a href="popular.html">Popular</a></li>
-                    <li><a href="guides.html">Guides</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <p>Email: <a href="mailto:info@digitaldesk.com">info@digitaldesk.com</a></p>
-                <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
-            </div>
-
-            <div class="footer-social">
-                <h3>Follow Us</h3>
-                <ul class="social-links">
-                    <li><a href="https://facebook.com" target="_blank" class="social-icon facebook">F</a></li>
-                    <li><a href="https://twitter.com" target="_blank" class="social-icon twitter">T</a></li>
-                    <li><a href="https://instagram.com" target="_blank" class="social-icon instagram">I</a></li>
-                    <li><a href="https://linkedin.com" target="_blank" class="social-icon linkedin">L</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; Design: <a href="https://highwoodwebdesign.com" target="_blank">Highwood Web Design</a></p>
-        </div>        
-    </footer>
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <ul class="social-links">
+          <li>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              class="social-icon facebook"
+              >F</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              class="social-icon twitter"
+              >T</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              class="social-icon instagram"
+              >I</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              class="social-icon linkedin"
+              >L</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>
+        &copy; Design:
+        <a href="https://highwoodwebdesign.com" target="_blank"
+          >Highwood Web Design</a
+        >
+      </p>
+    </div>
+  </footer> -->
 </body>
-
-</html>

@@ -279,11 +279,27 @@ nav a {
   font-weight: 550;
   text-decoration: none;
   border-radius: 5px;
+  white-space: nowrap;
   margin-left: auto;
   border: none !important;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   animation: spin 0.8s linear infinite;
 }
+
+.distinct-button-no-hide {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-weight: 550;
+  text-decoration: none;
+  border-radius: 5px;
+  white-space: nowrap;
+  margin-left: auto;
+  border: none !important;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  animation: spin 0.8s linear infinite;
+}
+
 
 /* Hamburger menu for mobile */
 .hamburger {
@@ -1456,15 +1472,13 @@ section .content {
 }
 
 /* Footer Styles */
-footer {
-  /* position: absolute; */
-  bottom: 0;
-  left: 0;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  color: #fff;
-  font-size: 0.9em;
-  z-index: 10;
+#footer {
+  position: relative;
+  margin-top: -180px;
+  /* negative value of footer height */
+  height: 180px;
+  clear: both;
+  background-color: red;
 }
 
 footer p {
@@ -1659,4 +1673,15 @@ footer p {
   white-space: pre-wrap;
   font-size: 1rem;
   color: #555;
+}
+
+
+@media screen and (min-width: 768px) {
+  .login-link {
+    display: none !important;
+  }
+
+  .logout-link {
+    display: none !important;
+  }
 }

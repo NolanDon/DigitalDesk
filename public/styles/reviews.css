@@ -262,3 +262,33 @@
 #popover-overlay:not(.hidden) {
     display: flex;
 }
+
+#pagination-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  #total-items {
+    font-size: 1.2rem;
+  }
+  
+  #pagination-controls {
+    display: flex;
+    gap: 5px;
+  }
+  
+  #pagination-controls button {
+    padding: 5px 10px;
+    background-color: #008cba;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #pagination-controls button.disabled {
+    background-color: #d3d3d3;
+    cursor: not-allowed;
+  }
+  
