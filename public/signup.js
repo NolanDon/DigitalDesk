@@ -31,7 +31,7 @@ signupForm.addEventListener("submit", (event) => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {
         // ✅ Redirect to homepage after successful signup
-        window.location.href = "index.html";
+        window.location.href = "/";
       })
       .catch((error) => {
         displayError(errorContainer, error.message);

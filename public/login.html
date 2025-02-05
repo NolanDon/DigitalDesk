@@ -1,53 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DigitalDesk | Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex items-center justify-center min-h-screen bg-gray-100">
     <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-bold text-center text-gray-700">Login</h2>
+      <h2 class="text-2xl font-bold text-center text-gray-700">Login</h2>
 
-        <input type="text" id="honeypot" name="honeypot" style="display: none;">
+      <input type="text" id="honeypot" name="honeypot" style="display: none" />
 
-        <form style="max-width: 350px;" class="signin" autocomplete="on">
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-600">Email</label>
-                <input 
-                    type="email" 
-                    id="email"
-                    placeholder="Enter your email" 
-                    class="w-full border border-gray-300 p-2 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200"
-                    required
-                />
-            </div>
+      <form id="login-form" style="max-width: 350px" class="signin" autocomplete="on">
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-600">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            class="w-full border border-gray-300 p-2 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200"
+            required
+          />
+        </div>
 
-            <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-600">Password</label>
-                <input 
-                    id="password"
-                    type="password" 
-                    placeholder="Enter your password" 
-                    class="w-full border border-gray-300 p-2 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200"
-                    required
-                />
-            </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-600"
+            >Password</label
+          >
+          <input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            class="w-full border border-gray-300 p-2 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200"
+            required
+          />
+        </div>
 
-            <button 
-                type="submit" 
-                id="login-button"
-                class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed">
-                Sign In
-            </button>
+        <button
+          type="submit"
+          id="login-button"
+          class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
+        >
+          Sign In
+        </button>
 
-            <p class="mt-4 text-center text-sm text-gray-500">
-                Don't have an account? 
-                <a href="/signup.html" class="text-blue-600 hover:underline">Sign Up</a>
-            </p>
-            <div class="error-container"></div>
-        </form>
+        <p class="mt-4 text-center text-sm text-gray-500">
+          Don't have an account?
+          <a href="/signup.html" class="text-blue-600 hover:underline"
+            >Sign Up</a
+          >
+        </p>
+        <div class="error-container"></div>
+      </form>
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
@@ -56,8 +65,8 @@
     <script src="./login.js"></script>
     <script src="./_config/firebase.js"></script>
     <script>
-              document
-        .getElementById("signup-form")
+      document
+        .getElementById("login-form")
         .addEventListener("submit", function (event) {
           const honeypot = document.getElementById("honeypot").value;
 
@@ -67,16 +76,18 @@
           }
         });
 
-        document.querySelector('.signin').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const loginButton = document.getElementById('login-button');
-            loginButton.disabled = true;
-            
-            // Simulate authentication
-            setTimeout(() => {
-                loginButton.disabled = false;
-            }, 3000); // Replace with actual authentication handling
+      document
+        .querySelector(".signin")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const loginButton = document.getElementById("login-button");
+          loginButton.disabled = true;
+
+          // Simulate authentication
+          setTimeout(() => {
+            loginButton.disabled = false;
+          }, 3000); // Replace with actual authentication handling
         });
     </script>
-</body>
+  </body>
 </html>

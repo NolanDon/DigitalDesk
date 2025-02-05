@@ -9,13 +9,13 @@ loginForm.addEventListener("submit", (event) => {
 
   let email = user_email.value;
   let password = user_password.value;
-  
+
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then((user) => {
       // redirecting to app homepage
-      window.location.href = "index.html/";
+      window.location.href = "/";
     })
     .catch(function (error) {
       // Handle Errors here.

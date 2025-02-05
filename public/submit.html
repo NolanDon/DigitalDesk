@@ -86,10 +86,6 @@
             max="10"
             step="1"
           />
-
-          <!-- Category Selection -->
-          <!-- <div class="mb-4"> -->
-          <!-- <h3 class="font-medium">Select Categories:</h3> -->
           <div class="category-buttons">
             <button
               type="button"
@@ -178,6 +174,21 @@
     </div>
 
     <script type="module">
+      const hamburger = document.getElementById("hamburger");
+      const nav = document.querySelector("nav");
+
+      hamburger.addEventListener("click", () => {
+        nav.classList.toggle("active");
+      });
+
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector("header");
+        if (window.scrollY > 0) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
       import {
         getFirestore,
@@ -259,7 +270,6 @@
         });
       }
 
-      // Auto-format price input
       // Auto-format price input
       const priceInput = document.getElementById("item-price");
       priceInput.addEventListener("input", (e) => {
