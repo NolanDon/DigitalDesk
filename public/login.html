@@ -9,14 +9,46 @@
       href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <header>
+      <div class="logo">
+        <a href="/">
+          <img src="images/logo.png" alt="Icon" class="navbar-logo" />
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="popular.html">Popular</a></li>
+          <li><a href="guides.html">Guides</a></li>
+          <li><a id="login-link" href="login.html" class="hidden-login">Login</a></li>
+        </ul>
+        <a id="add-item-link"></a>
+        <a id="sign-in" href="#"></a>
+        <div id="sign-in-status"></div>
+
+        <div class="hamburger" id="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
+    </header>
     <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
       <h2 class="text-2xl font-bold text-center text-gray-700">Login</h2>
 
       <input type="text" id="honeypot" name="honeypot" style="display: none" />
 
-      <form id="login-form" style="max-width: 350px" class="signin" autocomplete="on">
+      <form
+        id="login-form"
+        style="max-width: 350px"
+        class="signin"
+        autocomplete="on"
+      >
         <div class="mb-4">
           <label class="block text-sm font-medium text-gray-600">Email</label>
           <input
@@ -65,6 +97,100 @@
     <script src="./login.js"></script>
     <script src="./_config/firebase.js"></script>
     <script>
+      // Add to <script> in categories.html
+      document.querySelectorAll(".category-item").forEach((card) => {
+        card.addEventListener("click", () => {
+          const category = card.getAttribute("data-category");
+          window.location.href = `best-picks.html?category=${category}`;
+        });
+      });
+
+      const hamburger = document.getElementById("hamburger");
+      const nav = document.querySelector("nav");
+
+      hamburger.addEventListener("click", () => {
+        nav.classList.toggle("active");
+      });
+
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector("header");
+        if (window.scrollY > 0) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+      initApp = function () {
+        firebase.auth().onAuthStateChanged(
+          function (user) {
+            // Check if the current user is Nolan (nolan796@live.ca) when the page loads
+
+            if (user) {
+              // If the user is Nolan, continue to show the page
+              if (user.email !== "nolan796@live.ca") {
+                // If the user is not Nolan, redirect them to a different page
+                window.location.href = "/"; // Redirect to the homepage (or you can specify another page like login)
+              }
+            } else {
+              // If no user is signed in, redirect to the login page
+              window.location.href = "/login.html";
+            }
+
+            const signInButton = document.getElementById("sign-in");
+            signInButton.className = "distinct-button";
+            // const signInStatus = document.getElementById('sign-in-status');
+            // const accountDetails = document.getElementById('account-details');
+            const addItemLink = document.getElementById("add-item-link");
+
+            if (user) {
+              // If the user is Nolan, add the "Add Item" link
+              if (user.email === "nolan796@live.ca") {
+                addItemLink.innerHTML =
+                  '<a href="/submit.html" class="distinct-button">Add Item</a>';
+              } else {
+                addItemLink.innerHTML = "";
+              }
+
+              // User is signed in
+              signInButton.textContent = "Sign out";
+              signInButton.className = "distinct-button";
+              signInButton.onclick = () => {
+                firebase
+                  .auth()
+                  .signOut()
+                  .then(function () {
+                    signInButton.textContent = "Login";
+                    signInButton.className = "distinct-button";
+                    signInButton.textContent = "Login"; // Reset the button text
+                    // Clear the status
+                    // accountDetails.textContent = ''; // Clear the account details
+                  })
+                  .catch((error) => {
+                    console.error("Sign out error:", error);
+                  });
+              };
+
+              // accountDetails.textContent = JSON.stringify(user, null, 2); // Format user data nicely
+            } else {
+              // User is not signed in
+              signInButton.textContent = "Login";
+              signInButton.onclick = () => {
+                window.location.href = "/login.html"; // Redirect to the login page
+              };
+
+              // accountDetails.textContent = '';
+              addItemLink.innerHTML = ""; // Ensure the "Add Item" link is removed if logged out
+            }
+          },
+          function (error) {
+            console.log(error);
+          }
+        );
+      };
+
+      window.addEventListener("load", function () {
+        initApp();
+      });
       document
         .getElementById("login-form")
         .addEventListener("submit", function (event) {

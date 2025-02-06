@@ -51,34 +51,10 @@
           <li><a href="categories.html">Categories</a></li>
           <li><a href="popular.html">Popular</a></li>
           <li><a href="guides.html">Guides</a></li>
-          <!-- <li><a id="login-link" href="login.html" class="hidden-login">Login</a></li>
-                <li><a id="logout-link" href="#" class="hidden-login">Sign out</a></li> -->
+          <li><a class="login-link" id="login-link"></a></li>
         </ul>
         <a id="add-item-link"></a>
-        <a id="sign-in" href="#">
-          <svg width="24" height="24" viewBox="0 0 50 50">
-            <circle
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="white"
-              stroke-width="4"
-              fill="none"
-              stroke-linecap="round"
-              stroke-dasharray="100, 50"
-              transform="rotate(-90 25 25)"
-            >
-              <animateTransform
-                attributeName="transform"
-                type="rotate"
-                from="0 25 25"
-                to="360 25 25"
-                dur="1s"
-                repeatCount="indefinite"
-              />
-            </circle>
-          </svg>
-        </a>
+        <a id="sign-in" href="#"></a>
         <div id="sign-in-status"></div>
 
         <div class="hamburger" id="hamburger">
@@ -204,6 +180,8 @@
       });
     </script>
     <script type="text/javascript">
+      const mobileLoginButton = document.getElementById("login-link");
+
       initApp = function () {
         firebase.auth().onAuthStateChanged(
           function (user) {
@@ -225,14 +203,15 @@
               // User is signed in
               signInButton.textContent = "Sign out";
               signInButton.className = "distinct-button";
+              mobileLoginButton.textContent = "Sign out";
               signInButton.onclick = () => {
                 firebase
                   .auth()
                   .signOut()
                   .then(function () {
+                    mobileLoginButton.textContent = "Login";
                     signInButton.textContent = "Login";
                     signInButton.className = "distinct-button";
-                    signInButton.textContent = "Login"; // Reset the button text
                     // Clear the status
                     // accountDetails.textContent = ''; // Clear the account details
                   })
@@ -244,6 +223,7 @@
               // accountDetails.textContent = JSON.stringify(user, null, 2); // Format user data nicely
             } else {
               // User is not signed in
+              mobileLoginButton.textContent = "Login";
               signInButton.textContent = "Login";
               signInButton.onclick = () => {
                 window.location.href = "/login.html"; // Redirect to the login page

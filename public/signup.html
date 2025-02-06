@@ -5,8 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DigitalDesk | Sign Up</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <!-- Navbar -->
+    <header>
+      <div class="logo">
+        <a href="/">
+          <img src="images/logo.png" alt="Icon" class="navbar-logo" />
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="popular.html">Popular</a></li>
+          <li><a href="guides.html">Guides</a></li>
+          <li>
+            <a id="login-link" href="login.html" class="hidden-login">Login</a>
+          </li>
+        </ul>
+        <a id="add-item-link"></a>
+        <a id="sign-in" href="#"></a>
+        <div id="sign-in-status"></div>
+
+        <div class="hamburger" id="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
+    </header>
     <input type="text" id="honeypot" name="honeypot" style="display: none" />
 
     <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
@@ -83,6 +113,70 @@
     <script src="./signup.js"></script>
     <script src="./_config/firebase.js"></script>
     <script>
+      const hamburger = document.getElementById("hamburger");
+      const nav = document.querySelector("nav");
+
+      hamburger.addEventListener("click", () => {
+        nav.classList.toggle("active");
+      });
+      initApp = function () {
+        firebase.auth().onAuthStateChanged(
+          function (user) {
+            const signInButton = document.getElementById("sign-in");
+            signInButton.className = "distinct-button";
+            // const signInStatus = document.getElementById('sign-in-status');
+            // const accountDetails = document.getElementById('account-details');
+            const addItemLink = document.getElementById("add-item-link");
+
+            if (user) {
+              // If the user is Nolan, add the "Add Item" link
+              if (user.email === "nolan796@live.ca") {
+                addItemLink.innerHTML =
+                  '<a href="/submit.html" class="distinct-button">Add Item</a>';
+              } else {
+                addItemLink.innerHTML = "";
+              }
+
+              // User is signed in
+              signInButton.textContent = "Sign out";
+              signInButton.className = "distinct-button";
+              signInButton.onclick = () => {
+                firebase
+                  .auth()
+                  .signOut()
+                  .then(function () {
+                    signInButton.textContent = "Login";
+                    signInButton.className = "distinct-button";
+                    signInButton.textContent = "Login"; // Reset the button text
+                    // Clear the status
+                    // accountDetails.textContent = ''; // Clear the account details
+                  })
+                  .catch((error) => {
+                    console.error("Sign out error:", error);
+                  });
+              };
+
+              // accountDetails.textContent = JSON.stringify(user, null, 2); // Format user data nicely
+            } else {
+              // User is not signed in
+              signInButton.textContent = "Login";
+              signInButton.onclick = () => {
+                window.location.href = "/login.html"; // Redirect to the login page
+              };
+
+              // accountDetails.textContent = '';
+              addItemLink.innerHTML = ""; // Ensure the "Add Item" link is removed if logged out
+            }
+          },
+          function (error) {
+            console.log(error);
+          }
+        );
+      };
+
+      window.addEventListener("load", function () {
+        initApp();
+      });
       document
         .getElementById("signup-form")
         .addEventListener("submit", function (event) {

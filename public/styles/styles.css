@@ -523,7 +523,7 @@ nav ul li a:hover {
     align-items: center;
     width: 100%;
     position: absolute;
-    top: 50px;
+    top: 60px;
     left: 0;
     background-color: #333;
     padding: 20px 0;
@@ -603,6 +603,10 @@ section {
 
 /* Responsive Layout for Smaller Screens */
 @media (max-width: 768px) {
+  nav {
+    width: 0;
+  }
+
   section {
     padding: 120px 20px 20px;
     text-align: center;
@@ -1675,13 +1679,8 @@ footer p {
   color: #555;
 }
 
-
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .login-link {
-    display: none !important;
-  }
-
-  .logout-link {
-    display: none !important;
+    display: none;
   }
 }
