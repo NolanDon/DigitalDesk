@@ -54,7 +54,7 @@
           <li><a class="login-link" id="login-link"></a></li>
         </ul>
         <a id="add-item-link"></a>
-        <a id="sign-in" href="#"></a>
+        <a id="sign-in"></a>
         <div id="sign-in-status"></div>
 
         <div class="hamburger" id="hamburger">
@@ -181,6 +181,23 @@
     </script>
     <script type="text/javascript">
       const mobileLoginButton = document.getElementById("login-link");
+      const signInButton = document.getElementById("sign-in");
+
+      mobileLoginButton.addEventListener("click", () => {
+        mobileLoginButton.onclick = () => {
+          firebase
+            .auth()
+            .signOut()
+            .then(function () {
+              mobileLoginButton.textContent = "Login";
+              signInButton.textContent = "Login";
+              signInButton.className = "distinct-button";
+            })
+            .catch((error) => {
+              console.error("Sign out error:", error);
+            });
+        };
+      });
 
       initApp = function () {
         firebase.auth().onAuthStateChanged(
