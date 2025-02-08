@@ -1,6 +1,3 @@
-// import { initializeApp } from 'firebase/app';
-// import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-
 const config = {
   apiKey: "AIzaSyDl0CZgnXZoVW9cVnxcjIXpsw_OJ13pJ-8",
   authDomain: "digitaldesk-18348.firebaseapp.com",
@@ -11,11 +8,4 @@ const config = {
   measurementId: "G-ND8L5H8YCB"
 };
 
-// Initialize Firebase
 const app = firebase.initializeApp(config);
-// const db = getFirestore(app);
-
-// //create your custom method
-// const getItems = () => {
-//   return getDocs(collection(db, "items"));
-// };
