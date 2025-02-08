@@ -28,13 +28,22 @@
   </div>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-    import { firebaseConfig } from "./firebase.js";
 
     import {
       getFirestore,
       collection,
       getDocs,
     } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDl0CZgnXZoVW9cVnxcjIXpsw_OJ13pJ-8",
+      authDomain: "digitaldesk-18348.firebaseapp.com",
+      projectId: "digitaldesk-18348",
+      storageBucket: "digitaldesk-18348.firebasestorage.app",
+      messagingSenderId: "514653264950",
+      appId: "1:514653264950:web:81f40df58727a55c060c97",
+      measurementId: "G-ND8L5H8YCB",
+    };
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
