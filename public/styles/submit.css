@@ -1,136 +1,155 @@
 #submit-item {
-    max-width: 600px;
-    margin: 150px auto;
-    padding: 40px;
-    background: white;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    display: flex;
+  max-width: 600px;
+  margin: 150px auto;
+  padding: 40px;
+  background: white;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.horizontal-container {
+  display: flex;
+  gap: 20px;
+}
+.horizontal-container .field-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.horizontal-container textarea {
+  min-height: 150px;
+  padding: 8px;
+  font-size: 1rem;
+}
+@media (max-width: 768px) {
+  .horizontal-container {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+  }
 }
 
 #submit-item h2 {
-    font-size: 2rem;
-    color: #222;
-    margin-bottom: 20px;
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 20px;
 }
 
 #item-form {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
 }
 
 #item-form label {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #333;
-    text-align: left;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
 }
 
 #item-form input,
 #item-form textarea,
 #item-form select {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.3s ease;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
 
 #item-form input:focus,
 #item-form textarea:focus,
 #item-form select:focus {
-    border-color: #007bff;
+  border-color: #007bff;
 }
 
 .file-upload {
-    border: 2px dashed #aaa;
-    padding: 30px;
-    text-align: center;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: border-color 0.3s;
+  border: 2px dashed #aaa;
+  padding: 30px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.3s;
 }
 
 .file-upload:hover {
-    border-color: #007bff;
+  border-color: #007bff;
 }
 
 .rating-container {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 
 .rating-container input {
-    display: none;
+  display: none;
 }
 
 .rating-container label {
-    font-size: 1.5rem;
-    color: #ccc;
-    cursor: pointer;
-    transition: color 0.3s;
+  font-size: 1.5rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
 .rating-container input:checked ~ label,
 .rating-container label:hover,
 .rating-container label:hover ~ label {
-    color: #ffcc00;
+  color: #ffcc00;
 }
 
 .submit-button {
-    padding: 14px;
-    font-size: 1rem;
-    font-weight: bold;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .submit-button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 /* Style for selected category tags */
 .category-tag {
-    display: inline-flex;
-    align-items: center;
-    margin: 5px;
-    padding: 5px 10px;
-    background-color: #3498db; /* Blue background */
-    color: white;
-    border-radius: 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Hover effect for category tags */
-  .category-tag:hover {
-    background-color: #2980b9; /* Darker blue */
-  }
-  
-  /* Remove button style ("X") */
-  .remove-category {
-    display: none; /* Initially hidden */
-    margin-left: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  /* Hover effect for remove button */
-  .remove-category:hover {
-    color: #e74c3c; /* Red color for "X" */
-  }
-  
+  display: inline-flex;
+  align-items: center;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: #3498db; /* Blue background */
+  color: white;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for category tags */
+.category-tag:hover {
+  background-color: #2980b9; /* Darker blue */
+}
+
+/* Remove button style ("X") */
+.remove-category {
+  display: none; /* Initially hidden */
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Hover effect for remove button */
+.remove-category:hover {
+  color: #e74c3c; /* Red color for "X" */
+}

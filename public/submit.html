@@ -291,24 +291,26 @@
             return;
           }
 
-          try {
-            await addDoc(collection(db, "items"), {
-              name: itemName,
-              description: itemDescription,
-              price: itemPrice,
-              rating: itemRating,
-              categories: selectedCategories,
-              timestamp: new Date(),
-            });
+          firebase.auth().onAuthStateChanged(async function (user) {
+            if (user) {
+              try {
+                await addDoc(collection(db, "items"), {
+                  name: itemName,
+                  description: itemDescription,
+                  price: itemPrice,
+                  rating: itemRating,
+                  userId: user.uid, // Store user ID to verify later
+                  categories: selectedCategories,
+                  timestamp: new Date(),
+                });
 
-            alert("Item submitted successfully!");
-            document.getElementById("item-form").reset();
-            selectedCategories = [];
-            updateCategoryDisplay();
-          } catch (error) {
-            console.error("Error submitting item:", error);
-            alert("Error submitting item.");
-          }
+                alert("Item submitted successfully!");
+              } catch (error) {
+                console.error("Error submitting item:", error);
+                alert("Error submitting item.");
+              }
+            }
+          });
         });
     </script>
     <script type="text/javascript">
