@@ -1,0 +1,78 @@
+#news-events {
+    margin-top: 50px;
+    padding: 20px 0;
+    background: #f8f9fa;
+    overflow: hidden;
+  }
+  
+  .news-header {
+    position: relative;
+    padding-left: 20px;
+    font-family: "Red Hat Display", sans-serif;
+  }
+  
+  .news-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: inline-block;
+    position: relative;
+  }
+  
+  .news-header h2::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    width: 6px;
+    height: 24px;
+    background: #0056b3;
+    transform: translateY(-50%);
+  }
+  
+  .news-scroller {
+    display: flex;
+    overflow-x: hidden;
+    white-space: nowrap;
+    position: relative;
+    padding: 10px 0;
+  }
+  
+  .news-track {
+    display: flex;
+    gap: 40px;
+    animation: scrollNews 15s linear infinite;
+  }
+  
+  .news-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    min-width: 200px;
+  }
+  
+  .news-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+  
+  @keyframes scrollNews {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  

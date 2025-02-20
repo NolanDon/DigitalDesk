@@ -11,6 +11,9 @@
   text-align: center;
 }
 
+#item-summary {
+  min-height: 300px;
+}
 .horizontal-container {
   display: flex;
   gap: 20px;

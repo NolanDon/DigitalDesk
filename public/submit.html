@@ -50,6 +50,10 @@
           <label for="item-description">Item Description:</label>
           <textarea id="item-description" required></textarea>
 
+          <!-- Long Summary Input -->
+          <label for="item-summary">Item Summary:</label>
+          <textarea id="item-summary"></textarea>
+
           <!-- Price Input with auto-format -->
           <label for="item-price">Price (in cents):</label>
           <input type="text" id="item-price" required />
@@ -262,7 +266,6 @@
         e.target.value = value;
       });
 
-      // Form submission logic
       document
         .getElementById("item-form")
         .addEventListener("submit", async (event) => {
@@ -272,6 +275,9 @@
           const itemDescription = document
             .getElementById("item-description")
             .value.trim();
+          const itemSummary = document
+            .getElementById("item-summary")
+            .value.trim(); // Capture the long summary
           const itemPrice = parseInt(
             document.getElementById("item-price").value.replace(/\D/g, "")
           );
@@ -293,13 +299,16 @@
 
           firebase.auth().onAuthStateChanged(async function (user) {
             if (user) {
+              // Get the user's ID token
+              const idToken = await user.getIdToken();
+
               try {
                 await addDoc(collection(db, "items"), {
                   name: itemName,
                   description: itemDescription,
+                  summary: itemSummary,
                   price: itemPrice,
                   rating: itemRating,
-                  userId: user.uid, // Store user ID to verify later
                   categories: selectedCategories,
                   timestamp: new Date(),
                 });
