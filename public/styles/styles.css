@@ -773,10 +773,10 @@ section .content {
   overflow: hidden; /* Ensures the car stays hidden when off-screen */
 }
 
-.cs-content {
-  animation: liftText 4s ease-in-out; /* Adjust duration as needed */
-  animation-fill-mode: forwards; /* Ensure it ends in its original position */
-}
+/* .cs-content {
+  animation: liftText 4s ease-in-out;
+  animation-fill-mode: forwards; 
+} */
 
 .car-animation {
   position: absolute;
